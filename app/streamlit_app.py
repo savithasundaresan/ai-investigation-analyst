@@ -167,7 +167,7 @@ with tc1:
                              text=[f"{v:.1%}" for v in hl.late_rate],
                              textposition=["middle left" if m == base else "top center" for m in hl.month], textfont=dict(color=INK),
                              hoverinfo="skip"))
-    st.plotly_chart(style(fig, y_fmt=".0%"), use_container_width=True)
+    st.plotly_chart(style(fig, y_fmt=".0%"), width="stretch")
 with tc2:
     st.markdown("**Promised vs actual delivery time (days)**")
     fig = go.Figure()
@@ -179,7 +179,7 @@ with tc2:
     fig.add_vrect(x0=base, x1=current, fillcolor=GRID, opacity=0.5, line_width=0)
     fig = style(fig, y_title=None)
     fig.update_layout(showlegend=True, legend=dict(orientation="h", y=1.12, x=0), margin=dict(r=60))
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 st.caption("An order is late when actual days exceed promised days. The gap between the lines is the slack; "
            "when it narrows, lateness rises even if deliveries don't slow down.")
 show_sql(t, "Show SQL for the trend")
@@ -215,7 +215,7 @@ with w1:
     n = p.notes
     st.plotly_chart(waterfall(fmt_month(base), n["base_rate"],
                               [("Slower deliveries", n["delivery_effect_pp"] / 100), ("Shorter promises", n["promise_effect_pp"] / 100)],
-                              fmt_month(current), n["current_rate"], [BLUE, ORANGE]), use_container_width=True)
+                              fmt_month(current), n["current_rate"], [BLUE, ORANGE]), width="stretch")
     st.caption(f"Both months re-scored against {fmt_month(base)}'s median promise per destination state. "
                "What changes against that fixed yardstick is the delivery effect; the rest comes from promises moving.")
     show_sql(p)
@@ -226,7 +226,7 @@ with w2:
     n = d.notes
     st.plotly_chart(waterfall(fmt_month(base), n["base_rate"],
                               [("Mix", n["mix_pp"] / 100), ("Performance", n["performance_pp"] / 100), ("Interaction", n["interaction_pp"] / 100)],
-                              fmt_month(current), n["current_rate"], [BLUE, ORANGE, AQUA]), use_container_width=True)
+                              fmt_month(current), n["current_rate"], [BLUE, ORANGE, AQUA]), width="stretch")
     st.caption(f"Mix: orders shifted toward segments that were already slower. Performance: segments themselves got worse. "
                f"{n['n_pooled_into_other']} of {n['n_segments']} segments have fewer than {MIN_N} delivered orders in a month "
                "and are pooled into “Other”.")
@@ -236,7 +236,7 @@ st.markdown(f"**Top contributors by {M.DIMENSIONS[dim].lower()}**")
 top = d.data.head(10).copy()
 st.dataframe(
     top.assign(**{c_: top[c_] * 100 for c_ in ["share_base", "share_current", "rate_base", "rate_current"]}),
-    hide_index=True, use_container_width=True,
+    hide_index=True, width="stretch",
     column_config={
         "segment": M.DIMENSIONS[dim],
         "n_base": st.column_config.NumberColumn(f"Delivered {base:%b}", format="%d"),
@@ -264,7 +264,7 @@ bdf["status"] = bdf.apply(lambda r: "⚑ Flagged" if r.flagged else ("Too few or
 st.dataframe(
     bdf.assign(rate_base=bdf.rate_base * 100, rate_current=bdf.rate_current * 100)[
         ["status", "segment", "n_base", "n_current", "rate_base", "rate_current", "delta_pp", "z"]],
-    hide_index=True, use_container_width=True,
+    hide_index=True, width="stretch",
     column_config={
         "status": "Status", "segment": M.DIMENSIONS[dim],
         "n_base": st.column_config.NumberColumn(f"Delivered {base:%b}", format="%d"),
@@ -283,6 +283,6 @@ show_sql(bd)
 
 with st.expander("Data quality for these two months"):
     q = dq((base, current))
-    st.dataframe(q.data.assign(purchase_month=q.data.purchase_month.dt.date), hide_index=True, use_container_width=True)
+    st.dataframe(q.data.assign(purchase_month=q.data.purchase_month.dt.date), hide_index=True, width="stretch")
     st.caption("Rows with problems are flagged, not deleted (decision D12). None of these flags changes the late flag.")
     show_sql(q)
