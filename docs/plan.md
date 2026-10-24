@@ -41,10 +41,11 @@ defend every part of it.
 - **Done when:** `uv run pytest` passes and every *(to verify)* in `decisions.md` is resolved.
 
 ### Stage 2: Dashboard and one manually verified investigation
-- [ ] Streamlit page: KPI tiles, monthly trend, breakdown by seller / state / category, filters
-- [ ] Anomaly flags with minimum sample size (decision D6)
-- [ ] Mix vs performance decomposition in SQL (decision D5)
-- [ ] One investigation written by hand: pick a month, decompose the change, write the conclusion
+- [x] Streamlit page: KPI tiles, monthly trend, breakdown by seller / state / category, filters
+- [x] Anomaly flags with minimum sample size (decision D6)
+- [x] Mix vs performance decomposition in SQL (decision D5)
+- [x] One investigation written by hand: pick a month, decompose the change, write the conclusion
+- [x] Added: promise-vs-speed split (D13) and a weekly view
 - **Done when:** the hand-written investigation's numbers match the dashboard exactly.
 
 ### Stage 3: Agent with linked evidence
@@ -67,5 +68,6 @@ Deployment, user logins, live data, multiple pages, forecasting.
 
 ## Setup
 1. `uv run python -m src.load` fetches the data (about 65 MB, checksum-verified) and builds `data/processed/olist.duckdb`.
-2. `uv run pytest` runs the integrity tests.
-3. (Before Stage 3) `ollama pull qwen3:8b` (about a 5 GB download).
+2. `uv run pytest` runs the tests.
+3. `uv run streamlit run app/streamlit_app.py` opens the dashboard at http://localhost:8501.
+4. (Before Stage 3) `ollama pull qwen3:8b` (about a 5 GB download).

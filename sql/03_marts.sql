@@ -44,6 +44,9 @@ SELECT
          THEN greatest(date_diff('day', b.estimated_delivery_date, CAST(b.delivered_customer_at AS DATE)), 0) END AS days_late,
     CASE WHEN b.is_delivered
          THEN date_diff('day', CAST(b.purchased_at AS DATE), CAST(b.delivered_customer_at AS DATE)) END AS delivery_days,
+    -- The promise the late flag is measured against. A late rate can rise
+    -- because deliveries got slower OR because promises got shorter.
+    date_diff('day', CAST(b.purchased_at AS DATE), b.estimated_delivery_date) AS promised_days,
     -- Never delivered, not canceled, and the estimate passed before the data
     -- cutoff: effectively lost or stuck. Not in the late rate (no delivery
     -- date) but reported alongside it so it isn't silently ignored.

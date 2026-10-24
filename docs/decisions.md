@@ -72,7 +72,9 @@ seller performance, and the two call for different actions. Built in Stage 2.
 A segment is flagged only if it has at least **30 delivered orders in both
 periods**, its late-rate change has **|z| ≥ 2** (two-proportion z-test), and
 the change is at least **3 percentage points**. Each flag shows these numbers.
-The thresholds are tuned in Stage 2.
+Implemented in `metrics.break_down` (thresholds in `src/config.py`). For
+Feb→Mar 2018, 18 of 27 customer states have enough orders to be judged, and
+6 are flagged.
 
 ## D7. "This month" is a replay of historical data
 The user picks a month from the analysis window to treat as "current". The
@@ -115,3 +117,20 @@ state codes. Licence: CC BY-NC-SA 4.0 (non-commercial use; credit Olist).
 a `dq_` flag rather than being dropped silently. None of them affects the
 late flag, which uses only the delivery and estimated dates, and
 `check_data_quality` reports them for any period.
+
+## D13. Check whether the yardstick moved, not just the deliveries
+An order is late when `delivery_days > promised_days`, so the late rate can
+rise because deliveries got slower **or** because promises got shorter.
+`promise_vs_speed` re-scores both months against one fixed yardstick (the
+base month's median promise per destination state). The change against that
+yardstick is the *delivery effect*; the rest is the *promise effect*. The two
+add up exactly to the real change.
+- *Why it matters:* in Feb→Mar 2018, average delivery time **fell**, yet the
+  late rate rose 4.8 pp, and 69% of the rise came from shorter promises.
+  Black Friday 2017 (Oct→Nov) is the opposite case: all of its rise came
+  from slower deliveries. Both cases are tested.
+- *Trade-off:* the split depends on the yardstick chosen (median per state).
+  A different choice moves the numbers slightly, but in the tested cases it
+  doesn't change which effect is larger.
+- *Also added:* a weekly view, because month boundaries can split one episode
+  in two (the Feb–Mar 2018 spike peaked in the week of 26 February).

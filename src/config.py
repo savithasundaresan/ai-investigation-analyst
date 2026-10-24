@@ -6,6 +6,12 @@ ROOT = Path(__file__).resolve().parent.parent
 SQL_DIR = ROOT / "sql"
 DB_PATH = ROOT / "data" / "processed" / "olist.duckdb"
 
+# --- Anomaly rules (decision D6) ------------------------------------------
+# A segment is flagged only when all three hold.
+MIN_N = 30          # delivered (or reviewed, etc.) orders in BOTH periods
+MIN_ABS_Z = 2.0     # two-proportion z-test on the change
+MIN_DELTA_PP = 3.0  # absolute change in percentage points
+
 # --- Data source -----------------------------------------------------------
 # Public Hugging Face mirror of the Kaggle "Brazilian E-Commerce Public Dataset
 # by Olist" (CC BY-NC-SA 4.0). Pinned to one commit so the data can't change

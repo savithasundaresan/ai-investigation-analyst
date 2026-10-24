@@ -1,6 +1,6 @@
 # Design: AI Business Investigation Analyst
 
-> Status: Stage 1 (data model) built and tested. Numbers are from the real
+> Status: Stages 1–2 (data model, metrics, dashboard) built and tested. Numbers are from the real
 > data; see [data_profile.md](data_profile.md) and [decisions.md](decisions.md).
 
 ## 1. Goal
@@ -36,8 +36,7 @@ flowchart LR
     DB[(DuckDB file<br/>data/processed/olist.duckdb)]
 
     subgraph Analytics["Analytics layer (pure Python + SQL)"]
-        MET[src/metrics.py<br/>compare · breakdown · mix decomposition]
-        ANOM[src/anomalies.py<br/>flag rules]
+        MET[src/metrics.py<br/>compare · breakdown + flags · mix · promise vs speed]
     end
 
     subgraph Agent["Investigation agent"]
@@ -54,7 +53,6 @@ flowchart LR
 
     CSV --> LOAD --> SQL --> DB
     DB -->|read-only| MET
-    MET --> ANOM
     MET --> TOOLS
     TOOLS <--> LOOP
     LOOP <--> LLM
@@ -62,7 +60,6 @@ flowchart LR
     LLM -.optional.-> ANT
     LOOP --> REP
     MET --> UI
-    ANOM --> UI
     REP --> UI
     LOOP --> EVAL
     MET --> EVAL
@@ -163,6 +160,9 @@ once for each seller but never twice for the same one.
 | `compare_periods(metric, base, current, filters)` | both values, the change, and a two-proportion z-score |
 | `break_down(metric, dimension, base, current)` | per segment: n, rate, share, change, z, sample-size flag |
 | `decompose_mix(metric, dimension, base, current)` | the mix / performance / interaction split, total and per segment |
+| `promise_vs_speed(base, current)` | the late-rate change split into slower deliveries vs shorter promises (D13) |
+| `weekly(start, end)` | late rate, delivery days and promised days by purchase week |
+| `data_quality(months)` | completeness and data-quality flag counts |
 
 Each function returns a `Result`: a data frame plus the exact SQL text and
 its parameters. That pair is what the agent cites as evidence.
@@ -180,7 +180,7 @@ The three parts add up exactly to the total change, and a unit test checks
 that. Segments below the minimum sample size are grouped into an "Other"
 bucket, so their noisy rates don't dominate either effect.
 
-### 5.3 Anomaly rules (`src/anomalies.py`, decision D6)
+### 5.3 Anomaly rules (in `break_down`, decision D6)
 
 A segment is flagged when **all three** hold:
 1. `n ≥ MIN_N` delivered orders in both periods (default 30)
@@ -197,7 +197,7 @@ These thresholds live in one config block and are shown next to every flag.
 |---|---|---|
 | `check_data_quality(period)` | completeness, null dates, status mix | always first: is the month comparable at all? |
 | `compare_periods(metric, base, current, filters)` | `metrics.compare_periods` | confirm the headline change |
-| `break_down_metric(metric, dimension, base, current)` | `metrics.break_down` + `decompose_mix` | find which segments drove it and whether it's mix or performance |
+| `break_down_metric(metric, dimension, base, current)` | `metrics.break_down` + `decompose_mix` + `promise_vs_speed` | find which segments drove it, whether it's mix or performance, and whether deliveries or promises moved |
 | `inspect_orders(filters, limit)` | sample rows from `fct_orders` | look at concrete examples in a suspicious segment |
 
 The LLM never writes SQL. It fills in arguments from fixed lists (metric
@@ -241,7 +241,8 @@ sequenceDiagram
    were delivered, say so and stop or qualify every finding that follows.
 2. **Confirm the headline change** and whether it's beyond noise.
 3. **Decompose by dimension** (seller, seller state, customer state,
-   category), separating mix from performance.
+   category), separating mix from performance, and check whether
+   deliveries slowed or promises shortened (D13).
 4. **Drill into the top contributors** with `inspect_orders`.
 5. **Write the report:** findings → numbers [E#] → what to investigate
    first → limitations. Say "association, not causation". Say "insufficient
@@ -324,7 +325,7 @@ ai-investigation-analyst/
 ├── eval/                    # questions, answer SQL, runner, results
 ├── sql/                     # 01_staging.sql … 04_marts.sql
 ├── src/
-│   ├── load.py   db.py   metrics.py   anomalies.py
+│   ├── load.py   db.py   metrics.py   profile_data.py   investigate_feb_mar_2018.py
 │   ├── tools.py  llm.py  agent.py     report.py
 │   └── config.py            # thresholds, model, paths
 └── tests/                   # data integrity, metrics, decomposition, citation checker
