@@ -1,96 +1,117 @@
 # Analytical decisions log
 
 Each entry records what we decided, why, and what we gave up. Use it to answer
-"why did you do it this way?" in interviews. Entries marked **(to verify)** are
-working assumptions that Step 1 will confirm or revise against the actual data.
+"why did you do it this way?" in interviews. Numbers come from profiling the
+real data in Stage 1; the queries behind them are in
+[data_profile.md](data_profile.md).
 
 ## D1. One row per order is the unit of analysis
-Olist stores one order across several tables, and three of them can have more
-than one row per order:
+Three child tables can have more than one row per order:
 
-| Table | Grain | Why it can repeat |
+| Table | Grain | Repeats in the real data |
 |---|---|---|
-| `orders` | 1 row per order | the base table |
-| `order_items` | 1 row per item | an order can contain several items, sometimes from different sellers |
-| `order_payments` | 1 row per payment | split payments, vouchers |
-| `order_reviews` | 1 row per review | a few orders have more than one review **(to verify)** |
+| `orders` | 1 row per order | 99,441 orders |
+| `order_items` | 1 row per item | 9,803 orders have more than one item |
+| `order_payments` | 1 row per payment | 2,961 orders have more than one payment row |
+| `order_reviews` | 1 row per review | 547 orders have more than one review |
 
-Joining all of these directly multiplies rows. For example, an order with 3 items
-and 2 payments becomes 6 rows, so its payment total is counted 3 times
-("join fan-out"). **Rule:** aggregate each child table to one row per order
-*first*, then join. Tests check that the order count and the payment total
-match the source tables after every join.
+Joining these at their native grain multiplies rows. Joining payments to
+items directly reports **R$ 20.31M** of payments when the true total is
+**R$ 15.85M**: 28% too high, and it still looks plausible.
+**Rule:** the `int_` layer collapses each child table to one row per order
+*first*; marts join only those. Tests check that order counts, item value and
+payment totals match the source exactly.
 
 ## D2. Late delivery definition
-- **Late** = the order was delivered to the customer *after* the estimated
-  delivery date, compared on calendar date. The estimate is stored as a date
-  with no time, so a delivery at 15:00 on the estimated day counts as on time.
-- **Denominator** = delivered orders that have a delivery date. Canceled or
-  undelivered orders are tracked as a separate metric, not counted as late or on time.
-- *Trade-off:* this ignores how late an order was. We also report average days
-  late so a 1-day miss and a 20-day miss aren't treated as equal.
+- **Late** = delivered on a later *calendar day* than the estimated delivery
+  date. The estimate has no time of day, so delivery at 15:00 on the
+  estimated day is on time.
+- **Delivered** = status `delivered` **and** a delivery date. This excludes 8
+  "delivered" orders with no date and 6 canceled orders that have a date.
+- **Denominator** = delivered orders. Canceled orders are a separate metric.
+- **Overdue and undelivered** (1,729 orders): orders never delivered, not
+  canceled, with an estimate that passed before the data ends. They can't be
+  in the late rate because they have no delivery date, but ignoring them
+  would understate the problem. So they are reported next to the late rate
+  as their own metric.
+- *Trade-off:* the late rate counts how often orders are late, not how late.
+  Average days late is reported alongside it.
 
-## D3. Which month an order belongs to: purchase month
-We assign orders to the month they were purchased. Problem: for the last months
-in the dataset, many orders hadn't been delivered by the time the data was
-exported. The late ones are the most likely to still be missing, so those
-months would look better than they really were (**right-censoring**).
-**Rule:** we exclude months where too large a share of orders lack a final
-status. The exact cutoff will be set in Step 1.
+## D3. Orders belong to their purchase month; only complete months are analyzed
+We assumed recent months would look better than they really were, because
+their late orders hadn't been delivered yet (right-censoring). The data shows
+the effect is small here: in every month from 2017 through August 2018, at
+most 5% of orders are still in an open status.
+**Rule (`dim_month.is_complete`):** a month is analyzed only if it has
+≥ 500 orders, ≤ 5% of orders still open, and ≤ 1% of estimated delivery
+dates after the last date in the data (2018-10-17).
+**Result:** the analysis window is **2017-01 to 2018-08**, 20 complete months.
+Excluded: Sept–Dec 2016 (329 orders in total) and Sept–Oct 2018 (20 orders).
+*Caveat:* average delivery time drops steadily through mid-2018 (to 7.7 days
+in August). The data can't tell us whether that's real improvement or slow
+orders missing from the export, so it's listed as a limitation.
 
-## D4. Seller and category breakdowns use order × seller rows
-About 1–3% of orders contain items from more than one seller **(to verify)**.
-For seller or category breakdowns we count each order once per seller (or
-category) it involves, and we disclose the share of affected orders. Giving the
-whole order to one "main" seller would hide that one seller's delay.
+## D4. Seller and category breakdowns use order × seller × category rows
+1,278 orders (1.3% of orders with items) include more than one seller.
+`bridge_order_segment` has one row per order × seller × category. Breakdowns
+count `DISTINCT order_id` per segment, so a split order counts once for each
+seller involved and never twice for the same one. Giving the whole order to
+one "main" seller would hide a slow seller behind a fast one.
 
 ## D5. Separate the change in order mix from the change in performance (key differentiator)
-A change in the overall late rate between two periods splits exactly into three parts:
-
 ```
 Δ overall = Σ (Δshare_i × baseline_rate_i)     ← mix: more orders went to slower segments
           + Σ (baseline_share_i × Δrate_i)     ← performance: segments themselves got slower
           + Σ (Δshare_i × Δrate_i)             ← interaction
 ```
-This is a standard shift-share decomposition. If the "mix" part dominates, the
-answer is "we sent more volume to historically slow sellers or regions", not
-"sellers got worse". The two answers call for different actions.
+This is a standard shift-share decomposition. The three parts add up exactly
+to the total change. If mix dominates, the cause is where volume went, not
+seller performance, and the two call for different actions. Built in Stage 2.
 
 ## D6. Anomaly rules are simple and visible
-A segment is flagged only if all of these hold:
-- it has at least **N delivered orders in both periods** (minimum sample;
-  N set in Step 2), and
-- its late rate changed by more than the noise threshold (a two-proportion
-  z-test, |z| ≥ 2), and
-- the change is large enough to matter in practice (absolute change ≥ X
-  percentage points).
-Every flag shows these numbers, so a viewer can check why the segment was flagged.
+A segment is flagged only if it has at least **30 delivered orders in both
+periods**, its late-rate change has **|z| ≥ 2** (two-proportion z-test), and
+the change is at least **3 percentage points**. Each flag shows these numbers.
+The thresholds are tuned in Stage 2.
 
 ## D7. "This month" is a replay of historical data
-The data covers roughly 2016–2018. The app lets the user pick a month to treat
-as "current" and labels it **Simulation: historical replay**. Nothing in this
-project claims to be live data.
+The user picks a month from the analysis window to treat as "current". The
+app labels it **Simulation: historical replay**.
 
 ## D8. The LLM chooses what to investigate; SQL computes every number
-The agent may only call read-only tools that run SQL. Every number in a report
-must come from a tool result, which is logged with its query. The LLM chooses
-which tool to call next and writes the explanation. It never calculates numbers itself.
+The agent can only call read-only, parameterized tools. Every number in a
+report must come from a logged tool result. The LLM never does arithmetic.
 
 ## D9. Free local model by default; the LLM layer can be swapped
-The whole project runs at $0. The agent uses a local open-weights model served
-by **Ollama** (default `qwen3:8b`, chosen because it supports tool calling and
-fits on a laptop). All model calls go through one small module (`src/llm.py`)
-with a single function: send messages and tool definitions, get back text or
-tool calls. The backend is chosen with `LLM_PROVIDER` in `.env`; a paid API such
-as Claude is an optional extra, not a requirement.
-- *Why:* it costs nothing, keeps data on the machine, and anyone who clones the
-  repo can run it without a paid key.
-- *Trade-off:* small local models pick the wrong tool or misread a result more
-  often than large hosted models, and they respond more slowly. We don't hide
-  this. The safeguards in D8 (SQL computes every number; every claim must cite a
-  tool result) exist partly because of it, and Stage 4 measures tool errors,
-  numerical accuracy and response time for each model actually tested.
-- *Portability:* the agent loop, tools and evaluation never import a provider
-  SDK directly, so comparing models is a one-line config change.
-- *Replay mode:* saved agent runs (tool calls, evidence, report) can be played
-  back in the app with no model running at all, so the GitHub demo works for anyone.
+The agent uses a local model through **Ollama** (default `qwen3:8b`). All model
+calls go through `src/llm.py`, and `LLM_PROVIDER` in `.env` picks the backend;
+Claude is an optional extra.
+- *Why:* it costs nothing, data stays on the machine, and anyone can run it.
+- *Trade-off:* small local models pick the wrong tool more often and are
+  slower. The D8 safeguards and the Stage 4 evaluation make that visible.
+- *Replay mode:* saved runs can be played back with no model running, so the
+  demo works for anyone who clones the repo.
+
+## D10. Order value = item prices + freight, not payments
+For 249 orders, the payment total differs from the item total by more than
+R$ 1, mostly from instalment interest and vouchers. We use **price + freight**
+because it can be split per seller and per category (payments are per order
+only). The payment total is kept as a column, and mismatched orders are
+flagged (`dq_payment_mismatch`).
+
+## D11. Data source: pinned public mirror, verified by checksum
+The Kaggle files come from a public Hugging Face mirror, pinned to one commit.
+Each file's SHA-256 is checked on every load. The checksums matched two other
+independent mirrors and the published Git LFS checksums, and the row counts
+match the published Olist dataset (e.g. 99,441 orders). The raw layer stores
+every column as text, so it's an exact copy and all typing happens in
+visible SQL. The 61 MB geolocation file is not loaded because regions use
+state codes. Licence: CC BY-NC-SA 4.0 (non-commercial use; credit Olist).
+
+## D12. Data-quality problems are flagged, not deleted
+166 orders were handed to the carrier *before* they were purchased, and
+23 were delivered *before* reaching the carrier. 775 orders have no items
+(mostly `unavailable` or `canceled`), and 1 has no payment. These rows keep
+a `dq_` flag rather than being dropped silently. None of them affects the
+late flag, which uses only the delivery and estimated dates, and
+`check_data_quality` reports them for any period.

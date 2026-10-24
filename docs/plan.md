@@ -32,12 +32,12 @@ defend every part of it.
 ## Stages and done-criteria
 
 ### Stage 1: Validated data model and SQL metrics
-- [ ] Profile the raw CSVs: row counts, keys, nulls, date ranges, multi-row orders
-- [ ] Load the raw tables into DuckDB (`src/load.py`)
-- [ ] Clean tables and `fct_orders`, one row per order (`sql/`)
-- [ ] Metric definitions written down: late rate, order value, low-review rate, cancellation rate
-- [ ] Decide which months are complete enough to analyze (decision D3)
-- [ ] Tests: order count and payment total match the source after every join
+- [x] Profile the raw CSVs: row counts, keys, nulls, date ranges, multi-row orders
+- [x] Load the raw tables into DuckDB (`src/load.py`), fetched from a pinned public mirror with checksums
+- [x] Clean tables and `fct_orders`, one row per order (`sql/`)
+- [x] Metric definitions written down: late rate, order value, low-review rate, cancellation rate
+- [x] Decide which months are complete enough to analyze (decision D3)
+- [x] Tests: order count and payment total match the source after every join
 - **Done when:** `uv run pytest` passes and every *(to verify)* in `decisions.md` is resolved.
 
 ### Stage 2: Dashboard and one manually verified investigation
@@ -65,6 +65,7 @@ defend every part of it.
 ## Out of scope for the MVP
 Deployment, user logins, live data, multiple pages, forecasting.
 
-## One-time setup still needed
-1. Download the Olist dataset from Kaggle and unzip into `data/raw/`.
-2. (Before Stage 3) `ollama pull qwen3:8b` (~5 GB download).
+## Setup
+1. `uv run python -m src.load` fetches the data (about 65 MB, checksum-verified) and builds `data/processed/olist.duckdb`.
+2. `uv run pytest` runs the integrity tests.
+3. (Before Stage 3) `ollama pull qwen3:8b` (about a 5 GB download).

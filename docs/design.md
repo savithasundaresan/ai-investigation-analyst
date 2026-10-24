@@ -1,7 +1,7 @@
 # Design: AI Business Investigation Analyst
 
-> Status: v1 design, written before implementation. Sections marked
-> *(to verify)* depend on profiling the real data in Stage 1.
+> Status: Stage 1 (data model) built and tested. Numbers are from the real
+> data; see [data_profile.md](data_profile.md) and [decisions.md](decisions.md).
 
 ## 1. Goal
 
@@ -130,9 +130,10 @@ seller's state.
 
 | Table | Grain | Main columns |
 |---|---|---|
-| `fct_orders` | 1 row per order | status, purchase month, customer state, `is_delivered`, `is_late`, `days_late`, `delivery_days`, `order_value`, `review_score`, `is_low_review`, `n_items`, `n_sellers` |
+| `fct_orders` | 1 row per order (99,441) | status, purchase month, customer state, `is_delivered`, `is_late`, `days_late`, `delivery_days`, `is_overdue_undelivered`, `order_value`, `payment_total`, `review_score`, `is_low_review`, `n_items`, `n_sellers`, `dq_*` data-quality flags |
 | `bridge_order_segment` | 1 row per order × seller × category | `seller_id`, `seller_state`, `category`, `item_value`, used for seller/category breakdowns |
-| `dim_month` | 1 row per purchase month | order count, share still undelivered, `is_complete` flag (decision D3) |
+| `dim_month` | 1 row per purchase month | order count, share still open, share of estimates after the data cutoff, `is_complete` flag (decision D3). Complete months are 2017-01 to 2018-08. |
+| `meta_data_cutoff` | 1 row | last delivery timestamp in the data (2018-10-17) |
 
 Order-level outcomes (`is_late`, `review_score`) live only on `fct_orders`.
 Breakdowns join `bridge_order_segment` to `fct_orders` and use
@@ -146,8 +147,9 @@ once for each seller but never twice for the same one.
 | Order volume | orders purchased | — | all statuses |
 | **Late-delivery rate** | delivered orders where delivery date > estimated date | delivered orders with a delivery date | compared on calendar date (D2) |
 | Avg days late | Σ days late | late orders | severity, not just frequency |
-| Order value (AOV) | Σ payment value | orders with a payment | payments summed per order first |
-| Low-review rate | orders with review score ≤ 2 | orders with a review | latest review if several *(to verify)* |
+| Order value (AOV) | Σ item price + freight | orders with items | can be split per seller and category; payments can't (D10) |
+| Overdue and undelivered | not delivered, not canceled, estimate before the data cutoff | — | reported next to the late rate (D2) |
+| Low-review rate | orders with review score ≤ 2 | orders with a review | latest review if several (547 orders have more than one) |
 | Cancellation rate | canceled or unavailable orders | all orders | tracked separately, never counted as late |
 
 ## 5. Analytics layer
