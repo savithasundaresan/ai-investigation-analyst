@@ -4,8 +4,9 @@
 sellers, regions or product categories contributed most, and what should we
 investigate first?"
 
-**Constraints:** completely free, runs locally, built step by step so both
-builders learn the skills (not copy-paste).
+**Constraints:** completely free, runs locally, built one step at a time
+with a code overview after each step so the owners can understand and
+defend every part of it.
 
 ## Stack (all free)
 | Layer | Tool |
@@ -18,15 +19,15 @@ builders learn the skills (not copy-paste).
 | Tests | pytest |
 | Hosting the code | GitHub |
 
-## Roles
-- **Analyst** (SQL and analysis lead): writes the SQL metric queries, the
-  manual investigation, the anomaly rules and the case study. Gets an
-  explanation of each concept and its trap first, writes the query, then gets
-  a review with tests run against it.
-- **Engineer** (Python and agent lead): writes the data loader, the tool
-  functions, the LLM layer, the agent loop and the app wiring, with guidance.
-- **Both:** evaluation questions. One person writes a question, the other
-  writes its SQL answer independently.
+## How we work
+- **Claude builds:** writes the code, SQL, tests and docs, one step at a time.
+- **Owners oversee:** after each step they get a code overview (what was
+  built, how it fits the architecture, the key analytical decisions, and the
+  test results) and approve it before the next step starts.
+- **Owners verify by hand:** before Stage 4, the owners pick a few evaluation
+  questions and check the answers themselves in the DuckDB shell, so the
+  "independently verified" claim is true.
+- Architecture: [design.md](design.md). Decisions: [decisions.md](decisions.md).
 
 ## Stages and done-criteria
 
