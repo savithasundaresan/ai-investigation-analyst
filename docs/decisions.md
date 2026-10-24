@@ -75,3 +75,22 @@ project claims to be live data.
 The agent may only call read-only tools that run SQL. Every number in a report
 must come from a tool result, which is logged with its query. The LLM chooses
 which tool to call next and writes the explanation. It never calculates numbers itself.
+
+## D9. Free local model by default; the LLM layer can be swapped
+The whole project runs at $0. The agent uses a local open-weights model served
+by **Ollama** (default `qwen3:8b`, chosen because it supports tool calling and
+fits on a laptop). All model calls go through one small module (`src/llm.py`)
+with a single function: send messages and tool definitions, get back text or
+tool calls. The backend is chosen with `LLM_PROVIDER` in `.env`; a paid API such
+as Claude is an optional extra, not a requirement.
+- *Why:* it costs nothing, keeps data on the machine, and anyone who clones the
+  repo can run it without a paid key.
+- *Trade-off:* small local models pick the wrong tool or misread a result more
+  often than large hosted models, and they respond more slowly. We don't hide
+  this. The safeguards in D8 (SQL computes every number; every claim must cite a
+  tool result) exist partly because of it, and Stage 4 measures tool errors,
+  numerical accuracy and response time for each model actually tested.
+- *Portability:* the agent loop, tools and evaluation never import a provider
+  SDK directly, so comparing models is a one-line config change.
+- *Replay mode:* saved agent runs (tool calls, evidence, report) can be played
+  back in the app with no model running at all, so the GitHub demo works for anyone.
