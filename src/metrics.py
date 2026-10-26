@@ -353,6 +353,53 @@ def promise_vs_speed(con, base: dt.date, current: dt.date, filters: dict | None 
     return Result(df, sql, all_params, notes)
 
 
+# --- Order samples -------------------------------------------------------------------
+
+SAMPLE_SQL = """
+WITH segs AS (
+    SELECT order_id,
+           string_agg(DISTINCT seller_state, ',' ORDER BY seller_state) AS seller_states,
+           string_agg(DISTINCT category, ',' ORDER BY category)         AS categories
+    FROM bridge_order_segment GROUP BY order_id
+)
+SELECT
+    f.order_id,
+    CAST(f.purchased_at AS DATE) AS purchase_date,
+    f.customer_state,
+    s.seller_states,
+    s.categories,
+    f.promised_days,
+    f.delivery_days,
+    f.days_late,
+    f.review_score
+FROM fct_orders f
+LEFT JOIN segs s USING (order_id)
+WHERE f.is_delivered AND {where} {late}
+ORDER BY f.days_late DESC, f.order_id
+LIMIT ?"""
+
+SAMPLE_SUMMARY_SQL = """
+SELECT
+    count(*)                                AS delivered,
+    count(*) FILTER (WHERE f.is_late)       AS late,
+    median(f.promised_days)                 AS median_promised_days,
+    median(f.delivery_days)                 AS median_delivery_days,
+    median(f.days_late) FILTER (WHERE f.is_late) AS median_days_late
+FROM fct_orders f
+WHERE f.is_delivered AND {where}"""
+
+
+def sample_orders(con, month: dt.date, filters: dict | None = None, late_only: bool = True,
+                  limit: int = 10) -> tuple[Result, Result]:
+    """Concrete delivered orders from one month (latest-arriving first), plus a summary."""
+    where, params = _where(filters, [month])
+    sql = SAMPLE_SQL.format(where=where, late="AND f.is_late" if late_only else "")
+    rows = Result(con.execute(sql, params + [limit]).df(), sql, params + [limit])
+    ssql = SAMPLE_SUMMARY_SQL.format(where=where)
+    summary = Result(con.execute(ssql, params).df(), ssql, params)
+    return rows, summary
+
+
 # --- Data quality --------------------------------------------------------------
 
 DQ_SQL = """

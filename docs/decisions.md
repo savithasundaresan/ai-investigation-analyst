@@ -134,3 +134,17 @@ add up exactly to the real change.
   doesn't change which effect is larger.
 - *Also added:* a weekly view, because month boundaries can split one episode
   in two (the Feb–Mar 2018 spike peaked in the week of 26 February).
+
+## D14. Guardrails live in code, not only in the prompt
+A small local model doesn't always follow a playbook, so the agent loop enforces three rules itself:
+1. **Coverage.** A report written before the required steps is sent back once, listing what's missing. The required
+   steps are: data quality for both months, and, if both months are complete, `compare_periods` on late_rate plus
+   break-downs by at least two dimensions.
+2. **Citations.** `src/report.py` checks every number in the report against the evidence it cites. A failing report
+   gets one repair round with the exact problems listed, and the better-supported draft is kept.
+3. **Insufficient evidence is a hard gate.** For incomplete months or fewer than 30 orders, `compare_periods` and
+   `break_down_metric` return `insufficient_evidence: true` with the reasons, and **no rates**. The model can't
+   over-interpret numbers it never receives. Before this gate, the model correctly called September–October 2016
+   unreliable and then drew conclusions from it anyway.
+- *Why:* each rule was added after a real run showed the failure it prevents.
+- *Trade-off:* guardrails add model calls (about 1–2 per run) and time. The evaluation reports how often each one fires.

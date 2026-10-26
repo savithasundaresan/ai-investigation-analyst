@@ -1,6 +1,6 @@
 # Design: AI Business Investigation Analyst
 
-> Status: Stages 1–2 (data model, metrics, dashboard) built and tested. Numbers are from the real
+> Status: Stages 1–3 (data model, metrics, dashboard, agent) built and tested. Numbers are from the real
 > data; see [data_profile.md](data_profile.md) and [decisions.md](decisions.md).
 
 ## 1. Goal
@@ -204,6 +204,11 @@ The LLM never writes SQL. It fills in arguments from fixed lists (metric
 names, dimensions, months), and the tool validates them before running
 anything. The DuckDB connection is opened `read_only=True`.
 
+For an incomplete month or fewer than 30 orders, `compare_periods` and
+`break_down_metric` return `insufficient_evidence: true` with the reasons
+and no rates (D14). `compare_periods` on late_rate also returns the
+slower-deliveries vs shorter-promises split.
+
 ### 6.2 Agent loop
 
 ```mermaid
@@ -248,6 +253,15 @@ sequenceDiagram
    first → limitations. Say "association, not causation". Say "insufficient
    evidence" when the rules aren't met. No invented savings, and no claims
    that any action was taken.
+
+### 6.3b Guardrails enforced by the loop (D14)
+
+| Guardrail | Trigger | Action |
+|---|---|---|
+| Coverage | report before data quality, compare and two break-downs (complete months) | sent back once with the missing steps |
+| Citation repair | any number not supported by the evidence it cites | one repair round, keep the better draft |
+| Insufficient-evidence gate | incomplete month or n < 30 | tools return reasons and no rates |
+| Limits | 12 model calls, or 3 tool errors in a row | stop, return evidence gathered so far |
 
 ### 6.4 Evidence and citations (`src/report.py`)
 

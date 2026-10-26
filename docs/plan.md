@@ -49,11 +49,12 @@ defend every part of it.
 - **Done when:** the hand-written investigation's numbers match the dashboard exactly.
 
 ### Stage 3: Agent with linked evidence
-- [ ] Four read-only tools: `compare_periods`, `break_down_metric`, `inspect_orders`, `check_data_quality`
-- [ ] `src/llm.py` provider layer (Ollama default)
-- [ ] Agent loop: the model picks the next tool based on earlier results; every call is logged with its SQL and result
-- [ ] Report: findings, numbers linked to evidence, association vs causation, limitations, "insufficient evidence" when appropriate
-- [ ] Replay mode: saved runs play back in the app with no model running
+- [x] Four read-only tools: `compare_periods`, `break_down_metric`, `inspect_orders`, `check_data_quality`
+- [x] `src/llm.py` provider layer (Ollama default)
+- [x] Agent loop: the model picks the next tool based on earlier results; every call is logged with its SQL and result
+- [x] Report: findings, numbers linked to evidence, association vs causation, limitations, "insufficient evidence" when appropriate
+- [x] Replay mode: saved runs play back in the app with no model running
+- [x] Added: coverage and citation-repair guardrails, insufficient-evidence gate (D14)
 - **Done when:** the agent reproduces the Stage 2 manual investigation's main finding, with every number cited.
 
 ### Stage 4: Evaluation and portfolio polish
@@ -70,4 +71,5 @@ Deployment, user logins, live data, multiple pages, forecasting.
 1. `uv run python -m src.load` fetches the data (about 65 MB, checksum-verified) and builds `data/processed/olist.duckdb`.
 2. `uv run pytest` runs the tests.
 3. `uv run streamlit run app/streamlit_app.py` opens the dashboard at http://localhost:8501.
-4. (Before Stage 3) `ollama pull qwen3:8b` (about a 5 GB download).
+4. `ollama pull qwen3:8b` (about a 5 GB download, once), then `ollama serve`.
+5. `uv run python -m src.agent --base 2018-02 --current 2018-03` runs an investigation; `--replay replays/<file>.json` replays one without a model.
