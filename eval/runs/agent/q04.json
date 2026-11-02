@@ -1,0 +1,815 @@
+{
+ "question": "Why did the late-delivery rate increase from 2017-03 to 2017-04? Which sellers, regions or product categories contributed most, and what should we investigate first?",
+ "base_month": "2017-03",
+ "current_month": "2017-04",
+ "provider": "ollama",
+ "model": "qwen3:8b",
+ "started_at": "2026-11-02T12:10:51",
+ "report": "## Answer\nThe late-delivery rate increased from 4.6% to 6.6% [E2], a 2.0 percentage point rise beyond noise. This was driven by slower deliveries, not shorter promises. The change appears to be primarily due to performance issues rather than shifts in customer segments.\n\n## Findings\n- The late rate rose from 4.6% to 6.6% (2.0 percentage points) [E2].\n- Delivery effect: +4.43 percentage points, Promise effect: -2.43 percentage points [E2].\n- Seller_state decomposition: 0.02 percentage points mix effect, 2.02 percentage points performance effect [E3].\n- Customer_state decomposition: 0.39 percentage points mix effect, 1.76 percentage points performance effect [E4].\n- Top contributors by seller_state: PR (0.59 percentage points), RJ (0.31 percentage points), SP (0.93 percentage points).\n- Top contributors by customer_state: SP (1.78 percentage points), BA (0.25 percentage points), GO (0.13 percentage points).\n- Flagged segments by seller_state: PR (7.64 percentage points, z=2.87), RJ (7.94 percentage points, z=2.23).\n- Flagged segments by customer_state: SP (4.71 percentage points, z=4.86).\n\n## Investigate first\n1. Focus on customer_state SP, which showed the largest increase in late rates and has a high z-score.\n2. Investigate if there were any changes in delivery practices or logistics for these customer states.\n3. Check if there were any anomalies or specific issues affecting these customer states.\n\n## Limitations\n- The analysis is limited to the provided data and does not include external factors.\n- The findings are based on the available metrics and do not account for potential external influences.",
+ "responses": [
+  {
+   "text": "",
+   "tool_calls": [
+    {
+     "name": "check_data_quality",
+     "arguments": {
+      "months": [
+       "2017-03",
+       "2017-04"
+      ]
+     },
+     "id": "call_841ce592"
+    }
+   ],
+   "input_tokens": 1217,
+   "output_tokens": 37,
+   "latency_s": 7.645577458984917,
+   "raw": null
+  },
+  {
+   "text": "",
+   "tool_calls": [
+    {
+     "name": "compare_periods",
+     "arguments": {
+      "metric": "late_rate",
+      "base_month": "2017-03",
+      "current_month": "2017-04"
+     },
+     "id": "call_595f3920"
+    }
+   ],
+   "input_tokens": 1483,
+   "output_tokens": 42,
+   "latency_s": 3.5639123750152066,
+   "raw": null
+  },
+  {
+   "text": "",
+   "tool_calls": [
+    {
+     "name": "break_down_metric",
+     "arguments": {
+      "current_month": "2017-04",
+      "metric": "late_rate",
+      "dimension": "seller_state",
+      "base_month": "2017-03"
+     },
+     "id": "call_c93c1873"
+    }
+   ],
+   "input_tokens": 1804,
+   "output_tokens": 48,
+   "latency_s": 4.280023375002202,
+   "raw": null
+  },
+  {
+   "text": "## Answer\nThe late-delivery rate increased from 4.6% to 6.6% [E2], a 2.0 percentage point rise beyond noise. This was driven by slower deliveries, not shorter promises.\n\n## Findings\n- The late rate rose from 4.6% to 6.6% (2.0 percentage points) [E2].\n- Delivery effect: +4.43 percentage points, Promise effect: -2.43 percentage points [E2].\n- Seller_state decomposition: 0.02 percentage points mix effect, 2.02 percentage points performance effect [E3].\n- Top contributors: PR (0.59 percentage points), RJ (0.31 percentage points), SP (0.93 percentage points).\n- Flagged segments: PR (7.64 percentage points, z=2.87), RJ (7.94 percentage points, z=2.23).\n\n## Investigate first\n1. Focus on seller_state PR and RJ, which showed the largest increases in late rates.\n2. Check if there were any changes in delivery practices or logistics for these regions.\n3. Investigate if there were any anomalies or specific issues affecting these seller states.\n\n## Limitations\n- The analysis is limited to the provided data and does not include external factors.\n- The findings are based on the available metrics and do not account for potential external influences.",
+   "tool_calls": [],
+   "input_tokens": 2567,
+   "output_tokens": 298,
+   "latency_s": 19.224597749998793,
+   "raw": null
+  },
+  {
+   "text": "",
+   "tool_calls": [
+    {
+     "name": "break_down_metric",
+     "arguments": {
+      "base_month": "2017-03",
+      "current_month": "2017-04",
+      "dimension": "customer_state",
+      "metric": "late_rate"
+     },
+     "id": "call_bf4d2aaf"
+    }
+   ],
+   "input_tokens": 2917,
+   "output_tokens": 48,
+   "latency_s": 11.8872989579977,
+   "raw": null
+  },
+  {
+   "text": "## Answer\nThe late-delivery rate increased from 4.6% to 6.6% [E2], a 2.0 percentage point rise beyond noise. This was driven by slower deliveries, not shorter promises. The change appears to be primarily due to performance issues rather than shifts in customer segments.\n\n## Findings\n- The late rate rose from 4.6% to 6.6% (2.0 percentage points) [E2].\n- Delivery effect: +4.43 percentage points, Promise effect: -2.43 percentage points [E2].\n- Seller_state decomposition: 0.02 percentage points mix effect, 2.02 percentage points performance effect [E3].\n- Customer_state decomposition: 0.39 percentage points mix effect, 1.76 percentage points performance effect [E4].\n- Top contributors by seller_state: PR (0.59 percentage points), RJ (0.31 percentage points), SP (0.93 percentage points).\n- Top contributors by customer_state: SP (1.78 percentage points), BA (0.25 percentage points), GO (0.13 percentage points).\n- Flagged segments by seller_state: PR (7.64 percentage points, z=2.87), RJ (7.94 percentage points, z=2.23).\n- Flagged segments by customer_state: SP (4.71 percentage points, z=4.86).\n\n## Investigate first\n1. Focus on customer_state SP, which showed the largest increase in late rates and has a high z-score.\n2. Investigate if there were any changes in delivery practices or logistics for these customer states.\n3. Check if there were any anomalies or specific issues affecting these customer states.\n\n## Limitations\n- The analysis is limited to the provided data and does not include external factors.\n- The findings are based on the available metrics and do not account for potential external influences.",
+   "tool_calls": [],
+   "input_tokens": 3632,
+   "output_tokens": 412,
+   "latency_s": 26.903983958007302,
+   "raw": null
+  }
+ ],
+ "transcript": [
+  {
+   "type": "tool",
+   "tool": "check_data_quality",
+   "args": {
+    "months": [
+     "2017-03",
+     "2017-04"
+    ]
+   },
+   "evidence_id": "E1",
+   "ok": true,
+   "error": null,
+   "note": null
+  },
+  {
+   "type": "tool",
+   "tool": "compare_periods",
+   "args": {
+    "metric": "late_rate",
+    "base_month": "2017-03",
+    "current_month": "2017-04"
+   },
+   "evidence_id": "E2",
+   "ok": true,
+   "error": null,
+   "note": null
+  },
+  {
+   "type": "tool",
+   "tool": "break_down_metric",
+   "args": {
+    "current_month": "2017-04",
+    "metric": "late_rate",
+    "dimension": "seller_state",
+    "base_month": "2017-03"
+   },
+   "evidence_id": "E3",
+   "ok": true,
+   "error": null,
+   "note": null
+  },
+  {
+   "type": "guard",
+   "message": "Before writing the report, complete these steps:\n- call break_down_metric for late_rate by 1 more dimension(s); done so far: ['seller_state']\nThen write the full report again using all the evidence.",
+   "draft": "## Answer\nThe late-delivery rate increased from 4.6% to 6.6% [E2], a 2.0 percentage point rise beyond noise. This was driven by slower deliveries, not shorter promises.\n\n## Findings\n- The late rate rose from 4.6% to 6.6% (2.0 percentage points) [E2].\n- Delivery effect: +4.43 percentage points, Promise effect: -2.43 percentage points [E2].\n- Seller_state decomposition: 0.02 percentage points mix effect, 2.02 percentage points performance effect [E3].\n- Top contributors: PR (0.59 percentage points), RJ (0.31 percentage points), SP (0.93 percentage points).\n- Flagged segments: PR (7.64 percentage points, z=2.87), RJ (7.94 percentage points, z=2.23).\n\n## Investigate first\n1. Focus on seller_state PR and RJ, which showed the largest increases in late rates.\n2. Check if there were any changes in delivery practices or logistics for these regions.\n3. Investigate if there were any anomalies or specific issues affecting these seller states.\n\n## Limitations\n- The analysis is limited to the provided data and does not include external factors.\n- The findings are based on the available metrics and do not account for potential external influences."
+  },
+  {
+   "type": "tool",
+   "tool": "break_down_metric",
+   "args": {
+    "base_month": "2017-03",
+    "current_month": "2017-04",
+    "dimension": "customer_state",
+    "metric": "late_rate"
+   },
+   "evidence_id": "E4",
+   "ok": true,
+   "error": null,
+   "note": null
+  }
+ ],
+ "evidence": [
+  {
+   "id": "E1",
+   "tool": "check_data_quality",
+   "args": {
+    "months": [
+     "2017-03",
+     "2017-04"
+    ]
+   },
+   "output": {
+    "evidence_id": "E1",
+    "months": [
+     {
+      "month": "2017-03",
+      "complete": true,
+      "orders": 2682,
+      "delivered": 2546,
+      "open_orders_pct": 2.6,
+      "estimates_after_data_cutoff_pct": 0.0,
+      "overdue_undelivered": 71,
+      "timestamp_anomalies": 1,
+      "orders_without_items": 41,
+      "payment_mismatches": 5
+     },
+     {
+      "month": "2017-04",
+      "complete": true,
+      "orders": 2404,
+      "delivered": 2303,
+      "open_orders_pct": 3.1,
+      "estimates_after_data_cutoff_pct": 0.0,
+      "overdue_undelivered": 74,
+      "timestamp_anomalies": 0,
+      "orders_without_items": 13,
+      "payment_mismatches": 11
+     }
+    ],
+    "complete_month_window": "2017-01 to 2018-08",
+    "completeness_rule": {
+     "min_orders": 500,
+     "max_open_orders_pct": 5,
+     "max_estimates_after_cutoff_pct": 1
+    }
+   },
+   "queries": [
+    "SELECT\n    m.purchase_month,\n    m.is_complete,\n    m.n_orders,\n    m.n_delivered,\n    m.share_open,\n    m.share_estimate_after_cutoff,\n    count(*) FILTER (WHERE f.dq_delivered_without_date)   AS delivered_without_date,\n    count(*) FILTER (WHERE f.dq_carrier_before_purchase)  AS carrier_before_purchase,\n    count(*) FILTER (WHERE f.dq_delivered_before_carrier) AS delivered_before_carrier,\n    count(*) FILTER (WHERE f.dq_no_items)                 AS no_items,\n    count(*) FILTER (WHERE f.dq_payment_mismatch)         AS payment_mismatch,\n    count(*) FILTER (WHERE f.is_overdue_undelivered)      AS overdue_undelivered\nFROM dim_month m\nJOIN fct_orders f USING (purchase_month)\nWHERE m.purchase_month IN (DATE '2017-03-01', DATE '2017-04-01')\nGROUP BY ALL\nORDER BY m.purchase_month"
+   ],
+   "ok": true,
+   "duration_s": 0.01146679199882783
+  },
+  {
+   "id": "E2",
+   "tool": "compare_periods",
+   "args": {
+    "metric": "late_rate",
+    "base_month": "2017-03",
+    "current_month": "2017-04"
+   },
+   "output": {
+    "evidence_id": "E2",
+    "metric": "late_rate",
+    "filters": {},
+    "base_month": "2017-03",
+    "current_month": "2017-04",
+    "base": {
+     "rate_pct": 4.6,
+     "count": 116,
+     "out_of": 2546,
+     "denominator": "delivered orders"
+    },
+    "current": {
+     "rate_pct": 6.6,
+     "count": 151,
+     "out_of": 2303,
+     "denominator": "delivered orders"
+    },
+    "change_pp": 2.0,
+    "z": 3.05,
+    "beyond_noise": true,
+    "delivery_vs_promise": {
+     "delivery_effect_pp": 4.43,
+     "promise_effect_pp": -2.43,
+     "explanation": "delivery_effect = change in late rate if both months were judged against the base month's median promise per customer state; promise_effect = the rest, caused by promised delivery windows changing. They add up to change_pp.",
+     "median_promised_days": {
+      "base": 23.0,
+      "current": 26.0
+     },
+     "median_delivery_days": {
+      "base": 10.0,
+      "current": 13.0
+     },
+     "avg_promised_days": {
+      "base": 25.4,
+      "current": 28.0
+     },
+     "avg_delivery_days": {
+      "base": 13.0,
+      "current": 15.0
+     }
+    },
+    "warnings": []
+   },
+   "queries": [
+    "SELECT\n    f.purchase_month,\n    count(*)                                          AS orders,\n    count(*) FILTER (WHERE f.is_delivered)            AS delivered,\n    count(*) FILTER (WHERE f.is_late)                 AS late_orders,\n    avg(CAST(f.is_late AS DOUBLE))                    AS late_rate,\n    avg(f.days_late) FILTER (WHERE f.is_late)         AS avg_days_late,\n    avg(f.delivery_days)                              AS avg_delivery_days,\n    avg(f.promised_days) FILTER (WHERE f.is_delivered) AS avg_promised_days,\n    count(*) FILTER (WHERE f.is_overdue_undelivered)  AS overdue_undelivered,\n    avg(f.order_value)                                AS aov,\n    count(*) FILTER (WHERE f.has_review)              AS reviewed,\n    count(*) FILTER (WHERE f.is_low_review)           AS low_review_orders,\n    avg(CAST(f.is_low_review AS DOUBLE))              AS low_review_rate,\n    count(*) FILTER (WHERE f.is_canceled)             AS canceled_orders,\n    avg(CAST(f.is_canceled AS DOUBLE))                AS cancellation_rate\nFROM fct_orders f\nWHERE f.purchase_month IN (DATE '2017-03-01', DATE '2017-04-01')\nGROUP BY f.purchase_month\nORDER BY f.purchase_month",
+    "WITH base_promise AS (\n    -- The base month's typical promise per destination state.\n    SELECT f.customer_state, median(f.promised_days) AS yardstick_days\n    FROM fct_orders f\n    WHERE f.is_delivered AND f.purchase_month IN (DATE '2017-03-01')\n    GROUP BY 1\n), overall AS (\n    SELECT median(f.promised_days) AS yardstick_days\n    FROM fct_orders f\n    WHERE f.is_delivered AND f.purchase_month IN (DATE '2017-03-01')\n)\nSELECT\n    CASE WHEN f.purchase_month = DATE '2017-03-01' THEN 'base' ELSE 'current' END AS period,\n    count(*)                                                          AS delivered,\n    avg(CAST(f.is_late AS DOUBLE))                                    AS late_rate,\n    avg(CAST(f.delivery_days > coalesce(bp.yardstick_days, o.yardstick_days) AS DOUBLE)) AS late_rate_same_yardstick,\n    avg(f.delivery_days)                                              AS avg_delivery_days,\n    avg(f.promised_days)                                              AS avg_promised_days,\n    median(f.delivery_days)                                           AS median_delivery_days,\n    median(f.promised_days)                                           AS median_promised_days\nFROM fct_orders f\nCROSS JOIN overall o\nLEFT JOIN base_promise bp USING (customer_state)\nWHERE f.is_delivered AND f.purchase_month IN (DATE '2017-03-01', DATE '2017-04-01')\nGROUP BY 1\nORDER BY 1"
+   ],
+   "ok": true,
+   "duration_s": 0.024517834011930972
+  },
+  {
+   "id": "E3",
+   "tool": "break_down_metric",
+   "args": {
+    "current_month": "2017-04",
+    "metric": "late_rate",
+    "dimension": "seller_state",
+    "base_month": "2017-03"
+   },
+   "output": {
+    "evidence_id": "E3",
+    "metric": "late_rate",
+    "dimension": "seller_state",
+    "filters": {},
+    "base_month": "2017-03",
+    "current_month": "2017-04",
+    "overall": {
+     "base_pct": 4.6,
+     "current_pct": 6.6,
+     "change_pp": 2.0
+    },
+    "decomposition": {
+     "mix_pp": 0.02,
+     "performance_pp": 2.02,
+     "interaction_pp": -0.04
+    },
+    "segments_total": 18,
+    "segments_with_enough_orders": 6,
+    "segments_pooled_into_other": 12,
+    "top_contributors": [
+     {
+      "segment": "SP",
+      "n_base": 1639,
+      "n_current": 1544,
+      "share_base_pct": 64.4,
+      "share_current_pct": 66.9,
+      "rate_base_pct": 4.8,
+      "rate_current_pct": 6.0,
+      "mix_pp": 0.12,
+      "performance_pp": 0.78,
+      "total_pp": 0.93
+     },
+     {
+      "segment": "PR",
+      "n_base": 198,
+      "n_current": 179,
+      "share_base_pct": 7.8,
+      "share_current_pct": 7.7,
+      "rate_base_pct": 3.5,
+      "rate_current_pct": 11.3,
+      "mix_pp": -0.0,
+      "performance_pp": 0.6,
+      "total_pp": 0.59
+     },
+     {
+      "segment": "RJ",
+      "n_base": 92,
+      "n_current": 89,
+      "share_base_pct": 3.6,
+      "share_current_pct": 3.9,
+      "rate_base_pct": 2.2,
+      "rate_current_pct": 10.1,
+      "mix_pp": 0.01,
+      "performance_pp": 0.28,
+      "total_pp": 0.31
+     },
+     {
+      "segment": "MG",
+      "n_base": 332,
+      "n_current": 235,
+      "share_base_pct": 13.0,
+      "share_current_pct": 10.2,
+      "rate_base_pct": 4.2,
+      "rate_current_pct": 7.3,
+      "mix_pp": -0.12,
+      "performance_pp": 0.39,
+      "total_pp": 0.19
+     },
+     {
+      "segment": "Other",
+      "n_base": 73,
+      "n_current": 69,
+      "share_base_pct": 2.9,
+      "share_current_pct": 3.0,
+      "rate_base_pct": 1.4,
+      "rate_current_pct": 5.9,
+      "mix_pp": 0.0,
+      "performance_pp": 0.13,
+      "total_pp": 0.13
+     },
+     {
+      "segment": "SC",
+      "n_base": 130,
+      "n_current": 128,
+      "share_base_pct": 5.1,
+      "share_current_pct": 5.5,
+      "rate_base_pct": 7.7,
+      "rate_current_pct": 5.5,
+      "mix_pp": 0.03,
+      "performance_pp": -0.11,
+      "total_pp": -0.09
+     }
+    ],
+    "flagged_segments": [
+     {
+      "segment": "PR",
+      "n_base": 198,
+      "n_current": 179,
+      "rate_base_pct": 3.5,
+      "rate_current_pct": 11.2,
+      "change_pp": 7.64,
+      "z": 2.87
+     },
+     {
+      "segment": "RJ",
+      "n_base": 92,
+      "n_current": 89,
+      "rate_base_pct": 2.2,
+      "rate_current_pct": 10.1,
+      "change_pp": 7.94,
+      "z": 2.23
+     }
+    ],
+    "flag_rules": {
+     "min_orders_each_month": 30,
+     "min_abs_z": 2.0,
+     "min_change_pp": 3.0
+    },
+    "warnings": []
+   },
+   "queries": [
+    "WITH seg AS (\n    SELECT order_id, segment, 1.0 / count(*) OVER (PARTITION BY order_id) AS weight\n        FROM (SELECT DISTINCT order_id, seller_state AS segment FROM bridge_order_segment)\n)\nSELECT\n    CASE WHEN f.purchase_month = DATE '2017-03-01' THEN 'base' ELSE 'current' END AS period,\n    coalesce(s.segment, '(no items)')                         AS segment,\n    count(*) FILTER (WHERE f.is_delivered)                             AS n,\n    count(*) FILTER (WHERE f.is_delivered AND f.is_late)                   AS x,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered)         AS w_n,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered AND f.is_late) AS w_x\nFROM fct_orders f\nLEFT JOIN seg s USING (order_id)\nWHERE f.purchase_month IN (DATE '2017-03-01', DATE '2017-04-01')\nGROUP BY ALL",
+    "WITH seg AS (\n    SELECT order_id, segment, 1.0 / count(*) OVER (PARTITION BY order_id) AS weight\n        FROM (SELECT DISTINCT order_id, seller_state AS segment FROM bridge_order_segment)\n)\nSELECT\n    CASE WHEN f.purchase_month = DATE '2017-03-01' THEN 'base' ELSE 'current' END AS period,\n    coalesce(s.segment, '(no items)')                         AS segment,\n    count(*) FILTER (WHERE f.is_delivered)                             AS n,\n    count(*) FILTER (WHERE f.is_delivered AND f.is_late)                   AS x,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered)         AS w_n,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered AND f.is_late) AS w_x\nFROM fct_orders f\nLEFT JOIN seg s USING (order_id)\nWHERE f.purchase_month IN (DATE '2017-03-01', DATE '2017-04-01')\nGROUP BY ALL"
+   ],
+   "ok": true,
+   "duration_s": 0.09399012502399273
+  },
+  {
+   "id": "E4",
+   "tool": "break_down_metric",
+   "args": {
+    "base_month": "2017-03",
+    "current_month": "2017-04",
+    "dimension": "customer_state",
+    "metric": "late_rate"
+   },
+   "output": {
+    "evidence_id": "E4",
+    "metric": "late_rate",
+    "dimension": "customer_state",
+    "filters": {},
+    "base_month": "2017-03",
+    "current_month": "2017-04",
+    "overall": {
+     "base_pct": 4.6,
+     "current_pct": 6.6,
+     "change_pp": 2.0
+    },
+    "decomposition": {
+     "mix_pp": 0.39,
+     "performance_pp": 1.76,
+     "interaction_pp": -0.15
+    },
+    "segments_total": 27,
+    "segments_with_enough_orders": 12,
+    "segments_pooled_into_other": 15,
+    "top_contributors": [
+     {
+      "segment": "SP",
+      "n_base": 966,
+      "n_current": 873,
+      "share_base_pct": 37.9,
+      "share_current_pct": 37.9,
+      "rate_base_pct": 2.3,
+      "rate_current_pct": 7.0,
+      "mix_pp": -0.0,
+      "performance_pp": 1.79,
+      "total_pp": 1.78
+     },
+     {
+      "segment": "SC",
+      "n_base": 104,
+      "n_current": 100,
+      "share_base_pct": 4.1,
+      "share_current_pct": 4.3,
+      "rate_base_pct": 18.3,
+      "rate_current_pct": 9.0,
+      "mix_pp": 0.05,
+      "performance_pp": -0.38,
+      "total_pp": -0.36
+     },
+     {
+      "segment": "RJ",
+      "n_base": 370,
+      "n_current": 325,
+      "share_base_pct": 14.5,
+      "share_current_pct": 14.1,
+      "rate_base_pct": 4.3,
+      "rate_current_pct": 6.5,
+      "mix_pp": -0.02,
+      "performance_pp": 0.31,
+      "total_pp": 0.28
+     },
+     {
+      "segment": "BA",
+      "n_base": 87,
+      "n_current": 84,
+      "share_base_pct": 3.4,
+      "share_current_pct": 3.6,
+      "rate_base_pct": 8.0,
+      "rate_current_pct": 14.3,
+      "mix_pp": 0.02,
+      "performance_pp": 0.21,
+      "total_pp": 0.25
+     },
+     {
+      "segment": "GO",
+      "n_base": 47,
+      "n_current": 38,
+      "share_base_pct": 1.8,
+      "share_current_pct": 1.7,
+      "rate_base_pct": 0.0,
+      "rate_current_pct": 7.9,
+      "mix_pp": -0.0,
+      "performance_pp": 0.15,
+      "total_pp": 0.13
+     },
+     {
+      "segment": "Other",
+      "n_base": 192,
+      "n_current": 222,
+      "share_base_pct": 7.5,
+      "share_current_pct": 9.6,
+      "rate_base_pct": 17.2,
+      "rate_current_pct": 12.2,
+      "mix_pp": 0.36,
+      "performance_pp": -0.38,
+      "total_pp": -0.12
+     }
+    ],
+    "flagged_segments": [
+     {
+      "segment": "SP",
+      "n_base": 966,
+      "n_current": 873,
+      "rate_base_pct": 2.3,
+      "rate_current_pct": 7.0,
+      "change_pp": 4.71,
+      "z": 4.86
+     }
+    ],
+    "flag_rules": {
+     "min_orders_each_month": 30,
+     "min_abs_z": 2.0,
+     "min_change_pp": 3.0
+    },
+    "warnings": []
+   },
+   "queries": [
+    "WITH seg AS (\n    SELECT order_id, customer_state AS segment, 1.0 AS weight FROM fct_orders\n)\nSELECT\n    CASE WHEN f.purchase_month = DATE '2017-03-01' THEN 'base' ELSE 'current' END AS period,\n    coalesce(s.segment, '(no items)')                         AS segment,\n    count(*) FILTER (WHERE f.is_delivered)                             AS n,\n    count(*) FILTER (WHERE f.is_delivered AND f.is_late)                   AS x,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered)         AS w_n,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered AND f.is_late) AS w_x\nFROM fct_orders f\nLEFT JOIN seg s USING (order_id)\nWHERE f.purchase_month IN (DATE '2017-03-01', DATE '2017-04-01')\nGROUP BY ALL",
+    "WITH seg AS (\n    SELECT order_id, customer_state AS segment, 1.0 AS weight FROM fct_orders\n)\nSELECT\n    CASE WHEN f.purchase_month = DATE '2017-03-01' THEN 'base' ELSE 'current' END AS period,\n    coalesce(s.segment, '(no items)')                         AS segment,\n    count(*) FILTER (WHERE f.is_delivered)                             AS n,\n    count(*) FILTER (WHERE f.is_delivered AND f.is_late)                   AS x,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered)         AS w_n,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered AND f.is_late) AS w_x\nFROM fct_orders f\nLEFT JOIN seg s USING (order_id)\nWHERE f.purchase_month IN (DATE '2017-03-01', DATE '2017-04-01')\nGROUP BY ALL"
+   ],
+   "ok": true,
+   "duration_s": 0.043064458994194865
+  }
+ ],
+ "check": {
+  "summary": {
+   "numbers": 24,
+   "supported": 24,
+   "miscited": 0,
+   "uncited": 0,
+   "unsupported": 0,
+   "support_rate": 1.0,
+   "unknown_citations": []
+  },
+  "numbers": [
+   {
+    "text": "4.6",
+    "value": 4.6,
+    "status": "supported",
+    "sentence": "The late-delivery rate increased from 4.6% to 6.6% [E2], a 2.0 percentage point rise beyond noise.",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "6.6",
+    "value": 6.6,
+    "status": "supported",
+    "sentence": "The late-delivery rate increased from 4.6% to 6.6% [E2], a 2.0 percentage point rise beyond noise.",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "2.0",
+    "value": 2.0,
+    "status": "supported",
+    "sentence": "The late-delivery rate increased from 4.6% to 6.6% [E2], a 2.0 percentage point rise beyond noise.",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "4.6",
+    "value": 4.6,
+    "status": "supported",
+    "sentence": "- The late rate rose from 4.6% to 6.6% (2.0 percentage points) [E2].",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "6.6",
+    "value": 6.6,
+    "status": "supported",
+    "sentence": "- The late rate rose from 4.6% to 6.6% (2.0 percentage points) [E2].",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "2.0",
+    "value": 2.0,
+    "status": "supported",
+    "sentence": "- The late rate rose from 4.6% to 6.6% (2.0 percentage points) [E2].",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "+4.43",
+    "value": 4.43,
+    "status": "supported",
+    "sentence": "- Delivery effect: +4.43 percentage points, Promise effect: -2.43 percentage points [E2].",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "-2.43",
+    "value": 2.43,
+    "status": "supported",
+    "sentence": "- Delivery effect: +4.43 percentage points, Promise effect: -2.43 percentage points [E2].",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "0.02",
+    "value": 0.02,
+    "status": "supported",
+    "sentence": "- Seller_state decomposition: 0.02 percentage points mix effect, 2.02 percentage points performance effect [E3].",
+    "cited": [
+     "E3"
+    ]
+   },
+   {
+    "text": "2.02",
+    "value": 2.02,
+    "status": "supported",
+    "sentence": "- Seller_state decomposition: 0.02 percentage points mix effect, 2.02 percentage points performance effect [E3].",
+    "cited": [
+     "E3"
+    ]
+   },
+   {
+    "text": "0.39",
+    "value": 0.39,
+    "status": "supported",
+    "sentence": "- Customer_state decomposition: 0.39 percentage points mix effect, 1.76 percentage points performance effect [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "1.76",
+    "value": 1.76,
+    "status": "supported",
+    "sentence": "- Customer_state decomposition: 0.39 percentage points mix effect, 1.76 percentage points performance effect [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "0.59",
+    "value": 0.59,
+    "status": "supported",
+    "sentence": "- Top contributors by seller_state: PR (0.59 percentage points), RJ (0.31 percentage points), SP (0.93 percentage points).",
+    "cited": [
+     "E2",
+     "E2",
+     "E3",
+     "E4"
+    ]
+   },
+   {
+    "text": "0.31",
+    "value": 0.31,
+    "status": "supported",
+    "sentence": "- Top contributors by seller_state: PR (0.59 percentage points), RJ (0.31 percentage points), SP (0.93 percentage points).",
+    "cited": [
+     "E2",
+     "E2",
+     "E3",
+     "E4"
+    ]
+   },
+   {
+    "text": "0.93",
+    "value": 0.93,
+    "status": "supported",
+    "sentence": "- Top contributors by seller_state: PR (0.59 percentage points), RJ (0.31 percentage points), SP (0.93 percentage points).",
+    "cited": [
+     "E2",
+     "E2",
+     "E3",
+     "E4"
+    ]
+   },
+   {
+    "text": "1.78",
+    "value": 1.78,
+    "status": "supported",
+    "sentence": "- Top contributors by customer_state: SP (1.78 percentage points), BA (0.25 percentage points), GO (0.13 percentage points).",
+    "cited": [
+     "E2",
+     "E2",
+     "E3",
+     "E4"
+    ]
+   },
+   {
+    "text": "0.25",
+    "value": 0.25,
+    "status": "supported",
+    "sentence": "- Top contributors by customer_state: SP (1.78 percentage points), BA (0.25 percentage points), GO (0.13 percentage points).",
+    "cited": [
+     "E2",
+     "E2",
+     "E3",
+     "E4"
+    ]
+   },
+   {
+    "text": "0.13",
+    "value": 0.13,
+    "status": "supported",
+    "sentence": "- Top contributors by customer_state: SP (1.78 percentage points), BA (0.25 percentage points), GO (0.13 percentage points).",
+    "cited": [
+     "E2",
+     "E2",
+     "E3",
+     "E4"
+    ]
+   },
+   {
+    "text": "7.64",
+    "value": 7.64,
+    "status": "supported",
+    "sentence": "- Flagged segments by seller_state: PR (7.64 percentage points, z=2.87), RJ (7.94 percentage points, z=2.23).",
+    "cited": [
+     "E2",
+     "E2",
+     "E3",
+     "E4"
+    ]
+   },
+   {
+    "text": "2.87",
+    "value": 2.87,
+    "status": "supported",
+    "sentence": "- Flagged segments by seller_state: PR (7.64 percentage points, z=2.87), RJ (7.94 percentage points, z=2.23).",
+    "cited": [
+     "E2",
+     "E2",
+     "E3",
+     "E4"
+    ]
+   },
+   {
+    "text": "7.94",
+    "value": 7.94,
+    "status": "supported",
+    "sentence": "- Flagged segments by seller_state: PR (7.64 percentage points, z=2.87), RJ (7.94 percentage points, z=2.23).",
+    "cited": [
+     "E2",
+     "E2",
+     "E3",
+     "E4"
+    ]
+   },
+   {
+    "text": "2.23",
+    "value": 2.23,
+    "status": "supported",
+    "sentence": "- Flagged segments by seller_state: PR (7.64 percentage points, z=2.87), RJ (7.94 percentage points, z=2.23).",
+    "cited": [
+     "E2",
+     "E2",
+     "E3",
+     "E4"
+    ]
+   },
+   {
+    "text": "4.71",
+    "value": 4.71,
+    "status": "supported",
+    "sentence": "- Flagged segments by customer_state: SP (4.71 percentage points, z=4.86).",
+    "cited": [
+     "E2",
+     "E2",
+     "E3",
+     "E4"
+    ]
+   },
+   {
+    "text": "4.86",
+    "value": 4.86,
+    "status": "supported",
+    "sentence": "- Flagged segments by customer_state: SP (4.71 percentage points, z=4.86).",
+    "cited": [
+     "E2",
+     "E2",
+     "E3",
+     "E4"
+    ]
+   }
+  ]
+ },
+ "guard_events": [
+  "report written before required steps; sent back (1 gaps)"
+ ],
+ "n_llm_calls": 6,
+ "n_tool_calls": 4,
+ "n_tool_errors": 0,
+ "input_tokens": 13620,
+ "output_tokens": 885,
+ "latency_s": 73.68,
+ "stopped_reason": "report"
+}

@@ -1,0 +1,905 @@
+{
+ "question": "Why did the late-delivery rate increase from 2018-02 to 2018-03? Which sellers, regions or product categories contributed most, and what should we investigate first?",
+ "base_month": "2018-02",
+ "current_month": "2018-03",
+ "provider": "ollama",
+ "model": "qwen3:8b",
+ "started_at": "2026-11-02T12:05:40",
+ "report": "## Answer\nThe late-delivery rate increased from 14.1% to 19.0% [E2], with a significant contribution from both slower deliveries and shorter promises. The increase was driven by performance issues in several customer regions, particularly in Minas Gerais (MG), Esp\u00edrito Santo (ES), and Par\u00e1 (PA), as well as shifts in order distribution.\n\n## Findings\n- The late rate rose from 14.1% to 19.0% [E2], a 4.84 percentage point increase, beyond noise with a z-score of 7.56.\n- Delivery effect: 1.5 percentage points, promise effect: 3.34 percentage points [E2].\n- Seller_state decomposition: mix effect of 0.22 percentage points, performance effect of 4.34 percentage points [E3].\n- Customer_state decomposition: mix effect of -0.4 percentage points, performance effect of 5.33 percentage points [E4].\n- Top contributors by seller_state: S\u00e3o Paulo (SP) contributed 4.12 percentage points, Rio de Janeiro (RJ) contributed 0.88 percentage points, and Paran\u00e1 (PR) contributed -0.49 percentage points [E3].\n- Top contributors by customer_state: Minas Gerais (MG) contributed 1.49 percentage points, S\u00e3o Paulo (SP) contributed 1.05 percentage points, Esp\u00edrito Santo (ES) contributed 0.51 percentage points, Bahia (BA) contributed 0.45 percentage points, Rio Grande do Sul (RS) contributed 0.38 percentage points, and Par\u00e1 (PA) contributed 0.38 percentage points [E4].\n- Flagged segments by seller_state: S\u00e3o Paulo (SP) had a 4.59 percentage point increase (z=5.83), and Rio de Janeiro (RJ) had a 20.27 percentage point increase (z=5.8) [E3].\n- Flagged segments by customer_state: Minas Gerais (MG) had a 12.09 percentage point increase (z=6.93), Esp\u00edrito Santo (ES) had a 29.27 percentage point increase (z=5.6), Par\u00e1 (PA) had a 38.47 percentage point increase (z=4.54), and Bahia (BA) had a 12.26 percentage point increase (z=2.95) [E4].\n\n## Investigate first\n1. Investigate the specific reasons behind the significant increase in late deliveries for sellers in S\u00e3o Paulo (SP) and Rio de Janeiro (RJ), as well as the performance issues in customer regions like Minas Gerais (MG) and Esp\u00edrito Santo (ES).\n2. Examine the impact of shorter promised delivery windows on the late rate, particularly in SP and RJ.\n3. Look into the potential anomalies in the data for the months of 2018-02 and 2018-03 to ensure the accuracy of the findings.\n\n## Limitations\n- The data is historical and may not reflect current conditions.\n- The analysis is based on the provided data and does not account for external factors such as market changes or operational adjustments.",
+ "responses": [
+  {
+   "text": "",
+   "tool_calls": [
+    {
+     "name": "check_data_quality",
+     "arguments": {
+      "months": [
+       "2018-02",
+       "2018-03"
+      ]
+     },
+     "id": "call_20475567"
+    }
+   ],
+   "input_tokens": 1217,
+   "output_tokens": 37,
+   "latency_s": 8.060232666990487,
+   "raw": null
+  },
+  {
+   "text": "",
+   "tool_calls": [
+    {
+     "name": "compare_periods",
+     "arguments": {
+      "metric": "late_rate",
+      "base_month": "2018-02",
+      "current_month": "2018-03"
+     },
+     "id": "call_bad47639"
+    }
+   ],
+   "input_tokens": 1484,
+   "output_tokens": 42,
+   "latency_s": 3.760011458012741,
+   "raw": null
+  },
+  {
+   "text": "",
+   "tool_calls": [
+    {
+     "name": "break_down_metric",
+     "arguments": {
+      "metric": "late_rate",
+      "dimension": "seller_state",
+      "base_month": "2018-02",
+      "current_month": "2018-03"
+     },
+     "id": "call_8e3b6faa"
+    }
+   ],
+   "input_tokens": 1808,
+   "output_tokens": 48,
+   "latency_s": 4.4289474170072936,
+   "raw": null
+  },
+  {
+   "text": "## Answer\nThe late-delivery rate increased from 14.1% to 19.0% [E2], with a significant contribution from slower deliveries rather than shorter promises. Sellers in S\u00e3o Paulo (SP) and Rio de Janeiro (RJ) were the main contributors to the increase.\n\n## Findings\n- The late rate rose from 14.1% to 19.0% [E2], a 4.84 percentage point increase, beyond noise with a z-score of 7.56.\n- Delivery effect: 1.5 percentage points, promise effect: 3.34 percentage points [E2].\n- Seller_state decomposition: mix effect of 0.22 percentage points, performance effect of 4.34 percentage points [E3].\n- Top contributors: SP contributed 4.12 percentage points, RJ contributed 0.88 percentage points, and PR contributed -0.49 percentage points.\n- Flagged segments: SP had a 4.59 percentage point increase (z=5.83), and RJ had a 20.27 percentage point increase (z=5.8) [E3].\n\n## Investigate first\n1. Investigate the specific reasons behind the significant increase in late deliveries for sellers in S\u00e3o Paulo (SP) and Rio de Janeiro (RJ).\n2. Examine the impact of shorter promised delivery windows on the late rate, particularly in SP and RJ.\n3. Look into the potential anomalies in the data for the months of 2018-02 and 2018-03 to ensure the accuracy of the findings.\n\n## Limitations\n- The data is historical and may not reflect current conditions.\n- The analysis is based on the provided data and does not account for external factors such as market changes or operational adjustments.",
+   "tool_calls": [],
+   "input_tokens": 2589,
+   "output_tokens": 387,
+   "latency_s": 25.015779792011017,
+   "raw": null
+  },
+  {
+   "text": "",
+   "tool_calls": [
+    {
+     "name": "break_down_metric",
+     "arguments": {
+      "base_month": "2018-02",
+      "current_month": "2018-03",
+      "dimension": "customer_state",
+      "metric": "late_rate"
+     },
+     "id": "call_ff63001e"
+    }
+   ],
+   "input_tokens": 3028,
+   "output_tokens": 48,
+   "latency_s": 12.745835499983514,
+   "raw": null
+  },
+  {
+   "text": "## Answer\nThe late-delivery rate increased from 14.1% to 19.0% [E2], with a significant contribution from both slower deliveries and shorter promises. The increase was driven by performance issues in several customer regions, particularly in Minas Gerais (MG), Esp\u00edrito Santo (ES), and Par\u00e1 (PA), as well as shifts in order distribution.\n\n## Findings\n- The late rate rose from 14.1% to 19.0% [E2], a 4.84 percentage point increase, beyond noise with a z-score of 7.56.\n- Delivery effect: 1.5 percentage points, promise effect: 3.34 percentage points [E2].\n- Seller_state decomposition: mix effect of 0.22 percentage points, performance effect of 4.34 percentage points [E3].\n- Customer_state decomposition: mix effect of -0.4 percentage points, performance effect of 5.33 percentage points [E4].\n- Top contributors by seller_state: S\u00e3o Paulo (SP) contributed 4.12 percentage points, Rio de Janeiro (RJ) contributed 0.88 percentage points, and Paran\u00e1 (PR) contributed -0.49 percentage points [E3].\n- Top contributors by customer_state: Minas Gerais (MG) contributed 1.49 percentage points, S\u00e3o Paulo (SP) contributed 1.05 percentage points, Esp\u00edrito Santo (ES) contributed 0.51 percentage points, Bahia (BA) contributed 0.45 percentage points, Rio Grande do Sul (RS) contributed 0.38 percentage points, and Par\u00e1 (PA) contributed 0.38 percentage points [E4].\n- Flagged segments by seller_state: S\u00e3o Paulo (SP) had a 4.59 percentage point increase (z=5.83), and Rio de Janeiro (RJ) had a 20.27 percentage point increase (z=5.8) [E3].\n- Flagged segments by customer_state: Minas Gerais (MG) had a 12.09 percentage point increase (z=6.93), Esp\u00edrito Santo (ES) had a 29.27 percentage point increase (z=5.6), Par\u00e1 (PA) had a 38.47 percentage point increase (z=4.54), and Bahia (BA) had a 12.26 percentage point increase (z=2.95) [E4].\n\n## Investigate first\n1. Investigate the specific reasons behind the significant increase in late deliveries for sellers in S\u00e3o Paulo (SP) and Rio de Janeiro (RJ), as well as the performance issues in customer regions like Minas Gerais (MG) and Esp\u00edrito Santo (ES).\n2. Examine the impact of shorter promised delivery windows on the late rate, particularly in SP and RJ.\n3. Look into the potential anomalies in the data for the months of 2018-02 and 2018-03 to ensure the accuracy of the findings.\n\n## Limitations\n- The data is historical and may not reflect current conditions.\n- The analysis is based on the provided data and does not account for external factors such as market changes or operational adjustments.",
+   "tool_calls": [],
+   "input_tokens": 4009,
+   "output_tokens": 706,
+   "latency_s": 45.46522645800724,
+   "raw": null
+  }
+ ],
+ "transcript": [
+  {
+   "type": "tool",
+   "tool": "check_data_quality",
+   "args": {
+    "months": [
+     "2018-02",
+     "2018-03"
+    ]
+   },
+   "evidence_id": "E1",
+   "ok": true,
+   "error": null,
+   "note": null
+  },
+  {
+   "type": "tool",
+   "tool": "compare_periods",
+   "args": {
+    "metric": "late_rate",
+    "base_month": "2018-02",
+    "current_month": "2018-03"
+   },
+   "evidence_id": "E2",
+   "ok": true,
+   "error": null,
+   "note": null
+  },
+  {
+   "type": "tool",
+   "tool": "break_down_metric",
+   "args": {
+    "metric": "late_rate",
+    "dimension": "seller_state",
+    "base_month": "2018-02",
+    "current_month": "2018-03"
+   },
+   "evidence_id": "E3",
+   "ok": true,
+   "error": null,
+   "note": null
+  },
+  {
+   "type": "guard",
+   "message": "Before writing the report, complete these steps:\n- call break_down_metric for late_rate by 1 more dimension(s); done so far: ['seller_state']\nThen write the full report again using all the evidence.",
+   "draft": "## Answer\nThe late-delivery rate increased from 14.1% to 19.0% [E2], with a significant contribution from slower deliveries rather than shorter promises. Sellers in S\u00e3o Paulo (SP) and Rio de Janeiro (RJ) were the main contributors to the increase.\n\n## Findings\n- The late rate rose from 14.1% to 19.0% [E2], a 4.84 percentage point increase, beyond noise with a z-score of 7.56.\n- Delivery effect: 1.5 percentage points, promise effect: 3.34 percentage points [E2].\n- Seller_state decomposition: mix effect of 0.22 percentage points, performance effect of 4.34 percentage points [E3].\n- Top contributors: SP contributed 4.12 percentage points, RJ contributed 0.88 percentage points, and PR contributed -0.49 percentage points.\n- Flagged segments: SP had a 4.59 percentage point increase (z=5.83), and RJ had a 20.27 percentage point increase (z=5.8) [E3].\n\n## Investigate first\n1. Investigate the specific reasons behind the significant increase in late deliveries for sellers in S\u00e3o Paulo (SP) and Rio de Janeiro (RJ).\n2. Examine the impact of shorter promised delivery windows on the late rate, particularly in SP and RJ.\n3. Look into the potential anomalies in the data for the months of 2018-02 and 2018-03 to ensure the accuracy of the findings.\n\n## Limitations\n- The data is historical and may not reflect current conditions.\n- The analysis is based on the provided data and does not account for external factors such as market changes or operational adjustments."
+  },
+  {
+   "type": "tool",
+   "tool": "break_down_metric",
+   "args": {
+    "base_month": "2018-02",
+    "current_month": "2018-03",
+    "dimension": "customer_state",
+    "metric": "late_rate"
+   },
+   "evidence_id": "E4",
+   "ok": true,
+   "error": null,
+   "note": null
+  }
+ ],
+ "evidence": [
+  {
+   "id": "E1",
+   "tool": "check_data_quality",
+   "args": {
+    "months": [
+     "2018-02",
+     "2018-03"
+    ]
+   },
+   "output": {
+    "evidence_id": "E1",
+    "months": [
+     {
+      "month": "2018-02",
+      "complete": true,
+      "orders": 6728,
+      "delivered": 6555,
+      "open_orders_pct": 1.0,
+      "estimates_after_data_cutoff_pct": 0.0,
+      "overdue_undelivered": 70,
+      "timestamp_anomalies": 0,
+      "orders_without_items": 34,
+      "payment_mismatches": 25
+     },
+     {
+      "month": "2018-03",
+      "complete": true,
+      "orders": 7211,
+      "delivered": 7003,
+      "open_orders_pct": 2.3,
+      "estimates_after_data_cutoff_pct": 0.0,
+      "overdue_undelivered": 165,
+      "timestamp_anomalies": 0,
+      "orders_without_items": 23,
+      "payment_mismatches": 6
+     }
+    ],
+    "complete_month_window": "2017-01 to 2018-08",
+    "completeness_rule": {
+     "min_orders": 500,
+     "max_open_orders_pct": 5,
+     "max_estimates_after_cutoff_pct": 1
+    }
+   },
+   "queries": [
+    "SELECT\n    m.purchase_month,\n    m.is_complete,\n    m.n_orders,\n    m.n_delivered,\n    m.share_open,\n    m.share_estimate_after_cutoff,\n    count(*) FILTER (WHERE f.dq_delivered_without_date)   AS delivered_without_date,\n    count(*) FILTER (WHERE f.dq_carrier_before_purchase)  AS carrier_before_purchase,\n    count(*) FILTER (WHERE f.dq_delivered_before_carrier) AS delivered_before_carrier,\n    count(*) FILTER (WHERE f.dq_no_items)                 AS no_items,\n    count(*) FILTER (WHERE f.dq_payment_mismatch)         AS payment_mismatch,\n    count(*) FILTER (WHERE f.is_overdue_undelivered)      AS overdue_undelivered\nFROM dim_month m\nJOIN fct_orders f USING (purchase_month)\nWHERE m.purchase_month IN (DATE '2018-02-01', DATE '2018-03-01')\nGROUP BY ALL\nORDER BY m.purchase_month"
+   ],
+   "ok": true,
+   "duration_s": 0.02386912499787286
+  },
+  {
+   "id": "E2",
+   "tool": "compare_periods",
+   "args": {
+    "metric": "late_rate",
+    "base_month": "2018-02",
+    "current_month": "2018-03"
+   },
+   "output": {
+    "evidence_id": "E2",
+    "metric": "late_rate",
+    "filters": {},
+    "base_month": "2018-02",
+    "current_month": "2018-03",
+    "base": {
+     "rate_pct": 14.1,
+     "count": 926,
+     "out_of": 6555,
+     "denominator": "delivered orders"
+    },
+    "current": {
+     "rate_pct": 19.0,
+     "count": 1328,
+     "out_of": 7003,
+     "denominator": "delivered orders"
+    },
+    "change_pp": 4.84,
+    "z": 7.56,
+    "beyond_noise": true,
+    "delivery_vs_promise": {
+     "delivery_effect_pp": 1.5,
+     "promise_effect_pp": 3.34,
+     "explanation": "delivery_effect = change in late rate if both months were judged against the base month's median promise per customer state; promise_effect = the rest, caused by promised delivery windows changing. They add up to change_pp.",
+     "median_promised_days": {
+      "base": 25.0,
+      "current": 22.0
+     },
+     "median_delivery_days": {
+      "base": 14.0,
+      "current": 13.0
+     },
+     "avg_promised_days": {
+      "base": 25.2,
+      "current": 22.7
+     },
+     "avg_delivery_days": {
+      "base": 16.9,
+      "current": 16.2
+     }
+    },
+    "warnings": []
+   },
+   "queries": [
+    "SELECT\n    f.purchase_month,\n    count(*)                                          AS orders,\n    count(*) FILTER (WHERE f.is_delivered)            AS delivered,\n    count(*) FILTER (WHERE f.is_late)                 AS late_orders,\n    avg(CAST(f.is_late AS DOUBLE))                    AS late_rate,\n    avg(f.days_late) FILTER (WHERE f.is_late)         AS avg_days_late,\n    avg(f.delivery_days)                              AS avg_delivery_days,\n    avg(f.promised_days) FILTER (WHERE f.is_delivered) AS avg_promised_days,\n    count(*) FILTER (WHERE f.is_overdue_undelivered)  AS overdue_undelivered,\n    avg(f.order_value)                                AS aov,\n    count(*) FILTER (WHERE f.has_review)              AS reviewed,\n    count(*) FILTER (WHERE f.is_low_review)           AS low_review_orders,\n    avg(CAST(f.is_low_review AS DOUBLE))              AS low_review_rate,\n    count(*) FILTER (WHERE f.is_canceled)             AS canceled_orders,\n    avg(CAST(f.is_canceled AS DOUBLE))                AS cancellation_rate\nFROM fct_orders f\nWHERE f.purchase_month IN (DATE '2018-02-01', DATE '2018-03-01')\nGROUP BY f.purchase_month\nORDER BY f.purchase_month",
+    "WITH base_promise AS (\n    -- The base month's typical promise per destination state.\n    SELECT f.customer_state, median(f.promised_days) AS yardstick_days\n    FROM fct_orders f\n    WHERE f.is_delivered AND f.purchase_month IN (DATE '2018-02-01')\n    GROUP BY 1\n), overall AS (\n    SELECT median(f.promised_days) AS yardstick_days\n    FROM fct_orders f\n    WHERE f.is_delivered AND f.purchase_month IN (DATE '2018-02-01')\n)\nSELECT\n    CASE WHEN f.purchase_month = DATE '2018-02-01' THEN 'base' ELSE 'current' END AS period,\n    count(*)                                                          AS delivered,\n    avg(CAST(f.is_late AS DOUBLE))                                    AS late_rate,\n    avg(CAST(f.delivery_days > coalesce(bp.yardstick_days, o.yardstick_days) AS DOUBLE)) AS late_rate_same_yardstick,\n    avg(f.delivery_days)                                              AS avg_delivery_days,\n    avg(f.promised_days)                                              AS avg_promised_days,\n    median(f.delivery_days)                                           AS median_delivery_days,\n    median(f.promised_days)                                           AS median_promised_days\nFROM fct_orders f\nCROSS JOIN overall o\nLEFT JOIN base_promise bp USING (customer_state)\nWHERE f.is_delivered AND f.purchase_month IN (DATE '2018-02-01', DATE '2018-03-01')\nGROUP BY 1\nORDER BY 1"
+   ],
+   "ok": true,
+   "duration_s": 0.02342849998967722
+  },
+  {
+   "id": "E3",
+   "tool": "break_down_metric",
+   "args": {
+    "metric": "late_rate",
+    "dimension": "seller_state",
+    "base_month": "2018-02",
+    "current_month": "2018-03"
+   },
+   "output": {
+    "evidence_id": "E3",
+    "metric": "late_rate",
+    "dimension": "seller_state",
+    "filters": {},
+    "base_month": "2018-02",
+    "current_month": "2018-03",
+    "overall": {
+     "base_pct": 14.1,
+     "current_pct": 19.0,
+     "change_pp": 4.84
+    },
+    "decomposition": {
+     "mix_pp": 0.22,
+     "performance_pp": 4.34,
+     "interaction_pp": 0.29
+    },
+    "segments_total": 21,
+    "segments_with_enough_orders": 9,
+    "segments_pooled_into_other": 12,
+    "top_contributors": [
+     {
+      "segment": "SP",
+      "n_base": 4528,
+      "n_current": 5164,
+      "share_base_pct": 69.0,
+      "share_current_pct": 73.5,
+      "rate_base_pct": 15.9,
+      "rate_current_pct": 20.5,
+      "mix_pp": 0.72,
+      "performance_pp": 3.18,
+      "total_pp": 4.12
+     },
+     {
+      "segment": "RJ",
+      "n_base": 266,
+      "n_current": 298,
+      "share_base_pct": 4.1,
+      "share_current_pct": 4.2,
+      "rate_base_pct": 11.3,
+      "rate_current_pct": 31.8,
+      "mix_pp": 0.02,
+      "performance_pp": 0.83,
+      "total_pp": 0.88
+     },
+     {
+      "segment": "PR",
+      "n_base": 829,
+      "n_current": 589,
+      "share_base_pct": 12.6,
+      "share_current_pct": 8.3,
+      "rate_base_pct": 11.4,
+      "rate_current_pct": 11.3,
+      "mix_pp": -0.49,
+      "performance_pp": -0.0,
+      "total_pp": -0.49
+     },
+     {
+      "segment": "Other",
+      "n_base": 60,
+      "n_current": 94,
+      "share_base_pct": 0.9,
+      "share_current_pct": 1.3,
+      "rate_base_pct": 13.6,
+      "rate_current_pct": 23.4,
+      "mix_pp": 0.06,
+      "performance_pp": 0.09,
+      "total_pp": 0.19
+     },
+     {
+      "segment": "MG",
+      "n_base": 433,
+      "n_current": 414,
+      "share_base_pct": 6.6,
+      "share_current_pct": 5.9,
+      "rate_base_pct": 9.1,
+      "rate_current_pct": 12.5,
+      "mix_pp": -0.06,
+      "performance_pp": 0.23,
+      "total_pp": 0.14
+     },
+     {
+      "segment": "PE",
+      "n_base": 69,
+      "n_current": 51,
+      "share_base_pct": 1.1,
+      "share_current_pct": 0.7,
+      "rate_base_pct": 10.1,
+      "rate_current_pct": 2.0,
+      "mix_pp": -0.03,
+      "performance_pp": -0.09,
+      "total_pp": -0.09
+     }
+    ],
+    "flagged_segments": [
+     {
+      "segment": "SP",
+      "n_base": 4528,
+      "n_current": 5164,
+      "rate_base_pct": 15.9,
+      "rate_current_pct": 20.5,
+      "change_pp": 4.59,
+      "z": 5.83
+     },
+     {
+      "segment": "RJ",
+      "n_base": 266,
+      "n_current": 298,
+      "rate_base_pct": 11.3,
+      "rate_current_pct": 31.5,
+      "change_pp": 20.27,
+      "z": 5.8
+     }
+    ],
+    "flag_rules": {
+     "min_orders_each_month": 30,
+     "min_abs_z": 2.0,
+     "min_change_pp": 3.0
+    },
+    "warnings": []
+   },
+   "queries": [
+    "WITH seg AS (\n    SELECT order_id, segment, 1.0 / count(*) OVER (PARTITION BY order_id) AS weight\n        FROM (SELECT DISTINCT order_id, seller_state AS segment FROM bridge_order_segment)\n)\nSELECT\n    CASE WHEN f.purchase_month = DATE '2018-02-01' THEN 'base' ELSE 'current' END AS period,\n    coalesce(s.segment, '(no items)')                         AS segment,\n    count(*) FILTER (WHERE f.is_delivered)                             AS n,\n    count(*) FILTER (WHERE f.is_delivered AND f.is_late)                   AS x,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered)         AS w_n,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered AND f.is_late) AS w_x\nFROM fct_orders f\nLEFT JOIN seg s USING (order_id)\nWHERE f.purchase_month IN (DATE '2018-02-01', DATE '2018-03-01')\nGROUP BY ALL",
+    "WITH seg AS (\n    SELECT order_id, segment, 1.0 / count(*) OVER (PARTITION BY order_id) AS weight\n        FROM (SELECT DISTINCT order_id, seller_state AS segment FROM bridge_order_segment)\n)\nSELECT\n    CASE WHEN f.purchase_month = DATE '2018-02-01' THEN 'base' ELSE 'current' END AS period,\n    coalesce(s.segment, '(no items)')                         AS segment,\n    count(*) FILTER (WHERE f.is_delivered)                             AS n,\n    count(*) FILTER (WHERE f.is_delivered AND f.is_late)                   AS x,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered)         AS w_n,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered AND f.is_late) AS w_x\nFROM fct_orders f\nLEFT JOIN seg s USING (order_id)\nWHERE f.purchase_month IN (DATE '2018-02-01', DATE '2018-03-01')\nGROUP BY ALL"
+   ],
+   "ok": true,
+   "duration_s": 0.07303733401931822
+  },
+  {
+   "id": "E4",
+   "tool": "break_down_metric",
+   "args": {
+    "base_month": "2018-02",
+    "current_month": "2018-03",
+    "dimension": "customer_state",
+    "metric": "late_rate"
+   },
+   "output": {
+    "evidence_id": "E4",
+    "metric": "late_rate",
+    "dimension": "customer_state",
+    "filters": {},
+    "base_month": "2018-02",
+    "current_month": "2018-03",
+    "overall": {
+     "base_pct": 14.1,
+     "current_pct": 19.0,
+     "change_pp": 4.84
+    },
+    "decomposition": {
+     "mix_pp": -0.4,
+     "performance_pp": 5.33,
+     "interaction_pp": -0.1
+    },
+    "segments_total": 27,
+    "segments_with_enough_orders": 18,
+    "segments_pooled_into_other": 9,
+    "top_contributors": [
+     {
+      "segment": "MG",
+      "n_base": 790,
+      "n_current": 856,
+      "share_base_pct": 12.1,
+      "share_current_pct": 12.2,
+      "rate_base_pct": 8.4,
+      "rate_current_pct": 20.4,
+      "mix_pp": 0.01,
+      "performance_pp": 1.46,
+      "total_pp": 1.49
+     },
+     {
+      "segment": "SP",
+      "n_base": 2632,
+      "n_current": 2971,
+      "share_base_pct": 40.2,
+      "share_current_pct": 42.4,
+      "rate_base_pct": 7.3,
+      "rate_current_pct": 9.4,
+      "mix_pp": 0.17,
+      "performance_pp": 0.84,
+      "total_pp": 1.05
+     },
+     {
+      "segment": "ES",
+      "n_base": 149,
+      "n_current": 133,
+      "share_base_pct": 2.3,
+      "share_current_pct": 1.9,
+      "rate_base_pct": 12.1,
+      "rate_current_pct": 41.4,
+      "mix_pp": -0.05,
+      "performance_pp": 0.67,
+      "total_pp": 0.51
+     },
+     {
+      "segment": "BA",
+      "n_base": 208,
+      "n_current": 235,
+      "share_base_pct": 3.2,
+      "share_current_pct": 3.4,
+      "rate_base_pct": 19.2,
+      "rate_current_pct": 31.5,
+      "mix_pp": 0.04,
+      "performance_pp": 0.39,
+      "total_pp": 0.45
+     },
+     {
+      "segment": "RS",
+      "n_base": 363,
+      "n_current": 407,
+      "share_base_pct": 5.5,
+      "share_current_pct": 5.8,
+      "rate_base_pct": 13.2,
+      "rate_current_pct": 19.2,
+      "mix_pp": 0.04,
+      "performance_pp": 0.33,
+      "total_pp": 0.38
+     },
+     {
+      "segment": "PA",
+      "n_base": 57,
+      "n_current": 67,
+      "share_base_pct": 0.9,
+      "share_current_pct": 1.0,
+      "rate_base_pct": 12.3,
+      "rate_current_pct": 50.7,
+      "mix_pp": 0.01,
+      "performance_pp": 0.33,
+      "total_pp": 0.38
+     }
+    ],
+    "flagged_segments": [
+     {
+      "segment": "MG",
+      "n_base": 790,
+      "n_current": 856,
+      "rate_base_pct": 8.4,
+      "rate_current_pct": 20.4,
+      "change_pp": 12.09,
+      "z": 6.93
+     },
+     {
+      "segment": "RS",
+      "n_base": 363,
+      "n_current": 407,
+      "rate_base_pct": 13.2,
+      "rate_current_pct": 19.2,
+      "change_pp": 5.94,
+      "z": 2.22
+     },
+     {
+      "segment": "BA",
+      "n_base": 208,
+      "n_current": 235,
+      "rate_base_pct": 19.2,
+      "rate_current_pct": 31.5,
+      "change_pp": 12.26,
+      "z": 2.95
+     },
+     {
+      "segment": "ES",
+      "n_base": 149,
+      "n_current": 133,
+      "rate_base_pct": 12.1,
+      "rate_current_pct": 41.4,
+      "change_pp": 29.27,
+      "z": 5.6
+     },
+     {
+      "segment": "PA",
+      "n_base": 57,
+      "n_current": 67,
+      "rate_base_pct": 12.3,
+      "rate_current_pct": 50.7,
+      "change_pp": 38.47,
+      "z": 4.54
+     },
+     {
+      "segment": "MS",
+      "n_base": 64,
+      "n_current": 57,
+      "rate_base_pct": 20.3,
+      "rate_current_pct": 40.4,
+      "change_pp": 20.04,
+      "z": 2.41
+     }
+    ],
+    "flag_rules": {
+     "min_orders_each_month": 30,
+     "min_abs_z": 2.0,
+     "min_change_pp": 3.0
+    },
+    "warnings": []
+   },
+   "queries": [
+    "WITH seg AS (\n    SELECT order_id, customer_state AS segment, 1.0 AS weight FROM fct_orders\n)\nSELECT\n    CASE WHEN f.purchase_month = DATE '2018-02-01' THEN 'base' ELSE 'current' END AS period,\n    coalesce(s.segment, '(no items)')                         AS segment,\n    count(*) FILTER (WHERE f.is_delivered)                             AS n,\n    count(*) FILTER (WHERE f.is_delivered AND f.is_late)                   AS x,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered)         AS w_n,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered AND f.is_late) AS w_x\nFROM fct_orders f\nLEFT JOIN seg s USING (order_id)\nWHERE f.purchase_month IN (DATE '2018-02-01', DATE '2018-03-01')\nGROUP BY ALL",
+    "WITH seg AS (\n    SELECT order_id, customer_state AS segment, 1.0 AS weight FROM fct_orders\n)\nSELECT\n    CASE WHEN f.purchase_month = DATE '2018-02-01' THEN 'base' ELSE 'current' END AS period,\n    coalesce(s.segment, '(no items)')                         AS segment,\n    count(*) FILTER (WHERE f.is_delivered)                             AS n,\n    count(*) FILTER (WHERE f.is_delivered AND f.is_late)                   AS x,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered)         AS w_n,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered AND f.is_late) AS w_x\nFROM fct_orders f\nLEFT JOIN seg s USING (order_id)\nWHERE f.purchase_month IN (DATE '2018-02-01', DATE '2018-03-01')\nGROUP BY ALL"
+   ],
+   "ok": true,
+   "duration_s": 0.0371960409975145
+  }
+ ],
+ "check": {
+  "summary": {
+   "numbers": 33,
+   "supported": 33,
+   "miscited": 0,
+   "uncited": 0,
+   "unsupported": 0,
+   "support_rate": 1.0,
+   "unknown_citations": []
+  },
+  "numbers": [
+   {
+    "text": "14.1",
+    "value": 14.1,
+    "status": "supported",
+    "sentence": "The late-delivery rate increased from 14.1% to 19.0% [E2], with a significant contribution from both slower deliveries and shorter promises.",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "19.0",
+    "value": 19.0,
+    "status": "supported",
+    "sentence": "The late-delivery rate increased from 14.1% to 19.0% [E2], with a significant contribution from both slower deliveries and shorter promises.",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "14.1",
+    "value": 14.1,
+    "status": "supported",
+    "sentence": "- The late rate rose from 14.1% to 19.0% [E2], a 4.84 percentage point increase, beyond noise with a z-score of 7.56.",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "19.0",
+    "value": 19.0,
+    "status": "supported",
+    "sentence": "- The late rate rose from 14.1% to 19.0% [E2], a 4.84 percentage point increase, beyond noise with a z-score of 7.56.",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "4.84",
+    "value": 4.84,
+    "status": "supported",
+    "sentence": "- The late rate rose from 14.1% to 19.0% [E2], a 4.84 percentage point increase, beyond noise with a z-score of 7.56.",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "7.56",
+    "value": 7.56,
+    "status": "supported",
+    "sentence": "- The late rate rose from 14.1% to 19.0% [E2], a 4.84 percentage point increase, beyond noise with a z-score of 7.56.",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "1.5",
+    "value": 1.5,
+    "status": "supported",
+    "sentence": "- Delivery effect: 1.5 percentage points, promise effect: 3.34 percentage points [E2].",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "3.34",
+    "value": 3.34,
+    "status": "supported",
+    "sentence": "- Delivery effect: 1.5 percentage points, promise effect: 3.34 percentage points [E2].",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "0.22",
+    "value": 0.22,
+    "status": "supported",
+    "sentence": "- Seller_state decomposition: mix effect of 0.22 percentage points, performance effect of 4.34 percentage points [E3].",
+    "cited": [
+     "E3"
+    ]
+   },
+   {
+    "text": "4.34",
+    "value": 4.34,
+    "status": "supported",
+    "sentence": "- Seller_state decomposition: mix effect of 0.22 percentage points, performance effect of 4.34 percentage points [E3].",
+    "cited": [
+     "E3"
+    ]
+   },
+   {
+    "text": "-0.4",
+    "value": 0.4,
+    "status": "supported",
+    "sentence": "- Customer_state decomposition: mix effect of -0.4 percentage points, performance effect of 5.33 percentage points [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "5.33",
+    "value": 5.33,
+    "status": "supported",
+    "sentence": "- Customer_state decomposition: mix effect of -0.4 percentage points, performance effect of 5.33 percentage points [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "4.12",
+    "value": 4.12,
+    "status": "supported",
+    "sentence": "- Top contributors by seller_state: S\u00e3o Paulo (SP) contributed 4.12 percentage points, Rio de Janeiro (RJ) contributed 0.88 percentage points, and Paran\u00e1 (PR) contributed -0.49 percentage points [E3].",
+    "cited": [
+     "E3"
+    ]
+   },
+   {
+    "text": "0.88",
+    "value": 0.88,
+    "status": "supported",
+    "sentence": "- Top contributors by seller_state: S\u00e3o Paulo (SP) contributed 4.12 percentage points, Rio de Janeiro (RJ) contributed 0.88 percentage points, and Paran\u00e1 (PR) contributed -0.49 percentage points [E3].",
+    "cited": [
+     "E3"
+    ]
+   },
+   {
+    "text": "-0.49",
+    "value": 0.49,
+    "status": "supported",
+    "sentence": "- Top contributors by seller_state: S\u00e3o Paulo (SP) contributed 4.12 percentage points, Rio de Janeiro (RJ) contributed 0.88 percentage points, and Paran\u00e1 (PR) contributed -0.49 percentage points [E3].",
+    "cited": [
+     "E3"
+    ]
+   },
+   {
+    "text": "1.49",
+    "value": 1.49,
+    "status": "supported",
+    "sentence": "- Top contributors by customer_state: Minas Gerais (MG) contributed 1.49 percentage points, S\u00e3o Paulo (SP) contributed 1.05 percentage points, Esp\u00edrito Santo (ES) contributed 0.51 percentage points, Bahia (BA) contributed 0.45 percentage points, Rio Grande do Sul (RS) contributed 0.38 percentage points, and Par\u00e1 (PA) contributed 0.38 percentage points [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "1.05",
+    "value": 1.05,
+    "status": "supported",
+    "sentence": "- Top contributors by customer_state: Minas Gerais (MG) contributed 1.49 percentage points, S\u00e3o Paulo (SP) contributed 1.05 percentage points, Esp\u00edrito Santo (ES) contributed 0.51 percentage points, Bahia (BA) contributed 0.45 percentage points, Rio Grande do Sul (RS) contributed 0.38 percentage points, and Par\u00e1 (PA) contributed 0.38 percentage points [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "0.51",
+    "value": 0.51,
+    "status": "supported",
+    "sentence": "- Top contributors by customer_state: Minas Gerais (MG) contributed 1.49 percentage points, S\u00e3o Paulo (SP) contributed 1.05 percentage points, Esp\u00edrito Santo (ES) contributed 0.51 percentage points, Bahia (BA) contributed 0.45 percentage points, Rio Grande do Sul (RS) contributed 0.38 percentage points, and Par\u00e1 (PA) contributed 0.38 percentage points [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "0.45",
+    "value": 0.45,
+    "status": "supported",
+    "sentence": "- Top contributors by customer_state: Minas Gerais (MG) contributed 1.49 percentage points, S\u00e3o Paulo (SP) contributed 1.05 percentage points, Esp\u00edrito Santo (ES) contributed 0.51 percentage points, Bahia (BA) contributed 0.45 percentage points, Rio Grande do Sul (RS) contributed 0.38 percentage points, and Par\u00e1 (PA) contributed 0.38 percentage points [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "0.38",
+    "value": 0.38,
+    "status": "supported",
+    "sentence": "- Top contributors by customer_state: Minas Gerais (MG) contributed 1.49 percentage points, S\u00e3o Paulo (SP) contributed 1.05 percentage points, Esp\u00edrito Santo (ES) contributed 0.51 percentage points, Bahia (BA) contributed 0.45 percentage points, Rio Grande do Sul (RS) contributed 0.38 percentage points, and Par\u00e1 (PA) contributed 0.38 percentage points [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "0.38",
+    "value": 0.38,
+    "status": "supported",
+    "sentence": "- Top contributors by customer_state: Minas Gerais (MG) contributed 1.49 percentage points, S\u00e3o Paulo (SP) contributed 1.05 percentage points, Esp\u00edrito Santo (ES) contributed 0.51 percentage points, Bahia (BA) contributed 0.45 percentage points, Rio Grande do Sul (RS) contributed 0.38 percentage points, and Par\u00e1 (PA) contributed 0.38 percentage points [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "4.59",
+    "value": 4.59,
+    "status": "supported",
+    "sentence": "- Flagged segments by seller_state: S\u00e3o Paulo (SP) had a 4.59 percentage point increase (z=5.83), and Rio de Janeiro (RJ) had a 20.27 percentage point increase (z=5.8) [E3].",
+    "cited": [
+     "E3"
+    ]
+   },
+   {
+    "text": "5.83",
+    "value": 5.83,
+    "status": "supported",
+    "sentence": "- Flagged segments by seller_state: S\u00e3o Paulo (SP) had a 4.59 percentage point increase (z=5.83), and Rio de Janeiro (RJ) had a 20.27 percentage point increase (z=5.8) [E3].",
+    "cited": [
+     "E3"
+    ]
+   },
+   {
+    "text": "20.27",
+    "value": 20.27,
+    "status": "supported",
+    "sentence": "- Flagged segments by seller_state: S\u00e3o Paulo (SP) had a 4.59 percentage point increase (z=5.83), and Rio de Janeiro (RJ) had a 20.27 percentage point increase (z=5.8) [E3].",
+    "cited": [
+     "E3"
+    ]
+   },
+   {
+    "text": "5.8",
+    "value": 5.8,
+    "status": "supported",
+    "sentence": "- Flagged segments by seller_state: S\u00e3o Paulo (SP) had a 4.59 percentage point increase (z=5.83), and Rio de Janeiro (RJ) had a 20.27 percentage point increase (z=5.8) [E3].",
+    "cited": [
+     "E3"
+    ]
+   },
+   {
+    "text": "12.09",
+    "value": 12.09,
+    "status": "supported",
+    "sentence": "- Flagged segments by customer_state: Minas Gerais (MG) had a 12.09 percentage point increase (z=6.93), Esp\u00edrito Santo (ES) had a 29.27 percentage point increase (z=5.6), Par\u00e1 (PA) had a 38.47 percentage point increase (z=4.54), and Bahia (BA) had a 12.26 percentage point increase (z=2.95) [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "6.93",
+    "value": 6.93,
+    "status": "supported",
+    "sentence": "- Flagged segments by customer_state: Minas Gerais (MG) had a 12.09 percentage point increase (z=6.93), Esp\u00edrito Santo (ES) had a 29.27 percentage point increase (z=5.6), Par\u00e1 (PA) had a 38.47 percentage point increase (z=4.54), and Bahia (BA) had a 12.26 percentage point increase (z=2.95) [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "29.27",
+    "value": 29.27,
+    "status": "supported",
+    "sentence": "- Flagged segments by customer_state: Minas Gerais (MG) had a 12.09 percentage point increase (z=6.93), Esp\u00edrito Santo (ES) had a 29.27 percentage point increase (z=5.6), Par\u00e1 (PA) had a 38.47 percentage point increase (z=4.54), and Bahia (BA) had a 12.26 percentage point increase (z=2.95) [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "5.6",
+    "value": 5.6,
+    "status": "supported",
+    "sentence": "- Flagged segments by customer_state: Minas Gerais (MG) had a 12.09 percentage point increase (z=6.93), Esp\u00edrito Santo (ES) had a 29.27 percentage point increase (z=5.6), Par\u00e1 (PA) had a 38.47 percentage point increase (z=4.54), and Bahia (BA) had a 12.26 percentage point increase (z=2.95) [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "38.47",
+    "value": 38.47,
+    "status": "supported",
+    "sentence": "- Flagged segments by customer_state: Minas Gerais (MG) had a 12.09 percentage point increase (z=6.93), Esp\u00edrito Santo (ES) had a 29.27 percentage point increase (z=5.6), Par\u00e1 (PA) had a 38.47 percentage point increase (z=4.54), and Bahia (BA) had a 12.26 percentage point increase (z=2.95) [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "4.54",
+    "value": 4.54,
+    "status": "supported",
+    "sentence": "- Flagged segments by customer_state: Minas Gerais (MG) had a 12.09 percentage point increase (z=6.93), Esp\u00edrito Santo (ES) had a 29.27 percentage point increase (z=5.6), Par\u00e1 (PA) had a 38.47 percentage point increase (z=4.54), and Bahia (BA) had a 12.26 percentage point increase (z=2.95) [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "12.26",
+    "value": 12.26,
+    "status": "supported",
+    "sentence": "- Flagged segments by customer_state: Minas Gerais (MG) had a 12.09 percentage point increase (z=6.93), Esp\u00edrito Santo (ES) had a 29.27 percentage point increase (z=5.6), Par\u00e1 (PA) had a 38.47 percentage point increase (z=4.54), and Bahia (BA) had a 12.26 percentage point increase (z=2.95) [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "2.95",
+    "value": 2.95,
+    "status": "supported",
+    "sentence": "- Flagged segments by customer_state: Minas Gerais (MG) had a 12.09 percentage point increase (z=6.93), Esp\u00edrito Santo (ES) had a 29.27 percentage point increase (z=5.6), Par\u00e1 (PA) had a 38.47 percentage point increase (z=4.54), and Bahia (BA) had a 12.26 percentage point increase (z=2.95) [E4].",
+    "cited": [
+     "E4"
+    ]
+   }
+  ]
+ },
+ "guard_events": [
+  "report written before required steps; sent back (1 gaps)"
+ ],
+ "n_llm_calls": 6,
+ "n_tool_calls": 4,
+ "n_tool_errors": 0,
+ "input_tokens": 14135,
+ "output_tokens": 1268,
+ "latency_s": 99.64,
+ "stopped_reason": "report"
+}

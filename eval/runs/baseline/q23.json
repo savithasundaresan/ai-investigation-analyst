@@ -1,0 +1,26 @@
+{
+ "id": "q23",
+ "model": "qwen3:8b",
+ "prompt": "Why did the late-delivery rate increase from 2018-09 to 2018-10? Which sellers, regions or product categories contributed most, and what should we investigate first?\n\nDashboard numbers:\nBase month 2018-09: complete month (enough orders, few still open) = no; orders = 16; delivered orders = 0; late-delivery rate % = n/a; overdue undelivered orders = 1; average delivery time (days) = n/a; average promised delivery window (days) = n/a; average order value (R$) = 166.46; low-review rate % = 80.0; cancellation rate % = 93.75\nCurrent month 2018-10: complete month (enough orders, few still open) = no; orders = 4; delivered orders = 0; late-delivery rate % = n/a; overdue undelivered orders = 0; average delivery time (days) = n/a; average promised delivery window (days) = n/a; average order value (R$) = nan; low-review rate % = 75.0; cancellation rate % = 100.0\nChange shown on the tiles: orders -12; cancellation rate (pp) +6.2\nDashboard warning: fewer than 30 delivered orders in one month; rates are too noisy to act on.",
+ "input_values": [
+  16.0,
+  0.0,
+  1.0,
+  166.46,
+  80.0,
+  93.75,
+  4.0,
+  0.0,
+  0.0,
+  NaN,
+  75.0,
+  100.0,
+  -12.0,
+  6.2,
+  30.0
+ ],
+ "report": "## Answer\nThe late-delivery rate is not reliably measurable due to insufficient data, as both months have fewer than 30 delivered orders. The increase in cancellation rate and decrease in low-review rate suggest potential issues with order fulfillment or customer satisfaction, but further analysis is needed.\n\n## Findings\n- **Orders**: Decreased by 12 (from 16 to 4).\n- **Cancellation rate**: Increased by 6.2 percentage points (from 93.75% to 100%).\n- **Low-review rate**: Decreased by 5 percentage points (from 80.0% to 75.0%).\n- **Overdue undelivered orders**: Decreased from 1 to 0.\n\n## Investigate first\n- Check if the 4 orders in 2018-10 were canceled due to fulfillment issues or customer dissatisfaction.\n- Review the reasons for the 100% cancellation rate in 2018-10, particularly if any patterns exist in the canceled orders.\n- Investigate if there were any system or process changes in October that may have affected order processing or delivery.\n\n## Limitations\n- The data is too noisy due to fewer than 30 delivered orders in both months, making it unreliable for drawing conclusions about late-delivery rates.\n- Missing values for key metrics like average delivery time and promised delivery window limit the ability to assess delivery performance.\n- The low number of delivered orders makes it difficult to identify specific sellers, regions, or product categories contributing to the changes.",
+ "input_tokens": 468,
+ "output_tokens": 324,
+ "latency_s": 30.43
+}

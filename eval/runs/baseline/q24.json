@@ -1,0 +1,20 @@
+{
+ "id": "q24",
+ "model": "qwen3:8b",
+ "prompt": "Why did the late-delivery rate increase from 2016-10 to 2016-11? Which sellers, regions or product categories contributed most, and what should we investigate first?\n\nDashboard numbers:\nBase month 2016-10: complete month (enough orders, few still open) = no; orders = 324; delivered orders = 265; late-delivery rate % = 0.75; overdue undelivered orders = 28; average delivery time (days) = 19.6; average promised delivery window (days) = 56.3; average order value (R$) = 184.44; low-review rate % = 29.15; cancellation rate % = 9.57\nCurrent month 2016-11: no orders in the data for this month.",
+ "input_values": [
+  324.0,
+  265.0,
+  0.75,
+  28.0,
+  19.6,
+  56.3,
+  184.44,
+  29.15,
+  9.57
+ ],
+ "report": "## Answer\nInsufficient evidence to determine the cause of the increase in late-delivery rate from 2016-10 to 2016-11, as there are no data points for 2016-11 to compare.\n\n## Findings\n- Base month 2016-10 late-delivery rate: 0.75%\n- No data available for 2016-11 to analyze changes or contributions.\n\n## Investigate first\n- Confirm whether the data for 2016-11 is truly missing or if it was not properly recorded.\n- Check for any system errors or data collection issues that may have affected the availability of 2016-11 data.\n\n## Limitations\n- No data for 2016-11 to analyze trends or changes.\n- Unable to identify contributing sellers, regions, or product categories without comparative data.",
+ "input_tokens": 351,
+ "output_tokens": 196,
+ "latency_s": 19.03
+}

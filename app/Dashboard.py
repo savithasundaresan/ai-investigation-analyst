@@ -1,6 +1,6 @@
 """Late-delivery dashboard.
 
-    uv run streamlit run app/streamlit_app.py
+    uv run streamlit run app/Dashboard.py
 
 Every number on this page comes from src/metrics.py, the same functions the
 agent's tools call. Each section has a "Show SQL" expander with the exact query.

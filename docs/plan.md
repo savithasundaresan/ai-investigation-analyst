@@ -58,10 +58,12 @@ defend every part of it.
 - **Done when:** the agent reproduces the Stage 2 manual investigation's main finding, with every number cited.
 
 ### Stage 4: Evaluation and portfolio polish
-- [ ] 20–30 questions with independently verified SQL answers, including missing-data and insufficient-evidence cases
-- [ ] Metrics: numerical accuracy, evidence support, tool failures, response time, cost ($0 locally)
-- [ ] Baseline: the same model summarizing dashboard numbers without tools
-- [ ] README (setup + architecture), one-page case study, 3–5 minute demo script
+- [x] 25 questions with an independent SQL answer key (`src/answer_key.py`), including incomplete-month, missing-month, wrong-premise and noise cases (D15)
+- [x] Metrics: fact accuracy, traceable and correctly cited numbers, tool failures, response time, tokens, cost ($0 locally)
+- [x] Baseline: the same model summarizing the dashboard's KPI tiles without tools
+- [x] Evaluation page in the app; results in [evaluation.md](evaluation.md)
+- [x] README (setup + architecture), [one-page case study](case_study.md), [demo script](demo_script.md)
+- [ ] Owners spot-check three answers by hand in the DuckDB shell (queries in `src/answer_key.py`)
 - **Done when:** a new user can clone the repo, follow the README, and see the dashboard and a replayed investigation.
 
 ## Out of scope for the MVP
@@ -70,6 +72,7 @@ Deployment, user logins, live data, multiple pages, forecasting.
 ## Setup
 1. `uv run python -m src.load` fetches the data (about 65 MB, checksum-verified) and builds `data/processed/olist.duckdb`.
 2. `uv run pytest` runs the tests.
-3. `uv run streamlit run app/streamlit_app.py` opens the dashboard at http://localhost:8501.
+3. `uv run streamlit run app/Dashboard.py` opens the dashboard at http://localhost:8501.
 4. `ollama pull qwen3:8b` (about a 5 GB download, once), then `ollama serve`.
 5. `uv run python -m src.agent --base 2018-02 --current 2018-03` runs an investigation; `--replay replays/<file>.json` replays one without a model.
+6. `uv run python -m src.evaluate score` re-scores the saved evaluation runs; `run --force` re-runs them (about an hour).

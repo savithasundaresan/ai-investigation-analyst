@@ -1,0 +1,851 @@
+{
+ "question": "Why did the late-delivery rate increase from 2017-04 to 2017-05? Which sellers, regions or product categories contributed most, and what should we investigate first?",
+ "base_month": "2017-04",
+ "current_month": "2017-05",
+ "provider": "ollama",
+ "model": "qwen3:8b",
+ "started_at": "2026-11-02T12:26:25",
+ "report": "## Answer\nThe late-delivery rate decreased from 6.6% to 3.0% [E2], with the change primarily driven by slower deliveries rather than shorter promises. The customer_state breakdown shows that the decline was largely due to performance effects across several regions, with some segments experiencing significant drops.\n\n## Findings\n- The late rate fell from 6.6% to 3.0%, a decrease of 3.57 percentage points [E2].\n- Delivery effect: -4.55 percentage points, promise effect: +0.98 percentage points [E2].\n- Seller_state decomposition: mix effect of -0.08 percentage points, performance effect of -3.62 percentage points [E3].\n- Customer_state decomposition: mix effect of -0.11 percentage points, performance effect of -3.56 percentage points [E4].\n- Top contributors by seller_state: PR (performance effect -0.73), MG (performance effect -0.42), RJ (performance effect -0.28) [E3].\n- Top contributors by customer_state: BA (performance effect -0.4), CE (performance effect -0.19), RJ (performance effect -0.55) [E4].\n- Flagged segments by seller_state: PR (change -9.36, z-score -3.92), MG (change -4.1, z-score -2.39), RJ (change -7.17, z-score -2.04) [E3].\n- Flagged segments by customer_state: BA (change -10.92, z-score -2.84), CE (change -10.29, z-score -2.21), RJ (change -3.67, z-score -2.51) [E4].\n\n## Investigate first\n1. Investigate the flagged customer states (BA, CE, RJ) to understand the root causes of their significant performance effects.\n2. Examine the delivery days and promised days for these segments to identify any operational or logistical issues.\n3. Check if there were any changes in customer behavior or external factors affecting these regions during the period.\n\n## Limitations\n- The data is historical and does not include real-time information.\n- The analysis does not account for external factors such as market conditions or external disruptions.",
+ "responses": [
+  {
+   "text": "",
+   "tool_calls": [
+    {
+     "name": "check_data_quality",
+     "arguments": {
+      "months": [
+       "2017-04",
+       "2017-05"
+      ]
+     },
+     "id": "call_fc78830b"
+    }
+   ],
+   "input_tokens": 1217,
+   "output_tokens": 37,
+   "latency_s": 8.400860666995868,
+   "raw": null
+  },
+  {
+   "text": "",
+   "tool_calls": [
+    {
+     "name": "compare_periods",
+     "arguments": {
+      "base_month": "2017-04",
+      "current_month": "2017-05",
+      "metric": "late_rate"
+     },
+     "id": "call_1d431ef2"
+    }
+   ],
+   "input_tokens": 1484,
+   "output_tokens": 42,
+   "latency_s": 4.00074400001904,
+   "raw": null
+  },
+  {
+   "text": "",
+   "tool_calls": [
+    {
+     "name": "break_down_metric",
+     "arguments": {
+      "metric": "late_rate",
+      "dimension": "seller_state",
+      "base_month": "2017-04",
+      "current_month": "2017-05"
+     },
+     "id": "call_02fdc74b"
+    }
+   ],
+   "input_tokens": 1805,
+   "output_tokens": 48,
+   "latency_s": 5.31130108400248,
+   "raw": null
+  },
+  {
+   "text": "## Answer\nThe late-delivery rate decreased from 6.6% to 3.0% [E2], with the change primarily driven by slower deliveries rather than shorter promises. \n\n## Findings\n- The late rate fell from 6.6% to 3.0%, a decrease of 3.57 percentage points [E2].\n- Delivery effect: -4.55 percentage points, promise effect: +0.98 percentage points [E2].\n- Seller_state decomposition: mix effect of -0.08 percentage points, performance effect of -3.62 percentage points [E3].\n- Top contributors: MG (performance effect -0.42), PR (performance effect -0.73), RJ (performance effect -0.28) [E3].\n- Flagged segments: PR (change -9.36, z-score -3.92), MG (change -4.1, z-score -2.39), RJ (change -7.17, z-score -2.04) [E3].\n\n## Investigate first\n1. Investigate the flagged seller states (PR, MG, RJ) to understand the root causes of their significant performance effects.\n2. Examine the delivery days and promised days for these segments to identify any operational or logistical issues.\n3. Check if there were any changes in seller behavior or external factors affecting these regions during the period.\n\n## Limitations\n- The data is historical and does not include real-time information.\n- The analysis does not account for external factors such as market conditions or external disruptions.",
+   "tool_calls": [],
+   "input_tokens": 2621,
+   "output_tokens": 335,
+   "latency_s": 23.477564125001663,
+   "raw": null
+  },
+  {
+   "text": "",
+   "tool_calls": [
+    {
+     "name": "break_down_metric",
+     "arguments": {
+      "metric": "late_rate",
+      "base_month": "2017-04",
+      "current_month": "2017-05",
+      "dimension": "customer_state"
+     },
+     "id": "call_7b11fcbd"
+    }
+   ],
+   "input_tokens": 3008,
+   "output_tokens": 48,
+   "latency_s": 12.562472249992425,
+   "raw": null
+  },
+  {
+   "text": "## Answer\nThe late-delivery rate decreased from 6.6% to 3.0% [E2], with the change primarily driven by slower deliveries rather than shorter promises. The customer_state breakdown shows that the decline was largely due to performance effects across several regions, with some segments experiencing significant drops.\n\n## Findings\n- The late rate fell from 6.6% to 3.0%, a decrease of 3.57 percentage points [E2].\n- Delivery effect: -4.55 percentage points, promise effect: +0.98 percentage points [E2].\n- Seller_state decomposition: mix effect of -0.08 percentage points, performance effect of -3.62 percentage points [E3].\n- Customer_state decomposition: mix effect of -0.11 percentage points, performance effect of -3.56 percentage points [E4].\n- Top contributors by seller_state: PR (performance effect -0.73), MG (performance effect -0.42), RJ (performance effect -0.28) [E3].\n- Top contributors by customer_state: BA (performance effect -0.4), CE (performance effect -0.19), RJ (performance effect -0.55) [E4].\n- Flagged segments by seller_state: PR (change -9.36, z-score -3.92), MG (change -4.1, z-score -2.39), RJ (change -7.17, z-score -2.04) [E3].\n- Flagged segments by customer_state: BA (change -10.92, z-score -2.84), CE (change -10.29, z-score -2.21), RJ (change -3.67, z-score -2.51) [E4].\n\n## Investigate first\n1. Investigate the flagged customer states (BA, CE, RJ) to understand the root causes of their significant performance effects.\n2. Examine the delivery days and promised days for these segments to identify any operational or logistical issues.\n3. Check if there were any changes in customer behavior or external factors affecting these regions during the period.\n\n## Limitations\n- The data is historical and does not include real-time information.\n- The analysis does not account for external factors such as market conditions or external disruptions.",
+   "tool_calls": [],
+   "input_tokens": 3825,
+   "output_tokens": 500,
+   "latency_s": 31.80118391700671,
+   "raw": null
+  }
+ ],
+ "transcript": [
+  {
+   "type": "tool",
+   "tool": "check_data_quality",
+   "args": {
+    "months": [
+     "2017-04",
+     "2017-05"
+    ]
+   },
+   "evidence_id": "E1",
+   "ok": true,
+   "error": null,
+   "note": null
+  },
+  {
+   "type": "tool",
+   "tool": "compare_periods",
+   "args": {
+    "base_month": "2017-04",
+    "current_month": "2017-05",
+    "metric": "late_rate"
+   },
+   "evidence_id": "E2",
+   "ok": true,
+   "error": null,
+   "note": null
+  },
+  {
+   "type": "tool",
+   "tool": "break_down_metric",
+   "args": {
+    "metric": "late_rate",
+    "dimension": "seller_state",
+    "base_month": "2017-04",
+    "current_month": "2017-05"
+   },
+   "evidence_id": "E3",
+   "ok": true,
+   "error": null,
+   "note": null
+  },
+  {
+   "type": "guard",
+   "message": "Before writing the report, complete these steps:\n- call break_down_metric for late_rate by 1 more dimension(s); done so far: ['seller_state']\nThen write the full report again using all the evidence.",
+   "draft": "## Answer\nThe late-delivery rate decreased from 6.6% to 3.0% [E2], with the change primarily driven by slower deliveries rather than shorter promises. \n\n## Findings\n- The late rate fell from 6.6% to 3.0%, a decrease of 3.57 percentage points [E2].\n- Delivery effect: -4.55 percentage points, promise effect: +0.98 percentage points [E2].\n- Seller_state decomposition: mix effect of -0.08 percentage points, performance effect of -3.62 percentage points [E3].\n- Top contributors: MG (performance effect -0.42), PR (performance effect -0.73), RJ (performance effect -0.28) [E3].\n- Flagged segments: PR (change -9.36, z-score -3.92), MG (change -4.1, z-score -2.39), RJ (change -7.17, z-score -2.04) [E3].\n\n## Investigate first\n1. Investigate the flagged seller states (PR, MG, RJ) to understand the root causes of their significant performance effects.\n2. Examine the delivery days and promised days for these segments to identify any operational or logistical issues.\n3. Check if there were any changes in seller behavior or external factors affecting these regions during the period.\n\n## Limitations\n- The data is historical and does not include real-time information.\n- The analysis does not account for external factors such as market conditions or external disruptions."
+  },
+  {
+   "type": "tool",
+   "tool": "break_down_metric",
+   "args": {
+    "metric": "late_rate",
+    "base_month": "2017-04",
+    "current_month": "2017-05",
+    "dimension": "customer_state"
+   },
+   "evidence_id": "E4",
+   "ok": true,
+   "error": null,
+   "note": null
+  }
+ ],
+ "evidence": [
+  {
+   "id": "E1",
+   "tool": "check_data_quality",
+   "args": {
+    "months": [
+     "2017-04",
+     "2017-05"
+    ]
+   },
+   "output": {
+    "evidence_id": "E1",
+    "months": [
+     {
+      "month": "2017-04",
+      "complete": true,
+      "orders": 2404,
+      "delivered": 2303,
+      "open_orders_pct": 3.1,
+      "estimates_after_data_cutoff_pct": 0.0,
+      "overdue_undelivered": 74,
+      "timestamp_anomalies": 0,
+      "orders_without_items": 13,
+      "payment_mismatches": 11
+     },
+     {
+      "month": "2017-05",
+      "complete": true,
+      "orders": 3700,
+      "delivered": 3545,
+      "open_orders_pct": 2.6,
+      "estimates_after_data_cutoff_pct": 0.0,
+      "overdue_undelivered": 94,
+      "timestamp_anomalies": 2,
+      "orders_without_items": 40,
+      "payment_mismatches": 20
+     }
+    ],
+    "complete_month_window": "2017-01 to 2018-08",
+    "completeness_rule": {
+     "min_orders": 500,
+     "max_open_orders_pct": 5,
+     "max_estimates_after_cutoff_pct": 1
+    }
+   },
+   "queries": [
+    "SELECT\n    m.purchase_month,\n    m.is_complete,\n    m.n_orders,\n    m.n_delivered,\n    m.share_open,\n    m.share_estimate_after_cutoff,\n    count(*) FILTER (WHERE f.dq_delivered_without_date)   AS delivered_without_date,\n    count(*) FILTER (WHERE f.dq_carrier_before_purchase)  AS carrier_before_purchase,\n    count(*) FILTER (WHERE f.dq_delivered_before_carrier) AS delivered_before_carrier,\n    count(*) FILTER (WHERE f.dq_no_items)                 AS no_items,\n    count(*) FILTER (WHERE f.dq_payment_mismatch)         AS payment_mismatch,\n    count(*) FILTER (WHERE f.is_overdue_undelivered)      AS overdue_undelivered\nFROM dim_month m\nJOIN fct_orders f USING (purchase_month)\nWHERE m.purchase_month IN (DATE '2017-04-01', DATE '2017-05-01')\nGROUP BY ALL\nORDER BY m.purchase_month"
+   ],
+   "ok": true,
+   "duration_s": 0.014020708011230454
+  },
+  {
+   "id": "E2",
+   "tool": "compare_periods",
+   "args": {
+    "base_month": "2017-04",
+    "current_month": "2017-05",
+    "metric": "late_rate"
+   },
+   "output": {
+    "evidence_id": "E2",
+    "metric": "late_rate",
+    "filters": {},
+    "base_month": "2017-04",
+    "current_month": "2017-05",
+    "base": {
+     "rate_pct": 6.6,
+     "count": 151,
+     "out_of": 2303,
+     "denominator": "delivered orders"
+    },
+    "current": {
+     "rate_pct": 3.0,
+     "count": 106,
+     "out_of": 3545,
+     "denominator": "delivered orders"
+    },
+    "change_pp": -3.57,
+    "z": -6.5,
+    "beyond_noise": true,
+    "delivery_vs_promise": {
+     "delivery_effect_pp": -4.55,
+     "promise_effect_pp": 0.98,
+     "explanation": "delivery_effect = change in late rate if both months were judged against the base month's median promise per customer state; promise_effect = the rest, caused by promised delivery windows changing. They add up to change_pp.",
+     "median_promised_days": {
+      "base": 26.0,
+      "current": 24.0
+     },
+     "median_delivery_days": {
+      "base": 13.0,
+      "current": 10.0
+     },
+     "avg_promised_days": {
+      "base": 28.0,
+      "current": 24.9
+     },
+     "avg_delivery_days": {
+      "base": 15.0,
+      "current": 11.4
+     }
+    },
+    "warnings": []
+   },
+   "queries": [
+    "SELECT\n    f.purchase_month,\n    count(*)                                          AS orders,\n    count(*) FILTER (WHERE f.is_delivered)            AS delivered,\n    count(*) FILTER (WHERE f.is_late)                 AS late_orders,\n    avg(CAST(f.is_late AS DOUBLE))                    AS late_rate,\n    avg(f.days_late) FILTER (WHERE f.is_late)         AS avg_days_late,\n    avg(f.delivery_days)                              AS avg_delivery_days,\n    avg(f.promised_days) FILTER (WHERE f.is_delivered) AS avg_promised_days,\n    count(*) FILTER (WHERE f.is_overdue_undelivered)  AS overdue_undelivered,\n    avg(f.order_value)                                AS aov,\n    count(*) FILTER (WHERE f.has_review)              AS reviewed,\n    count(*) FILTER (WHERE f.is_low_review)           AS low_review_orders,\n    avg(CAST(f.is_low_review AS DOUBLE))              AS low_review_rate,\n    count(*) FILTER (WHERE f.is_canceled)             AS canceled_orders,\n    avg(CAST(f.is_canceled AS DOUBLE))                AS cancellation_rate\nFROM fct_orders f\nWHERE f.purchase_month IN (DATE '2017-04-01', DATE '2017-05-01')\nGROUP BY f.purchase_month\nORDER BY f.purchase_month",
+    "WITH base_promise AS (\n    -- The base month's typical promise per destination state.\n    SELECT f.customer_state, median(f.promised_days) AS yardstick_days\n    FROM fct_orders f\n    WHERE f.is_delivered AND f.purchase_month IN (DATE '2017-04-01')\n    GROUP BY 1\n), overall AS (\n    SELECT median(f.promised_days) AS yardstick_days\n    FROM fct_orders f\n    WHERE f.is_delivered AND f.purchase_month IN (DATE '2017-04-01')\n)\nSELECT\n    CASE WHEN f.purchase_month = DATE '2017-04-01' THEN 'base' ELSE 'current' END AS period,\n    count(*)                                                          AS delivered,\n    avg(CAST(f.is_late AS DOUBLE))                                    AS late_rate,\n    avg(CAST(f.delivery_days > coalesce(bp.yardstick_days, o.yardstick_days) AS DOUBLE)) AS late_rate_same_yardstick,\n    avg(f.delivery_days)                                              AS avg_delivery_days,\n    avg(f.promised_days)                                              AS avg_promised_days,\n    median(f.delivery_days)                                           AS median_delivery_days,\n    median(f.promised_days)                                           AS median_promised_days\nFROM fct_orders f\nCROSS JOIN overall o\nLEFT JOIN base_promise bp USING (customer_state)\nWHERE f.is_delivered AND f.purchase_month IN (DATE '2017-04-01', DATE '2017-05-01')\nGROUP BY 1\nORDER BY 1"
+   ],
+   "ok": true,
+   "duration_s": 0.025867167016258463
+  },
+  {
+   "id": "E3",
+   "tool": "break_down_metric",
+   "args": {
+    "metric": "late_rate",
+    "dimension": "seller_state",
+    "base_month": "2017-04",
+    "current_month": "2017-05"
+   },
+   "output": {
+    "evidence_id": "E3",
+    "metric": "late_rate",
+    "dimension": "seller_state",
+    "filters": {},
+    "base_month": "2017-04",
+    "current_month": "2017-05",
+    "overall": {
+     "base_pct": 6.6,
+     "current_pct": 3.0,
+     "change_pp": -3.57
+    },
+    "decomposition": {
+     "mix_pp": -0.08,
+     "performance_pp": -3.62,
+     "interaction_pp": 0.14
+    },
+    "segments_total": 19,
+    "segments_with_enough_orders": 6,
+    "segments_pooled_into_other": 13,
+    "top_contributors": [
+     {
+      "segment": "SP",
+      "n_base": 1544,
+      "n_current": 2475,
+      "share_base_pct": 66.9,
+      "share_current_pct": 69.6,
+      "rate_base_pct": 6.0,
+      "rate_current_pct": 3.2,
+      "mix_pp": 0.16,
+      "performance_pp": -1.83,
+      "total_pp": -1.74
+     },
+     {
+      "segment": "PR",
+      "n_base": 179,
+      "n_current": 221,
+      "share_base_pct": 7.7,
+      "share_current_pct": 6.2,
+      "rate_base_pct": 11.3,
+      "rate_current_pct": 1.8,
+      "mix_pp": -0.17,
+      "performance_pp": -0.73,
+      "total_pp": -0.76
+     },
+     {
+      "segment": "MG",
+      "n_base": 235,
+      "n_current": 415,
+      "share_base_pct": 10.2,
+      "share_current_pct": 11.6,
+      "rate_base_pct": 7.3,
+      "rate_current_pct": 3.2,
+      "mix_pp": 0.11,
+      "performance_pp": -0.42,
+      "total_pp": -0.37
+     },
+     {
+      "segment": "RJ",
+      "n_base": 89,
+      "n_current": 102,
+      "share_base_pct": 3.9,
+      "share_current_pct": 2.8,
+      "rate_base_pct": 10.1,
+      "rate_current_pct": 3.0,
+      "mix_pp": -0.1,
+      "performance_pp": -0.28,
+      "total_pp": -0.31
+     },
+     {
+      "segment": "SC",
+      "n_base": 128,
+      "n_current": 175,
+      "share_base_pct": 5.5,
+      "share_current_pct": 4.9,
+      "rate_base_pct": 5.5,
+      "rate_current_pct": 1.7,
+      "mix_pp": -0.03,
+      "performance_pp": -0.21,
+      "total_pp": -0.22
+     },
+     {
+      "segment": "Other",
+      "n_base": 69,
+      "n_current": 94,
+      "share_base_pct": 3.0,
+      "share_current_pct": 2.6,
+      "rate_base_pct": 5.9,
+      "rate_current_pct": 3.2,
+      "mix_pp": -0.02,
+      "performance_pp": -0.08,
+      "total_pp": -0.09
+     }
+    ],
+    "flagged_segments": [
+     {
+      "segment": "MG",
+      "n_base": 235,
+      "n_current": 415,
+      "rate_base_pct": 7.2,
+      "rate_current_pct": 3.1,
+      "change_pp": -4.1,
+      "z": -2.39
+     },
+     {
+      "segment": "PR",
+      "n_base": 179,
+      "n_current": 221,
+      "rate_base_pct": 11.2,
+      "rate_current_pct": 1.8,
+      "change_pp": -9.36,
+      "z": -3.92
+     },
+     {
+      "segment": "RJ",
+      "n_base": 89,
+      "n_current": 102,
+      "rate_base_pct": 10.1,
+      "rate_current_pct": 2.9,
+      "change_pp": -7.17,
+      "z": -2.04
+     }
+    ],
+    "flag_rules": {
+     "min_orders_each_month": 30,
+     "min_abs_z": 2.0,
+     "min_change_pp": 3.0
+    },
+    "warnings": []
+   },
+   "queries": [
+    "WITH seg AS (\n    SELECT order_id, segment, 1.0 / count(*) OVER (PARTITION BY order_id) AS weight\n        FROM (SELECT DISTINCT order_id, seller_state AS segment FROM bridge_order_segment)\n)\nSELECT\n    CASE WHEN f.purchase_month = DATE '2017-04-01' THEN 'base' ELSE 'current' END AS period,\n    coalesce(s.segment, '(no items)')                         AS segment,\n    count(*) FILTER (WHERE f.is_delivered)                             AS n,\n    count(*) FILTER (WHERE f.is_delivered AND f.is_late)                   AS x,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered)         AS w_n,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered AND f.is_late) AS w_x\nFROM fct_orders f\nLEFT JOIN seg s USING (order_id)\nWHERE f.purchase_month IN (DATE '2017-04-01', DATE '2017-05-01')\nGROUP BY ALL",
+    "WITH seg AS (\n    SELECT order_id, segment, 1.0 / count(*) OVER (PARTITION BY order_id) AS weight\n        FROM (SELECT DISTINCT order_id, seller_state AS segment FROM bridge_order_segment)\n)\nSELECT\n    CASE WHEN f.purchase_month = DATE '2017-04-01' THEN 'base' ELSE 'current' END AS period,\n    coalesce(s.segment, '(no items)')                         AS segment,\n    count(*) FILTER (WHERE f.is_delivered)                             AS n,\n    count(*) FILTER (WHERE f.is_delivered AND f.is_late)                   AS x,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered)         AS w_n,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered AND f.is_late) AS w_x\nFROM fct_orders f\nLEFT JOIN seg s USING (order_id)\nWHERE f.purchase_month IN (DATE '2017-04-01', DATE '2017-05-01')\nGROUP BY ALL"
+   ],
+   "ok": true,
+   "duration_s": 0.07833512499928474
+  },
+  {
+   "id": "E4",
+   "tool": "break_down_metric",
+   "args": {
+    "metric": "late_rate",
+    "base_month": "2017-04",
+    "current_month": "2017-05",
+    "dimension": "customer_state"
+   },
+   "output": {
+    "evidence_id": "E4",
+    "metric": "late_rate",
+    "dimension": "customer_state",
+    "filters": {},
+    "base_month": "2017-04",
+    "current_month": "2017-05",
+    "overall": {
+     "base_pct": 6.6,
+     "current_pct": 3.0,
+     "change_pp": -3.57
+    },
+    "decomposition": {
+     "mix_pp": -0.11,
+     "performance_pp": -3.56,
+     "interaction_pp": 0.1
+    },
+    "segments_total": 27,
+    "segments_with_enough_orders": 13,
+    "segments_pooled_into_other": 14,
+    "top_contributors": [
+     {
+      "segment": "SP",
+      "n_base": 873,
+      "n_current": 1363,
+      "share_base_pct": 37.9,
+      "share_current_pct": 38.4,
+      "rate_base_pct": 7.0,
+      "rate_current_pct": 4.3,
+      "mix_pp": 0.04,
+      "performance_pp": -1.04,
+      "total_pp": -1.01
+     },
+     {
+      "segment": "Other",
+      "n_base": 180,
+      "n_current": 235,
+      "share_base_pct": 7.8,
+      "share_current_pct": 6.6,
+      "rate_base_pct": 12.2,
+      "rate_current_pct": 2.1,
+      "mix_pp": -0.15,
+      "performance_pp": -0.79,
+      "total_pp": -0.81
+     },
+     {
+      "segment": "RJ",
+      "n_base": 325,
+      "n_current": 466,
+      "share_base_pct": 14.1,
+      "share_current_pct": 13.1,
+      "rate_base_pct": 6.5,
+      "rate_current_pct": 2.8,
+      "mix_pp": -0.06,
+      "performance_pp": -0.52,
+      "total_pp": -0.55
+     },
+     {
+      "segment": "BA",
+      "n_base": 84,
+      "n_current": 119,
+      "share_base_pct": 3.6,
+      "share_current_pct": 3.4,
+      "rate_base_pct": 14.3,
+      "rate_current_pct": 3.4,
+      "mix_pp": -0.04,
+      "performance_pp": -0.4,
+      "total_pp": -0.41
+     },
+     {
+      "segment": "SC",
+      "n_base": 100,
+      "n_current": 146,
+      "share_base_pct": 4.3,
+      "share_current_pct": 4.1,
+      "rate_base_pct": 9.0,
+      "rate_current_pct": 4.8,
+      "mix_pp": -0.02,
+      "performance_pp": -0.18,
+      "total_pp": -0.19
+     },
+     {
+      "segment": "CE",
+      "n_base": 42,
+      "n_current": 62,
+      "share_base_pct": 1.8,
+      "share_current_pct": 1.7,
+      "rate_base_pct": 11.9,
+      "rate_current_pct": 1.6,
+      "mix_pp": -0.01,
+      "performance_pp": -0.19,
+      "total_pp": -0.19
+     }
+    ],
+    "flagged_segments": [
+     {
+      "segment": "RJ",
+      "n_base": 325,
+      "n_current": 466,
+      "rate_base_pct": 6.5,
+      "rate_current_pct": 2.8,
+      "change_pp": -3.67,
+      "z": -2.51
+     },
+     {
+      "segment": "BA",
+      "n_base": 84,
+      "n_current": 119,
+      "rate_base_pct": 14.3,
+      "rate_current_pct": 3.4,
+      "change_pp": -10.92,
+      "z": -2.84
+     },
+     {
+      "segment": "CE",
+      "n_base": 42,
+      "n_current": 62,
+      "rate_base_pct": 11.9,
+      "rate_current_pct": 1.6,
+      "change_pp": -10.29,
+      "z": -2.21
+     }
+    ],
+    "flag_rules": {
+     "min_orders_each_month": 30,
+     "min_abs_z": 2.0,
+     "min_change_pp": 3.0
+    },
+    "warnings": []
+   },
+   "queries": [
+    "WITH seg AS (\n    SELECT order_id, customer_state AS segment, 1.0 AS weight FROM fct_orders\n)\nSELECT\n    CASE WHEN f.purchase_month = DATE '2017-04-01' THEN 'base' ELSE 'current' END AS period,\n    coalesce(s.segment, '(no items)')                         AS segment,\n    count(*) FILTER (WHERE f.is_delivered)                             AS n,\n    count(*) FILTER (WHERE f.is_delivered AND f.is_late)                   AS x,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered)         AS w_n,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered AND f.is_late) AS w_x\nFROM fct_orders f\nLEFT JOIN seg s USING (order_id)\nWHERE f.purchase_month IN (DATE '2017-04-01', DATE '2017-05-01')\nGROUP BY ALL",
+    "WITH seg AS (\n    SELECT order_id, customer_state AS segment, 1.0 AS weight FROM fct_orders\n)\nSELECT\n    CASE WHEN f.purchase_month = DATE '2017-04-01' THEN 'base' ELSE 'current' END AS period,\n    coalesce(s.segment, '(no items)')                         AS segment,\n    count(*) FILTER (WHERE f.is_delivered)                             AS n,\n    count(*) FILTER (WHERE f.is_delivered AND f.is_late)                   AS x,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered)         AS w_n,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered AND f.is_late) AS w_x\nFROM fct_orders f\nLEFT JOIN seg s USING (order_id)\nWHERE f.purchase_month IN (DATE '2017-04-01', DATE '2017-05-01')\nGROUP BY ALL"
+   ],
+   "ok": true,
+   "duration_s": 0.05457654100609943
+  }
+ ],
+ "check": {
+  "summary": {
+   "numbers": 29,
+   "supported": 29,
+   "miscited": 0,
+   "uncited": 0,
+   "unsupported": 0,
+   "support_rate": 1.0,
+   "unknown_citations": []
+  },
+  "numbers": [
+   {
+    "text": "6.6",
+    "value": 6.6,
+    "status": "supported",
+    "sentence": "The late-delivery rate decreased from 6.6% to 3.0% [E2], with the change primarily driven by slower deliveries rather than shorter promises.",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "3.0",
+    "value": 3.0,
+    "status": "supported",
+    "sentence": "The late-delivery rate decreased from 6.6% to 3.0% [E2], with the change primarily driven by slower deliveries rather than shorter promises.",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "6.6",
+    "value": 6.6,
+    "status": "supported",
+    "sentence": "- The late rate fell from 6.6% to 3.0%, a decrease of 3.57 percentage points [E2].",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "3.0",
+    "value": 3.0,
+    "status": "supported",
+    "sentence": "- The late rate fell from 6.6% to 3.0%, a decrease of 3.57 percentage points [E2].",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "3.57",
+    "value": 3.57,
+    "status": "supported",
+    "sentence": "- The late rate fell from 6.6% to 3.0%, a decrease of 3.57 percentage points [E2].",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "-4.55",
+    "value": 4.55,
+    "status": "supported",
+    "sentence": "- Delivery effect: -4.55 percentage points, promise effect: +0.98 percentage points [E2].",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "+0.98",
+    "value": 0.98,
+    "status": "supported",
+    "sentence": "- Delivery effect: -4.55 percentage points, promise effect: +0.98 percentage points [E2].",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "-0.08",
+    "value": 0.08,
+    "status": "supported",
+    "sentence": "- Seller_state decomposition: mix effect of -0.08 percentage points, performance effect of -3.62 percentage points [E3].",
+    "cited": [
+     "E3"
+    ]
+   },
+   {
+    "text": "-3.62",
+    "value": 3.62,
+    "status": "supported",
+    "sentence": "- Seller_state decomposition: mix effect of -0.08 percentage points, performance effect of -3.62 percentage points [E3].",
+    "cited": [
+     "E3"
+    ]
+   },
+   {
+    "text": "-0.11",
+    "value": 0.11,
+    "status": "supported",
+    "sentence": "- Customer_state decomposition: mix effect of -0.11 percentage points, performance effect of -3.56 percentage points [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "-3.56",
+    "value": 3.56,
+    "status": "supported",
+    "sentence": "- Customer_state decomposition: mix effect of -0.11 percentage points, performance effect of -3.56 percentage points [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "-0.73",
+    "value": 0.73,
+    "status": "supported",
+    "sentence": "- Top contributors by seller_state: PR (performance effect -0.73), MG (performance effect -0.42), RJ (performance effect -0.28) [E3].",
+    "cited": [
+     "E3"
+    ]
+   },
+   {
+    "text": "-0.42",
+    "value": 0.42,
+    "status": "supported",
+    "sentence": "- Top contributors by seller_state: PR (performance effect -0.73), MG (performance effect -0.42), RJ (performance effect -0.28) [E3].",
+    "cited": [
+     "E3"
+    ]
+   },
+   {
+    "text": "-0.28",
+    "value": 0.28,
+    "status": "supported",
+    "sentence": "- Top contributors by seller_state: PR (performance effect -0.73), MG (performance effect -0.42), RJ (performance effect -0.28) [E3].",
+    "cited": [
+     "E3"
+    ]
+   },
+   {
+    "text": "-0.4",
+    "value": 0.4,
+    "status": "supported",
+    "sentence": "- Top contributors by customer_state: BA (performance effect -0.4), CE (performance effect -0.19), RJ (performance effect -0.55) [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "-0.19",
+    "value": 0.19,
+    "status": "supported",
+    "sentence": "- Top contributors by customer_state: BA (performance effect -0.4), CE (performance effect -0.19), RJ (performance effect -0.55) [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "-0.55",
+    "value": 0.55,
+    "status": "supported",
+    "sentence": "- Top contributors by customer_state: BA (performance effect -0.4), CE (performance effect -0.19), RJ (performance effect -0.55) [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "-9.36",
+    "value": 9.36,
+    "status": "supported",
+    "sentence": "- Flagged segments by seller_state: PR (change -9.36, z-score -3.92), MG (change -4.1, z-score -2.39), RJ (change -7.17, z-score -2.04) [E3].",
+    "cited": [
+     "E3"
+    ]
+   },
+   {
+    "text": "-3.92",
+    "value": 3.92,
+    "status": "supported",
+    "sentence": "- Flagged segments by seller_state: PR (change -9.36, z-score -3.92), MG (change -4.1, z-score -2.39), RJ (change -7.17, z-score -2.04) [E3].",
+    "cited": [
+     "E3"
+    ]
+   },
+   {
+    "text": "-4.1",
+    "value": 4.1,
+    "status": "supported",
+    "sentence": "- Flagged segments by seller_state: PR (change -9.36, z-score -3.92), MG (change -4.1, z-score -2.39), RJ (change -7.17, z-score -2.04) [E3].",
+    "cited": [
+     "E3"
+    ]
+   },
+   {
+    "text": "-2.39",
+    "value": 2.39,
+    "status": "supported",
+    "sentence": "- Flagged segments by seller_state: PR (change -9.36, z-score -3.92), MG (change -4.1, z-score -2.39), RJ (change -7.17, z-score -2.04) [E3].",
+    "cited": [
+     "E3"
+    ]
+   },
+   {
+    "text": "-7.17",
+    "value": 7.17,
+    "status": "supported",
+    "sentence": "- Flagged segments by seller_state: PR (change -9.36, z-score -3.92), MG (change -4.1, z-score -2.39), RJ (change -7.17, z-score -2.04) [E3].",
+    "cited": [
+     "E3"
+    ]
+   },
+   {
+    "text": "-2.04",
+    "value": 2.04,
+    "status": "supported",
+    "sentence": "- Flagged segments by seller_state: PR (change -9.36, z-score -3.92), MG (change -4.1, z-score -2.39), RJ (change -7.17, z-score -2.04) [E3].",
+    "cited": [
+     "E3"
+    ]
+   },
+   {
+    "text": "-10.92",
+    "value": 10.92,
+    "status": "supported",
+    "sentence": "- Flagged segments by customer_state: BA (change -10.92, z-score -2.84), CE (change -10.29, z-score -2.21), RJ (change -3.67, z-score -2.51) [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "-2.84",
+    "value": 2.84,
+    "status": "supported",
+    "sentence": "- Flagged segments by customer_state: BA (change -10.92, z-score -2.84), CE (change -10.29, z-score -2.21), RJ (change -3.67, z-score -2.51) [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "-10.29",
+    "value": 10.29,
+    "status": "supported",
+    "sentence": "- Flagged segments by customer_state: BA (change -10.92, z-score -2.84), CE (change -10.29, z-score -2.21), RJ (change -3.67, z-score -2.51) [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "-2.21",
+    "value": 2.21,
+    "status": "supported",
+    "sentence": "- Flagged segments by customer_state: BA (change -10.92, z-score -2.84), CE (change -10.29, z-score -2.21), RJ (change -3.67, z-score -2.51) [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "-3.67",
+    "value": 3.67,
+    "status": "supported",
+    "sentence": "- Flagged segments by customer_state: BA (change -10.92, z-score -2.84), CE (change -10.29, z-score -2.21), RJ (change -3.67, z-score -2.51) [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "-2.51",
+    "value": 2.51,
+    "status": "supported",
+    "sentence": "- Flagged segments by customer_state: BA (change -10.92, z-score -2.84), CE (change -10.29, z-score -2.21), RJ (change -3.67, z-score -2.51) [E4].",
+    "cited": [
+     "E4"
+    ]
+   }
+  ]
+ },
+ "guard_events": [
+  "report written before required steps; sent back (1 gaps)"
+ ],
+ "n_llm_calls": 6,
+ "n_tool_calls": 4,
+ "n_tool_errors": 0,
+ "input_tokens": 13960,
+ "output_tokens": 1010,
+ "latency_s": 85.73,
+ "stopped_reason": "report"
+}

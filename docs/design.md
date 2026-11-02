@@ -1,6 +1,6 @@
 # Design: AI Business Investigation Analyst
 
-> Status: Stages 1–3 (data model, metrics, dashboard, agent) built and tested. Numbers are from the real
+> Status: all four stages (data model, dashboard, agent, evaluation) built and tested. Numbers are from the real
 > data; see [data_profile.md](data_profile.md) and [decisions.md](decisions.md).
 
 ## 1. Goal
@@ -24,12 +24,12 @@ LLM write arbitrary SQL.
 
 ```mermaid
 flowchart LR
-    subgraph Source["Source (Kaggle, offline)"]
-        CSV[(9 Olist CSVs<br/>data/raw/)]
+    subgraph Source["Source (public mirror, pinned + checksum-verified)"]
+        CSV[(8 Olist CSVs<br/>data/raw/)]
     end
 
     subgraph Pipeline["Data pipeline (batch, rerunnable)"]
-        LOAD[src/load.py<br/>load + build]
+        LOAD[src/load.py<br/>fetch · verify · build]
         SQL[sql/*.sql<br/>staging → marts]
     end
 
@@ -48,8 +48,9 @@ flowchart LR
         REP[src/report.py<br/>citation checker]
     end
 
-    UI[app/streamlit_app.py<br/>Dashboard · Investigate · Eval]
-    EVAL[eval/run_eval.py<br/>questions + scoring]
+    UI[app/<br/>Dashboard · Investigate · Evaluation]
+    EVAL[src/evaluate.py<br/>25 questions · scoring · baseline]
+    KEY[src/answer_key.py<br/>independent SQL on staging]
 
     CSV --> LOAD --> SQL --> DB
     DB -->|read-only| MET
@@ -62,7 +63,8 @@ flowchart LR
     MET --> UI
     REP --> UI
     LOOP --> EVAL
-    MET --> EVAL
+    DB -->|read-only| KEY --> EVAL
+    EVAL --> UI
 ```
 
 **Key design rule:** the dashboard, the agent's tools and the evaluation all
@@ -309,40 +311,53 @@ classDiagram
 | Tab | Contents |
 |---|---|
 | **Dashboard** | KPI tiles (current vs base month), monthly trend, breakdown table with anomaly flags, filters for period / seller state / customer state / category. Banner: *Simulation: historical replay*. |
-| **Investigate** | Question box, model selector (Ollama / replay / optional Claude), live tool-call timeline, report with clickable `[E#]` links that expand the SQL and its result. |
-| **Evaluation** | The latest scorecard: agent vs baseline, accuracy, citation support, tool failures, latency. |
+| **Investigate** | Replay a saved run or run live on the local model; live tool-call timeline; report with `[E#]` badges, unsupported numbers in red, and evidence panels showing each tool call, its result and its SQL. |
+| **Evaluation** | Agent vs baseline: accuracy by fact, traceable numbers, tool failures, time; per-question table and both answers side by side. |
 
 ## 8. Evaluation design
 
-- `eval/questions.json`: 20–30 questions, each with a hand-written answer SQL
-  in `eval/answers/*.sql`. Includes missing-data cases (incomplete months),
-  insufficient-evidence cases (tiny segments) and mix-vs-performance cases.
-- **Systems compared:** (a) the agent; (b) a baseline: the same model given
-  dashboard KPIs as text, with no tools.
-- **Metrics:**
-  - numerical accuracy: within tolerance of the SQL answer
-  - evidence support: % of numbers that passed the citation check
-  - correct "insufficient evidence" calls
-  - tool errors
-  - response time
-  - cost ($0 locally; tokens are logged)
-- Output: `eval/results/<date>.json` plus a Markdown summary for the README.
+Results: [evaluation.md](evaluation.md) (generated) and the Evaluation page.
+
+- **Questions** (`src/eval_questions.py`): 25 month pairs, all asked with the real
+  business wording ("Why did the late-delivery rate *increase*…"): 9 rises, 4 falls
+  (wrong premise), 4 flat months (noise), 2 year-over-year, 4 incomplete months,
+  2 months with no data.
+- **Answer key** (`src/answer_key.py`): a second implementation of every definition,
+  written directly against the staging tables (not `fct_orders`, not `metrics.py`).
+  `tests/test_evaluation.py` checks it agrees with the agent's tools on every
+  question, so a bug in either shows up as a disagreement. Each query can be pasted
+  into the DuckDB shell to verify an answer by hand.
+- **Systems compared**, same model (`qwen3:8b`): (a) the agent; (b) a baseline
+  given the dashboard's KPI tiles for both months and each month's completeness
+  flag, no tools.
+- **Scoring** (`src/evaluate.py`, deterministic, no LLM judge):
+  - fact accuracy: up to 10 facts per question (rates, change, direction, noise
+    verdict, delivery vs promise effects, which effect is larger, top customer and
+    seller state; or, for incomplete months, abstaining and reporting no rates),
+    each checked by a written text rule
+  - evidence: share of the report's numbers that match data the system was given;
+    for the agent, also whether each number cites the right evidence item
+  - tool failures and runs that ended without a report
+  - time per question, tokens, cost ($0 locally)
+- **Re-scoring needs no model:** runs are saved in `eval/runs/`; `score` reads them.
 
 ## 9. Repository layout
 
 ```
 ai-investigation-analyst/
-├── app/streamlit_app.py
-├── data/raw/                # Kaggle CSVs (git-ignored)
-├── data/processed/          # olist.duckdb (git-ignored, rebuilt by load.py)
-├── docs/                    # plan, decisions, design, case study, demo script
-├── eval/                    # questions, answer SQL, runner, results
-├── sql/                     # 01_staging.sql … 04_marts.sql
+├── app/
+│   ├── Dashboard.py               # main page
+│   └── pages/                     # 2_Investigate.py, 3_Evaluation.py
+├── data/raw/  data/processed/     # fetched CSVs and olist.duckdb (git-ignored, rebuilt by load.py)
+├── docs/                          # plan, decisions, design, evaluation, case study, demo script
+├── eval/                          # saved runs (agent, baseline) and results.json
+├── replays/                       # saved agent runs for the Investigate page
+├── sql/                           # 01_staging.sql, 02_intermediate.sql, 03_marts.sql
 ├── src/
-│   ├── load.py   db.py   metrics.py   profile_data.py   investigate_feb_mar_2018.py
-│   ├── tools.py  llm.py  agent.py     report.py
-│   └── config.py            # thresholds, model, paths
-└── tests/                   # data integrity, metrics, decomposition, citation checker
+│   ├── config.py  load.py  db.py  metrics.py  profile_data.py  investigate_feb_mar_2018.py
+│   ├── tools.py   llm.py   agent.py   report.py
+│   └── eval_questions.py  answer_key.py  evaluate.py
+└── tests/                         # data model, metrics, agent, evaluation
 ```
 
 ## 10. Risks and mitigations

@@ -1,0 +1,29 @@
+{
+ "id": "q22",
+ "model": "qwen3:8b",
+ "prompt": "Why did the late-delivery rate increase from 2018-08 to 2018-09? Which sellers, regions or product categories contributed most, and what should we investigate first?\n\nDashboard numbers:\nBase month 2018-08: complete month (enough orders, few still open) = yes; orders = 6512; delivered orders = 6351; late-delivery rate % = 6.19; overdue undelivered orders = 70; average delivery time (days) = 7.7; average promised delivery window (days) = 15.8; average order value (R$) = 155.5; low-review rate % = 10.93; cancellation rate % = 1.4\nCurrent month 2018-09: complete month (enough orders, few still open) = no; orders = 16; delivered orders = 0; late-delivery rate % = n/a; overdue undelivered orders = 1; average delivery time (days) = n/a; average promised delivery window (days) = n/a; average order value (R$) = 166.46; low-review rate % = 80.0; cancellation rate % = 93.75\nChange shown on the tiles: orders -6496; cancellation rate (pp) +92.4\nDashboard warning: fewer than 30 delivered orders in one month; rates are too noisy to act on.",
+ "input_values": [
+  6512.0,
+  6351.0,
+  6.19,
+  70.0,
+  7.7,
+  15.8,
+  155.5,
+  10.93,
+  1.4,
+  16.0,
+  0.0,
+  1.0,
+  166.46,
+  80.0,
+  93.75,
+  -6496.0,
+  92.4,
+  30.0
+ ],
+ "report": "## Answer\nThe late-delivery rate increase from 2018-08 to 2018-09 cannot be reliably assessed due to the extremely low number of delivered orders in September. The data is too noisy to draw meaningful conclusions.\n\n## Findings\n- **Base month (2018-08):** 6.19% late-delivery rate, 6512 orders, 6351 delivered, 70 overdue undelivered orders.\n- **Current month (2018-09):** 0 delivered orders, 16 total orders, 1 overdue undelivered order, 93.75% cancellation rate, 80% low-review rate.\n- **Change:** Orders decreased by 6496, cancellation rate increased by 92.4 percentage points.\n\n## Investigate first\n- Check if the 16 orders in September were from a specific seller, region, or product category to identify potential patterns.\n- Investigate the cause of the extremely high cancellation rate and low-review rate in September, as these may be linked to the delivery issues.\n\n## Limitations\n- The current month (2018-09) has fewer than 30 delivered orders, making the late-delivery rate unreliable.\n- The dashboard warns that rates are too noisy to act on in months with such low order volumes.\n- No data is available on the specific sellers, regions, or product categories involved in the 16 orders in September.",
+ "input_tokens": 490,
+ "output_tokens": 320,
+ "latency_s": 43.67
+}

@@ -1,0 +1,730 @@
+{
+ "question": "Why did the late-delivery rate increase from 2017-02 to 2017-03? Which sellers, regions or product categories contributed most, and what should we investigate first?",
+ "base_month": "2017-02",
+ "current_month": "2017-03",
+ "provider": "ollama",
+ "model": "qwen3:8b",
+ "started_at": "2026-11-02T12:19:45",
+ "report": "## Answer\nThe late-delivery rate increased from 3.0% to 4.6%, a change of 1.59 percentage points [E2]. This increase is driven by both mix effects and performance issues, with customer states like \"Other\" and \"SC\" contributing significantly.\n\n## Findings\n- The late rate rose from 3.0% to 4.6% [E2].\n- The change of 1.59 percentage points is beyond noise, with a z-score of 2.59 [E2].\n- Delivery effect: 0.04 percentage points, promise effect: 1.55 percentage points [E2].\n- In seller_state breakdown, the performance effect contributed 1.56 percentage points, with no mix effect [E3].\n- In customer_state breakdown, the mix effect contributed 0.04 percentage points and the performance effect contributed 1.46 percentage points [E4].\n- Top contributors include \"Other\" (total effect: 1.15), \"SC\" (total effect: 0.56), and \"MG\" (total effect: 0.19).\n- \"SC\" is flagged for a significant performance effect, with the late rate increasing from 5.3% to 18.3% [E4].\n\n## Investigate first\n1. Focus on customer_state \"Other\" and \"SC\" due to their significant contributions to the late rate increase.\n2. Investigate the cause of the performance decline in \"SC\", where the late rate increased from 5.3% to 18.3% [E4].\n3. Check for any anomalies or external factors affecting \"Other\" and \"SC\" during this period.\n\n## Limitations\n- The analysis is limited to the provided data and does not include external factors.\n- The breakdown is based on seller_state and customer_state and does not account for other potential dimensions.",
+ "responses": [
+  {
+   "text": "",
+   "tool_calls": [
+    {
+     "name": "check_data_quality",
+     "arguments": {
+      "months": [
+       "2017-02",
+       "2017-03"
+      ]
+     },
+     "id": "call_587991e1"
+    }
+   ],
+   "input_tokens": 1217,
+   "output_tokens": 37,
+   "latency_s": 7.591475500026718,
+   "raw": null
+  },
+  {
+   "text": "",
+   "tool_calls": [
+    {
+     "name": "compare_periods",
+     "arguments": {
+      "current_month": "2017-03",
+      "metric": "late_rate",
+      "base_month": "2017-02"
+     },
+     "id": "call_3c7905fe"
+    }
+   ],
+   "input_tokens": 1483,
+   "output_tokens": 42,
+   "latency_s": 4.2967519579979125,
+   "raw": null
+  },
+  {
+   "text": "",
+   "tool_calls": [
+    {
+     "name": "break_down_metric",
+     "arguments": {
+      "metric": "late_rate",
+      "dimension": "seller_state",
+      "base_month": "2017-02",
+      "current_month": "2017-03"
+     },
+     "id": "call_e61c40eb"
+    }
+   ],
+   "input_tokens": 1804,
+   "output_tokens": 48,
+   "latency_s": 4.800915333995363,
+   "raw": null
+  },
+  {
+   "text": "## Answer\nThe late-delivery rate increased from 3.0% to 4.6%, a change of 1.59 percentage points [E2]. This increase is primarily due to performance issues across seller states, with some segments showing significant deterioration.\n\n## Findings\n- The late rate rose from 3.0% to 4.6% [E2].\n- The change of 1.59 percentage points is beyond noise, with a z-score of 2.59 [E2].\n- Delivery effect: 0.04 percentage points, promise effect: 1.55 percentage points [E2].\n- In seller_state breakdown, the performance effect contributed 1.56 percentage points, with no mix effect [E3].\n- Top contributors include SP (performance effect: 1.31), SC (performance effect: 0.3), and RS (performance effect: 0.04).\n\n## Investigate first\n1. Focus on seller states with significant performance effects, particularly SP and SC.\n2. Investigate the cause of the performance decline in SC, where the late rate increased from 1.3% to 7.7% [E3].\n3. Check for any anomalies or external factors affecting SP and SC during this period.\n\n## Limitations\n- The analysis is limited to the provided data and does not include external factors.\n- The breakdown is based on seller_state and does not account for other potential dimensions.",
+   "tool_calls": [],
+   "input_tokens": 2459,
+   "output_tokens": 307,
+   "latency_s": 20.20815599997877,
+   "raw": null
+  },
+  {
+   "text": "",
+   "tool_calls": [
+    {
+     "name": "break_down_metric",
+     "arguments": {
+      "base_month": "2017-02",
+      "current_month": "2017-03",
+      "dimension": "customer_state",
+      "metric": "late_rate"
+     },
+     "id": "call_8a4a501c"
+    }
+   ],
+   "input_tokens": 2818,
+   "output_tokens": 48,
+   "latency_s": 12.457797250011936,
+   "raw": null
+  },
+  {
+   "text": "## Answer\nThe late-delivery rate increased from 3.0% to 4.6%, a change of 1.59 percentage points [E2]. This increase is driven by both mix effects and performance issues, with customer states like \"Other\" and \"SC\" contributing significantly.\n\n## Findings\n- The late rate rose from 3.0% to 4.6% [E2].\n- The change of 1.59 percentage points is beyond noise, with a z-score of 2.59 [E2].\n- Delivery effect: 0.04 percentage points, promise effect: 1.55 percentage points [E2].\n- In seller_state breakdown, the performance effect contributed 1.56 percentage points, with no mix effect [E3].\n- In customer_state breakdown, the mix effect contributed 0.04 percentage points and the performance effect contributed 1.46 percentage points [E4].\n- Top contributors include \"Other\" (total effect: 1.15), \"SC\" (total effect: 0.56), and \"MG\" (total effect: 0.19).\n- \"SC\" is flagged for a significant performance effect, with the late rate increasing from 5.3% to 18.3% [E4].\n\n## Investigate first\n1. Focus on customer_state \"Other\" and \"SC\" due to their significant contributions to the late rate increase.\n2. Investigate the cause of the performance decline in \"SC\", where the late rate increased from 5.3% to 18.3% [E4].\n3. Check for any anomalies or external factors affecting \"Other\" and \"SC\" during this period.\n\n## Limitations\n- The analysis is limited to the provided data and does not include external factors.\n- The breakdown is based on seller_state and customer_state and does not account for other potential dimensions.",
+   "tool_calls": [],
+   "input_tokens": 3536,
+   "output_tokens": 405,
+   "latency_s": 26.248750124999788,
+   "raw": null
+  }
+ ],
+ "transcript": [
+  {
+   "type": "tool",
+   "tool": "check_data_quality",
+   "args": {
+    "months": [
+     "2017-02",
+     "2017-03"
+    ]
+   },
+   "evidence_id": "E1",
+   "ok": true,
+   "error": null,
+   "note": null
+  },
+  {
+   "type": "tool",
+   "tool": "compare_periods",
+   "args": {
+    "current_month": "2017-03",
+    "metric": "late_rate",
+    "base_month": "2017-02"
+   },
+   "evidence_id": "E2",
+   "ok": true,
+   "error": null,
+   "note": null
+  },
+  {
+   "type": "tool",
+   "tool": "break_down_metric",
+   "args": {
+    "metric": "late_rate",
+    "dimension": "seller_state",
+    "base_month": "2017-02",
+    "current_month": "2017-03"
+   },
+   "evidence_id": "E3",
+   "ok": true,
+   "error": null,
+   "note": null
+  },
+  {
+   "type": "guard",
+   "message": "Before writing the report, complete these steps:\n- call break_down_metric for late_rate by 1 more dimension(s); done so far: ['seller_state']\nThen write the full report again using all the evidence.",
+   "draft": "## Answer\nThe late-delivery rate increased from 3.0% to 4.6%, a change of 1.59 percentage points [E2]. This increase is primarily due to performance issues across seller states, with some segments showing significant deterioration.\n\n## Findings\n- The late rate rose from 3.0% to 4.6% [E2].\n- The change of 1.59 percentage points is beyond noise, with a z-score of 2.59 [E2].\n- Delivery effect: 0.04 percentage points, promise effect: 1.55 percentage points [E2].\n- In seller_state breakdown, the performance effect contributed 1.56 percentage points, with no mix effect [E3].\n- Top contributors include SP (performance effect: 1.31), SC (performance effect: 0.3), and RS (performance effect: 0.04).\n\n## Investigate first\n1. Focus on seller states with significant performance effects, particularly SP and SC.\n2. Investigate the cause of the performance decline in SC, where the late rate increased from 1.3% to 7.7% [E3].\n3. Check for any anomalies or external factors affecting SP and SC during this period.\n\n## Limitations\n- The analysis is limited to the provided data and does not include external factors.\n- The breakdown is based on seller_state and does not account for other potential dimensions."
+  },
+  {
+   "type": "tool",
+   "tool": "break_down_metric",
+   "args": {
+    "base_month": "2017-02",
+    "current_month": "2017-03",
+    "dimension": "customer_state",
+    "metric": "late_rate"
+   },
+   "evidence_id": "E4",
+   "ok": true,
+   "error": null,
+   "note": null
+  }
+ ],
+ "evidence": [
+  {
+   "id": "E1",
+   "tool": "check_data_quality",
+   "args": {
+    "months": [
+     "2017-02",
+     "2017-03"
+    ]
+   },
+   "output": {
+    "evidence_id": "E1",
+    "months": [
+     {
+      "month": "2017-02",
+      "complete": true,
+      "orders": 1780,
+      "delivered": 1653,
+      "open_orders_pct": 3.7,
+      "estimates_after_data_cutoff_pct": 0.0,
+      "overdue_undelivered": 65,
+      "timestamp_anomalies": 2,
+      "orders_without_items": 47,
+      "payment_mismatches": 11
+     },
+     {
+      "month": "2017-03",
+      "complete": true,
+      "orders": 2682,
+      "delivered": 2546,
+      "open_orders_pct": 2.6,
+      "estimates_after_data_cutoff_pct": 0.0,
+      "overdue_undelivered": 71,
+      "timestamp_anomalies": 1,
+      "orders_without_items": 41,
+      "payment_mismatches": 5
+     }
+    ],
+    "complete_month_window": "2017-01 to 2018-08",
+    "completeness_rule": {
+     "min_orders": 500,
+     "max_open_orders_pct": 5,
+     "max_estimates_after_cutoff_pct": 1
+    }
+   },
+   "queries": [
+    "SELECT\n    m.purchase_month,\n    m.is_complete,\n    m.n_orders,\n    m.n_delivered,\n    m.share_open,\n    m.share_estimate_after_cutoff,\n    count(*) FILTER (WHERE f.dq_delivered_without_date)   AS delivered_without_date,\n    count(*) FILTER (WHERE f.dq_carrier_before_purchase)  AS carrier_before_purchase,\n    count(*) FILTER (WHERE f.dq_delivered_before_carrier) AS delivered_before_carrier,\n    count(*) FILTER (WHERE f.dq_no_items)                 AS no_items,\n    count(*) FILTER (WHERE f.dq_payment_mismatch)         AS payment_mismatch,\n    count(*) FILTER (WHERE f.is_overdue_undelivered)      AS overdue_undelivered\nFROM dim_month m\nJOIN fct_orders f USING (purchase_month)\nWHERE m.purchase_month IN (DATE '2017-02-01', DATE '2017-03-01')\nGROUP BY ALL\nORDER BY m.purchase_month"
+   ],
+   "ok": true,
+   "duration_s": 0.00686316701467149
+  },
+  {
+   "id": "E2",
+   "tool": "compare_periods",
+   "args": {
+    "current_month": "2017-03",
+    "metric": "late_rate",
+    "base_month": "2017-02"
+   },
+   "output": {
+    "evidence_id": "E2",
+    "metric": "late_rate",
+    "filters": {},
+    "base_month": "2017-02",
+    "current_month": "2017-03",
+    "base": {
+     "rate_pct": 3.0,
+     "count": 49,
+     "out_of": 1653,
+     "denominator": "delivered orders"
+    },
+    "current": {
+     "rate_pct": 4.6,
+     "count": 116,
+     "out_of": 2546,
+     "denominator": "delivered orders"
+    },
+    "change_pp": 1.59,
+    "z": 2.59,
+    "beyond_noise": true,
+    "delivery_vs_promise": {
+     "delivery_effect_pp": 0.04,
+     "promise_effect_pp": 1.55,
+     "explanation": "delivery_effect = change in late rate if both months were judged against the base month's median promise per customer state; promise_effect = the rest, caused by promised delivery windows changing. They add up to change_pp.",
+     "median_promised_days": {
+      "base": 31.0,
+      "current": 23.0
+     },
+     "median_delivery_days": {
+      "base": 11.0,
+      "current": 10.0
+     },
+     "avg_promised_days": {
+      "base": 32.5,
+      "current": 25.4
+     },
+     "avg_delivery_days": {
+      "base": 13.3,
+      "current": 13.0
+     }
+    },
+    "warnings": []
+   },
+   "queries": [
+    "SELECT\n    f.purchase_month,\n    count(*)                                          AS orders,\n    count(*) FILTER (WHERE f.is_delivered)            AS delivered,\n    count(*) FILTER (WHERE f.is_late)                 AS late_orders,\n    avg(CAST(f.is_late AS DOUBLE))                    AS late_rate,\n    avg(f.days_late) FILTER (WHERE f.is_late)         AS avg_days_late,\n    avg(f.delivery_days)                              AS avg_delivery_days,\n    avg(f.promised_days) FILTER (WHERE f.is_delivered) AS avg_promised_days,\n    count(*) FILTER (WHERE f.is_overdue_undelivered)  AS overdue_undelivered,\n    avg(f.order_value)                                AS aov,\n    count(*) FILTER (WHERE f.has_review)              AS reviewed,\n    count(*) FILTER (WHERE f.is_low_review)           AS low_review_orders,\n    avg(CAST(f.is_low_review AS DOUBLE))              AS low_review_rate,\n    count(*) FILTER (WHERE f.is_canceled)             AS canceled_orders,\n    avg(CAST(f.is_canceled AS DOUBLE))                AS cancellation_rate\nFROM fct_orders f\nWHERE f.purchase_month IN (DATE '2017-02-01', DATE '2017-03-01')\nGROUP BY f.purchase_month\nORDER BY f.purchase_month",
+    "WITH base_promise AS (\n    -- The base month's typical promise per destination state.\n    SELECT f.customer_state, median(f.promised_days) AS yardstick_days\n    FROM fct_orders f\n    WHERE f.is_delivered AND f.purchase_month IN (DATE '2017-02-01')\n    GROUP BY 1\n), overall AS (\n    SELECT median(f.promised_days) AS yardstick_days\n    FROM fct_orders f\n    WHERE f.is_delivered AND f.purchase_month IN (DATE '2017-02-01')\n)\nSELECT\n    CASE WHEN f.purchase_month = DATE '2017-02-01' THEN 'base' ELSE 'current' END AS period,\n    count(*)                                                          AS delivered,\n    avg(CAST(f.is_late AS DOUBLE))                                    AS late_rate,\n    avg(CAST(f.delivery_days > coalesce(bp.yardstick_days, o.yardstick_days) AS DOUBLE)) AS late_rate_same_yardstick,\n    avg(f.delivery_days)                                              AS avg_delivery_days,\n    avg(f.promised_days)                                              AS avg_promised_days,\n    median(f.delivery_days)                                           AS median_delivery_days,\n    median(f.promised_days)                                           AS median_promised_days\nFROM fct_orders f\nCROSS JOIN overall o\nLEFT JOIN base_promise bp USING (customer_state)\nWHERE f.is_delivered AND f.purchase_month IN (DATE '2017-02-01', DATE '2017-03-01')\nGROUP BY 1\nORDER BY 1"
+   ],
+   "ok": true,
+   "duration_s": 0.01792133302660659
+  },
+  {
+   "id": "E3",
+   "tool": "break_down_metric",
+   "args": {
+    "metric": "late_rate",
+    "dimension": "seller_state",
+    "base_month": "2017-02",
+    "current_month": "2017-03"
+   },
+   "output": {
+    "evidence_id": "E3",
+    "metric": "late_rate",
+    "dimension": "seller_state",
+    "filters": {},
+    "base_month": "2017-02",
+    "current_month": "2017-03",
+    "overall": {
+     "base_pct": 3.0,
+     "current_pct": 4.6,
+     "change_pp": 1.59
+    },
+    "decomposition": {
+     "mix_pp": -0.0,
+     "performance_pp": 1.56,
+     "interaction_pp": 0.03
+    },
+    "segments_total": 16,
+    "segments_with_enough_orders": 6,
+    "segments_pooled_into_other": 10,
+    "top_contributors": [
+     {
+      "segment": "SP",
+      "n_base": 1087,
+      "n_current": 1639,
+      "share_base_pct": 65.6,
+      "share_current_pct": 64.4,
+      "rate_base_pct": 2.8,
+      "rate_current_pct": 4.8,
+      "mix_pp": -0.03,
+      "performance_pp": 1.31,
+      "total_pp": 1.25
+     },
+     {
+      "segment": "SC",
+      "n_base": 77,
+      "n_current": 130,
+      "share_base_pct": 4.7,
+      "share_current_pct": 5.1,
+      "rate_base_pct": 1.3,
+      "rate_current_pct": 7.7,
+      "mix_pp": 0.01,
+      "performance_pp": 0.3,
+      "total_pp": 0.33
+     },
+     {
+      "segment": "RJ",
+      "n_base": 63,
+      "n_current": 92,
+      "share_base_pct": 3.8,
+      "share_current_pct": 3.6,
+      "rate_base_pct": 4.8,
+      "rate_current_pct": 2.2,
+      "mix_pp": -0.01,
+      "performance_pp": -0.1,
+      "total_pp": -0.1
+     },
+     {
+      "segment": "RS",
+      "n_base": 36,
+      "n_current": 84,
+      "share_base_pct": 2.2,
+      "share_current_pct": 3.3,
+      "rate_base_pct": 2.8,
+      "rate_current_pct": 4.8,
+      "mix_pp": 0.03,
+      "performance_pp": 0.04,
+      "total_pp": 0.1
+     },
+     {
+      "segment": "PR",
+      "n_base": 135,
+      "n_current": 198,
+      "share_base_pct": 8.1,
+      "share_current_pct": 7.8,
+      "rate_base_pct": 2.2,
+      "rate_current_pct": 3.5,
+      "mix_pp": -0.01,
+      "performance_pp": 0.1,
+      "total_pp": 0.09
+     },
+     {
+      "segment": "Other",
+      "n_base": 51,
+      "n_current": 73,
+      "share_base_pct": 3.1,
+      "share_current_pct": 2.9,
+      "rate_base_pct": 3.9,
+      "rate_current_pct": 1.4,
+      "mix_pp": -0.01,
+      "performance_pp": -0.08,
+      "total_pp": -0.08
+     }
+    ],
+    "flagged_segments": [],
+    "flag_rules": {
+     "min_orders_each_month": 30,
+     "min_abs_z": 2.0,
+     "min_change_pp": 3.0
+    },
+    "warnings": []
+   },
+   "queries": [
+    "WITH seg AS (\n    SELECT order_id, segment, 1.0 / count(*) OVER (PARTITION BY order_id) AS weight\n        FROM (SELECT DISTINCT order_id, seller_state AS segment FROM bridge_order_segment)\n)\nSELECT\n    CASE WHEN f.purchase_month = DATE '2017-02-01' THEN 'base' ELSE 'current' END AS period,\n    coalesce(s.segment, '(no items)')                         AS segment,\n    count(*) FILTER (WHERE f.is_delivered)                             AS n,\n    count(*) FILTER (WHERE f.is_delivered AND f.is_late)                   AS x,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered)         AS w_n,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered AND f.is_late) AS w_x\nFROM fct_orders f\nLEFT JOIN seg s USING (order_id)\nWHERE f.purchase_month IN (DATE '2017-02-01', DATE '2017-03-01')\nGROUP BY ALL",
+    "WITH seg AS (\n    SELECT order_id, segment, 1.0 / count(*) OVER (PARTITION BY order_id) AS weight\n        FROM (SELECT DISTINCT order_id, seller_state AS segment FROM bridge_order_segment)\n)\nSELECT\n    CASE WHEN f.purchase_month = DATE '2017-02-01' THEN 'base' ELSE 'current' END AS period,\n    coalesce(s.segment, '(no items)')                         AS segment,\n    count(*) FILTER (WHERE f.is_delivered)                             AS n,\n    count(*) FILTER (WHERE f.is_delivered AND f.is_late)                   AS x,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered)         AS w_n,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered AND f.is_late) AS w_x\nFROM fct_orders f\nLEFT JOIN seg s USING (order_id)\nWHERE f.purchase_month IN (DATE '2017-02-01', DATE '2017-03-01')\nGROUP BY ALL"
+   ],
+   "ok": true,
+   "duration_s": 0.088273958011996
+  },
+  {
+   "id": "E4",
+   "tool": "break_down_metric",
+   "args": {
+    "base_month": "2017-02",
+    "current_month": "2017-03",
+    "dimension": "customer_state",
+    "metric": "late_rate"
+   },
+   "output": {
+    "evidence_id": "E4",
+    "metric": "late_rate",
+    "dimension": "customer_state",
+    "filters": {},
+    "base_month": "2017-02",
+    "current_month": "2017-03",
+    "overall": {
+     "base_pct": 3.0,
+     "current_pct": 4.6,
+     "change_pp": 1.59
+    },
+    "decomposition": {
+     "mix_pp": 0.04,
+     "performance_pp": 1.46,
+     "interaction_pp": 0.1
+    },
+    "segments_total": 27,
+    "segments_with_enough_orders": 8,
+    "segments_pooled_into_other": 19,
+    "top_contributors": [
+     {
+      "segment": "Other",
+      "n_base": 225,
+      "n_current": 364,
+      "share_base_pct": 13.6,
+      "share_current_pct": 14.3,
+      "rate_base_pct": 2.2,
+      "rate_current_pct": 10.2,
+      "mix_pp": 0.02,
+      "performance_pp": 1.08,
+      "total_pp": 1.15
+     },
+     {
+      "segment": "SC",
+      "n_base": 57,
+      "n_current": 104,
+      "share_base_pct": 3.4,
+      "share_current_pct": 4.1,
+      "rate_base_pct": 5.3,
+      "rate_current_pct": 18.3,
+      "mix_pp": 0.03,
+      "performance_pp": 0.45,
+      "total_pp": 0.56
+     },
+     {
+      "segment": "SP",
+      "n_base": 601,
+      "n_current": 966,
+      "share_base_pct": 36.4,
+      "share_current_pct": 37.9,
+      "rate_base_pct": 3.0,
+      "rate_current_pct": 2.3,
+      "mix_pp": 0.05,
+      "performance_pp": -0.26,
+      "total_pp": -0.22
+     },
+     {
+      "segment": "MG",
+      "n_base": 241,
+      "n_current": 343,
+      "share_base_pct": 14.6,
+      "share_current_pct": 13.5,
+      "rate_base_pct": 0.8,
+      "rate_current_pct": 2.3,
+      "mix_pp": -0.01,
+      "performance_pp": 0.22,
+      "total_pp": 0.19
+     },
+     {
+      "segment": "RJ",
+      "n_base": 230,
+      "n_current": 370,
+      "share_base_pct": 13.9,
+      "share_current_pct": 14.5,
+      "rate_base_pct": 3.5,
+      "rate_current_pct": 4.3,
+      "mix_pp": 0.02,
+      "performance_pp": 0.12,
+      "total_pp": 0.14
+     },
+     {
+      "segment": "ES",
+      "n_base": 31,
+      "n_current": 47,
+      "share_base_pct": 1.9,
+      "share_current_pct": 1.8,
+      "rate_base_pct": 6.5,
+      "rate_current_pct": 0.0,
+      "mix_pp": -0.0,
+      "performance_pp": -0.12,
+      "total_pp": -0.12
+     }
+    ],
+    "flagged_segments": [
+     {
+      "segment": "SC",
+      "n_base": 57,
+      "n_current": 104,
+      "rate_base_pct": 5.3,
+      "rate_current_pct": 18.3,
+      "change_pp": 13.01,
+      "z": 2.3
+     }
+    ],
+    "flag_rules": {
+     "min_orders_each_month": 30,
+     "min_abs_z": 2.0,
+     "min_change_pp": 3.0
+    },
+    "warnings": []
+   },
+   "queries": [
+    "WITH seg AS (\n    SELECT order_id, customer_state AS segment, 1.0 AS weight FROM fct_orders\n)\nSELECT\n    CASE WHEN f.purchase_month = DATE '2017-02-01' THEN 'base' ELSE 'current' END AS period,\n    coalesce(s.segment, '(no items)')                         AS segment,\n    count(*) FILTER (WHERE f.is_delivered)                             AS n,\n    count(*) FILTER (WHERE f.is_delivered AND f.is_late)                   AS x,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered)         AS w_n,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered AND f.is_late) AS w_x\nFROM fct_orders f\nLEFT JOIN seg s USING (order_id)\nWHERE f.purchase_month IN (DATE '2017-02-01', DATE '2017-03-01')\nGROUP BY ALL",
+    "WITH seg AS (\n    SELECT order_id, customer_state AS segment, 1.0 AS weight FROM fct_orders\n)\nSELECT\n    CASE WHEN f.purchase_month = DATE '2017-02-01' THEN 'base' ELSE 'current' END AS period,\n    coalesce(s.segment, '(no items)')                         AS segment,\n    count(*) FILTER (WHERE f.is_delivered)                             AS n,\n    count(*) FILTER (WHERE f.is_delivered AND f.is_late)                   AS x,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered)         AS w_n,\n    sum(coalesce(s.weight, 1.0)) FILTER (WHERE f.is_delivered AND f.is_late) AS w_x\nFROM fct_orders f\nLEFT JOIN seg s USING (order_id)\nWHERE f.purchase_month IN (DATE '2017-02-01', DATE '2017-03-01')\nGROUP BY ALL"
+   ],
+   "ok": true,
+   "duration_s": 0.05344600000535138
+  }
+ ],
+ "check": {
+  "summary": {
+   "numbers": 19,
+   "supported": 19,
+   "miscited": 0,
+   "uncited": 0,
+   "unsupported": 0,
+   "support_rate": 1.0,
+   "unknown_citations": []
+  },
+  "numbers": [
+   {
+    "text": "3.0",
+    "value": 3.0,
+    "status": "supported",
+    "sentence": "The late-delivery rate increased from 3.0% to 4.6%, a change of 1.59 percentage points [E2].",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "4.6",
+    "value": 4.6,
+    "status": "supported",
+    "sentence": "The late-delivery rate increased from 3.0% to 4.6%, a change of 1.59 percentage points [E2].",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "1.59",
+    "value": 1.59,
+    "status": "supported",
+    "sentence": "The late-delivery rate increased from 3.0% to 4.6%, a change of 1.59 percentage points [E2].",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "3.0",
+    "value": 3.0,
+    "status": "supported",
+    "sentence": "- The late rate rose from 3.0% to 4.6% [E2].",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "4.6",
+    "value": 4.6,
+    "status": "supported",
+    "sentence": "- The late rate rose from 3.0% to 4.6% [E2].",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "1.59",
+    "value": 1.59,
+    "status": "supported",
+    "sentence": "- The change of 1.59 percentage points is beyond noise, with a z-score of 2.59 [E2].",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "2.59",
+    "value": 2.59,
+    "status": "supported",
+    "sentence": "- The change of 1.59 percentage points is beyond noise, with a z-score of 2.59 [E2].",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "0.04",
+    "value": 0.04,
+    "status": "supported",
+    "sentence": "- Delivery effect: 0.04 percentage points, promise effect: 1.55 percentage points [E2].",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "1.55",
+    "value": 1.55,
+    "status": "supported",
+    "sentence": "- Delivery effect: 0.04 percentage points, promise effect: 1.55 percentage points [E2].",
+    "cited": [
+     "E2"
+    ]
+   },
+   {
+    "text": "1.56",
+    "value": 1.56,
+    "status": "supported",
+    "sentence": "- In seller_state breakdown, the performance effect contributed 1.56 percentage points, with no mix effect [E3].",
+    "cited": [
+     "E3"
+    ]
+   },
+   {
+    "text": "0.04",
+    "value": 0.04,
+    "status": "supported",
+    "sentence": "- In customer_state breakdown, the mix effect contributed 0.04 percentage points and the performance effect contributed 1.46 percentage points [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "1.46",
+    "value": 1.46,
+    "status": "supported",
+    "sentence": "- In customer_state breakdown, the mix effect contributed 0.04 percentage points and the performance effect contributed 1.46 percentage points [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "1.15",
+    "value": 1.15,
+    "status": "supported",
+    "sentence": "- Top contributors include \"Other\" (total effect: 1.15), \"SC\" (total effect: 0.56), and \"MG\" (total effect: 0.19).",
+    "cited": [
+     "E2",
+     "E2",
+     "E2",
+     "E3",
+     "E4",
+     "E4"
+    ]
+   },
+   {
+    "text": "0.56",
+    "value": 0.56,
+    "status": "supported",
+    "sentence": "- Top contributors include \"Other\" (total effect: 1.15), \"SC\" (total effect: 0.56), and \"MG\" (total effect: 0.19).",
+    "cited": [
+     "E2",
+     "E2",
+     "E2",
+     "E3",
+     "E4",
+     "E4"
+    ]
+   },
+   {
+    "text": "0.19",
+    "value": 0.19,
+    "status": "supported",
+    "sentence": "- Top contributors include \"Other\" (total effect: 1.15), \"SC\" (total effect: 0.56), and \"MG\" (total effect: 0.19).",
+    "cited": [
+     "E2",
+     "E2",
+     "E2",
+     "E3",
+     "E4",
+     "E4"
+    ]
+   },
+   {
+    "text": "5.3",
+    "value": 5.3,
+    "status": "supported",
+    "sentence": "- \"SC\" is flagged for a significant performance effect, with the late rate increasing from 5.3% to 18.3% [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "18.3",
+    "value": 18.3,
+    "status": "supported",
+    "sentence": "- \"SC\" is flagged for a significant performance effect, with the late rate increasing from 5.3% to 18.3% [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "5.3",
+    "value": 5.3,
+    "status": "supported",
+    "sentence": "Investigate the cause of the performance decline in \"SC\", where the late rate increased from 5.3% to 18.3% [E4].",
+    "cited": [
+     "E4"
+    ]
+   },
+   {
+    "text": "18.3",
+    "value": 18.3,
+    "status": "supported",
+    "sentence": "Investigate the cause of the performance decline in \"SC\", where the late rate increased from 5.3% to 18.3% [E4].",
+    "cited": [
+     "E4"
+    ]
+   }
+  ]
+ },
+ "guard_events": [
+  "report written before required steps; sent back (1 gaps)"
+ ],
+ "n_llm_calls": 6,
+ "n_tool_calls": 4,
+ "n_tool_errors": 0,
+ "input_tokens": 13317,
+ "output_tokens": 887,
+ "latency_s": 75.77,
+ "stopped_reason": "report"
+}

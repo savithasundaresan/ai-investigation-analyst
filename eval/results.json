@@ -1,0 +1,3583 @@
+{
+ "scored_at": "2026-11-02T12:52:15",
+ "model": "qwen3:8b",
+ "questions": [
+  {
+   "id": "q01",
+   "kind": "rise",
+   "base": "2018-02",
+   "current": "2018-03",
+   "note": "headline case (Stage 2 manual investigation)",
+   "agent": {
+    "report": "## Answer\nThe late-delivery rate increased from 14.1% to 19.0% [E2], with a significant contribution from both slower deliveries and shorter promises. The increase was driven by performance issues in several customer regions, particularly in Minas Gerais (MG), Esp\u00edrito Santo (ES), and Par\u00e1 (PA), as well as shifts in order distribution.\n\n## Findings\n- The late rate rose from 14.1% to 19.0% [E2], a 4.84 percentage point increase, beyond noise with a z-score of 7.56.\n- Delivery effect: 1.5 percentage points, promise effect: 3.34 percentage points [E2].\n- Seller_state decomposition: mix effect of 0.22 percentage points, performance effect of 4.34 percentage points [E3].\n- Customer_state decomposition: mix effect of -0.4 percentage points, performance effect of 5.33 percentage points [E4].\n- Top contributors by seller_state: S\u00e3o Paulo (SP) contributed 4.12 percentage points, Rio de Janeiro (RJ) contributed 0.88 percentage points, and Paran\u00e1 (PR) contributed -0.49 percentage points [E3].\n- Top contributors by customer_state: Minas Gerais (MG) contributed 1.49 percentage points, S\u00e3o Paulo (SP) contributed 1.05 percentage points, Esp\u00edrito Santo (ES) contributed 0.51 percentage points, Bahia (BA) contributed 0.45 percentage points, Rio Grande do Sul (RS) contributed 0.38 percentage points, and Par\u00e1 (PA) contributed 0.38 percentage points [E4].\n- Flagged segments by seller_state: S\u00e3o Paulo (SP) had a 4.59 percentage point increase (z=5.83), and Rio de Janeiro (RJ) had a 20.27 percentage point increase (z=5.8) [E3].\n- Flagged segments by customer_state: Minas Gerais (MG) had a 12.09 percentage point increase (z=6.93), Esp\u00edrito Santo (ES) had a 29.27 percentage point increase (z=5.6), Par\u00e1 (PA) had a 38.47 percentage point increase (z=4.54), and Bahia (BA) had a 12.26 percentage point increase (z=2.95) [E4].\n\n## Investigate first\n1. Investigate the specific reasons behind the significant increase in late deliveries for sellers in S\u00e3o Paulo (SP) and Rio de Janeiro (RJ), as well as the performance issues in customer regions like Minas Gerais (MG) and Esp\u00edrito Santo (ES).\n2. Examine the impact of shorter promised delivery windows on the late rate, particularly in SP and RJ.\n3. Look into the potential anomalies in the data for the months of 2018-02 and 2018-03 to ensure the accuracy of the findings.\n\n## Limitations\n- The data is historical and may not reflect current conditions.\n- The analysis is based on the provided data and does not account for external factors such as market changes or operational adjustments.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "14.13%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "18.96%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+4.84 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": true,
+      "expected": "delivery +1.50 pp, promise +3.34 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": false,
+      "expected": "promise"
+     },
+     {
+      "fact": "top customer state",
+      "ok": true,
+      "expected": "MG"
+     },
+     {
+      "fact": "top seller state",
+      "ok": true,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 33,
+    "traceable": 33,
+    "cited_correctly": 33,
+    "tool_calls": 4,
+    "tool_errors": 0,
+    "guard_events": [
+     "report written before required steps; sent back (1 gaps)"
+    ],
+    "finished": true,
+    "latency_s": 99.64,
+    "input_tokens": 14135,
+    "output_tokens": 1268,
+    "llm_calls": 6
+   },
+   "baseline": {
+    "report": "## Answer\nThe late-delivery rate increased from 14.13% to 18.96%, a rise of 4.8 percentage points. This could be due to a combination of factors, including an increase in orders and a rise in overdue undelivered orders, though the exact contributing factors require further analysis.\n\n## Findings\n- Late-delivery rate increased by 4.8 percentage points from 14.13% to 18.96%.\n- Overdue undelivered orders rose from 70 to 165.\n- Orders increased by 483, from 6,728 to 7,211.\n- Cancellation rate dropped from 1.53% to 0.6%.\n\n## Investigate first\n- Analyze the distribution of overdue undelivered orders by seller, region, and product category to identify the main contributors.\n- Examine the correlation between the increase in orders and the late-delivery rate to determine if volume impacted delivery performance.\n- Investigate whether specific product categories or regions experienced a disproportionate increase in late deliveries.\n\n## Limitations\n- The data does not provide granular details on individual seller or regional performance.\n- There is no information on the reasons for late deliveries or cancellations.\n- The data is aggregated and does not include customer feedback or specific order details.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "14.13%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "18.96%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+4.84 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": false,
+      "expected": "delivery +1.50 pp, promise +3.34 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": false,
+      "expected": "promise"
+     },
+     {
+      "fact": "top customer state",
+      "ok": false,
+      "expected": "MG"
+     },
+     {
+      "fact": "top seller state",
+      "ok": false,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 13,
+    "traceable": 13,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 16.42,
+    "input_tokens": 517,
+    "output_tokens": 286,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2018-02",
+    "current": "2018-03",
+    "base_complete": true,
+    "current_complete": true,
+    "base_orders": 6728,
+    "current_orders": 7211,
+    "expect_insufficient": false,
+    "base_rate_pct": 14.13,
+    "current_rate_pct": 18.96,
+    "change_pp": 4.84,
+    "z": 7.56,
+    "direction": "up",
+    "beyond_noise": true,
+    "delivery_effect_pp": 1.5,
+    "promise_effect_pp": 3.34,
+    "dominant_effect": "promise",
+    "top_customer_state": {
+     "segment": "MG",
+     "contribution_pp": 1.49
+    },
+    "top_seller_state": {
+     "segment": "SP",
+     "contribution_pp": 4.12
+    }
+   }
+  },
+  {
+   "id": "q02",
+   "kind": "rise",
+   "base": "2017-10",
+   "current": "2017-11",
+   "note": "Black Friday",
+   "agent": {
+    "report": "## Answer\nThe late-delivery rate increased from 4.2% to 12.4% [E2], a rise of 8.2 percentage points beyond noise. Deliveries became slower, contributing 8.6 percentage points to the increase, while promised delivery windows slightly shortened, reducing the rate by 0.4 percentage points.\n\n## Findings\n- The late rate rose from 4.2% to 12.4% [E2], an 8.2 percentage point increase beyond noise.\n- Delivery effect: +8.6 percentage points; Promise effect: -0.4 percentage points [E2].\n- Seller_state decomposition: 8.17 percentage points of the increase is due to performance, with 0.01 percentage points from mix [E3].\n- Customer_state decomposition: 8.66 percentage points of the increase is due to performance, with -0.16 percentage points from mix [E4].\n- Top contributors by seller_state: SP (performance: 6.71 percentage points), PR (performance: 0.63 percentage points), MG (performance: 0.34 percentage points), RJ (performance: 0.28 percentage points), and Other (performance: 0.08 percentage points) [E3].\n- Top contributors by customer_state: RJ (performance: 2.6 percentage points), SP (performance: 1.52 percentage points), MG (performance: 0.79 percentage points), RS (performance: 0.6 percentage points), SC (performance: 0.41 percentage points), and Other (performance: 0.39 percentage points) [E4].\n\n## Investigate first\n1. Focus on RJ, which had the largest performance impact, with a late rate rising from 6.9% to 26.0% [E4].\n2. Investigate SP, where the late rate increased significantly from 3.3% to 7.0% [E4].\n3. Review MG's performance, as its late rate rose from 0.9% to 7.2% [E4].\n\n## Limitations\n- The analysis is limited to seller_state and customer_state, and other dimensions like category or seller_id were not examined.\n- The flagged segments are based on the anomaly rules, which may not capture all contributing factors.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "4.18%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "12.40%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+8.23 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": true,
+      "expected": "delivery +8.64 pp, promise -0.41 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": false,
+      "expected": "delivery"
+     },
+     {
+      "fact": "top customer state",
+      "ok": true,
+      "expected": "RJ"
+     },
+     {
+      "fact": "top seller state",
+      "ok": true,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 31,
+    "traceable": 31,
+    "cited_correctly": 31,
+    "tool_calls": 4,
+    "tool_errors": 0,
+    "guard_events": [
+     "report written before required steps; sent back (1 gaps)"
+    ],
+    "finished": true,
+    "latency_s": 82.21,
+    "input_tokens": 14477,
+    "output_tokens": 1052,
+    "llm_calls": 6
+   },
+   "baseline": {
+    "report": "## Answer\nThe late-delivery rate increased significantly from 2017-10 to 2017-11, likely due to a combination of factors including a rise in orders and a longer average delivery time. The increase in overdue undelivered orders and the drop in average promised delivery window suggest potential issues with delivery performance and expectations.\n\n## Findings\n- Late-delivery rate increased from 4.18% to 12.4% (+8.2 pp).\n- Orders increased by 2,913 (from 4,631 to 7,544).\n- Average delivery time increased from 11.7 days to 15.1 days (+3.3 days).\n- Overdue undelivered orders increased from 69 to 134.\n- Average promised delivery window decreased from 23.7 days to 23.2 days.\n- Cancellation rate decreased slightly from 1.81% to 1.6%.\n\n## Investigate first\n- Analyze the distribution of late deliveries by seller, region, and product category to identify the main contributors.\n- Examine the correlation between the increase in orders and the rise in average delivery time to determine if operational capacity was overwhelmed.\n- Investigate the reasons behind the drop in average promised delivery window and its impact on customer expectations.\n\n## Limitations\n- The data does not provide granular details on specific sellers, regions, or product categories.\n- There is no information on the reasons for late deliveries or customer feedback related to delivery performance.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "4.18%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "12.40%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+8.23 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": false,
+      "expected": "delivery +8.64 pp, promise -0.41 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": false,
+      "expected": "delivery"
+     },
+     {
+      "fact": "top customer state",
+      "ok": false,
+      "expected": "RJ"
+     },
+     {
+      "fact": "top seller state",
+      "ok": false,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 15,
+    "traceable": 15,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 18.23,
+    "input_tokens": 518,
+    "output_tokens": 327,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2017-10",
+    "current": "2017-11",
+    "base_complete": true,
+    "current_complete": true,
+    "base_orders": 4631,
+    "current_orders": 7544,
+    "expect_insufficient": false,
+    "base_rate_pct": 4.18,
+    "current_rate_pct": 12.4,
+    "change_pp": 8.23,
+    "z": 14.94,
+    "direction": "up",
+    "beyond_noise": true,
+    "delivery_effect_pp": 8.64,
+    "promise_effect_pp": -0.41,
+    "dominant_effect": "delivery",
+    "top_customer_state": {
+     "segment": "RJ",
+     "contribution_pp": 2.6
+    },
+    "top_seller_state": {
+     "segment": "SP",
+     "contribution_pp": 6.71
+    }
+   }
+  },
+  {
+   "id": "q03",
+   "kind": "rise",
+   "base": "2018-01",
+   "current": "2018-02",
+   "note": "start of the early-2018 episode",
+   "agent": {
+    "report": "## Answer\nThe late-delivery rate increased from 5.7% to 14.1% [E2], with deliveries getting slower contributing more to the rise than shorter promises. Customers in Rio de Janeiro (RJ) contributed the most to the increase, with their late rate rising from 13.1% to 34.0% [E4].\n\n## Findings\n- The late rate rose from 5.7% to 14.1% [E2], a 8.43 percentage point increase, beyond noise (z=16.56).\n- Delivery effect: 5.68 percentage points, promise effect: 2.75 percentage points [E2].\n- In Rio de Janeiro (RJ), the late rate rose from 13.1% to 34.0%, contributing 2.99 percentage points to the overall increase [E4].\n- In S\u00e3o Paulo (SP), the late rate rose from 3.4% to 7.3%, contributing 1.5 percentage points [E4].\n- In Minas Gerais (MG), the late rate rose from 3.1% to 8.4%, contributing 0.64 percentage points [E4].\n- In Santa Catarina (SC), the late rate rose from 10.0% to 24.0%, contributing 0.49 percentage points [E4].\n- The change was primarily due to performance, with RJ showing the largest performance effect of 2.52 percentage points [E4].\n\n## Investigate first\n1. Investigate the specific reasons behind the significant increase in late deliveries for customers in Rio de Janeiro (RJ), including any operational or logistical issues.\n2. Examine the impact of shorter delivery promises on the late rate, particularly in regions where promises decreased but the late rate still increased.\n3. Look into the potential causes of the decrease in late rate for sellers in Santa Catarina (SC), as this could indicate effective improvements or changes in order patterns.\n\n## Limitations\n- The analysis is based on delivered orders only, so it does not include open orders or undelivered orders.\n- The data does not provide information on the reasons for late deliveries or shorter promises.\n- The analysis does not account for external factors such as holidays, weather, or changes in customer behavior.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "5.70%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "14.13%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+8.43 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": true,
+      "expected": "delivery +5.68 pp, promise +2.75 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": true,
+      "expected": "delivery"
+     },
+     {
+      "fact": "top customer state",
+      "ok": true,
+      "expected": "RJ"
+     },
+     {
+      "fact": "top seller state",
+      "ok": true,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 23,
+    "traceable": 23,
+    "cited_correctly": 23,
+    "tool_calls": 4,
+    "tool_errors": 0,
+    "guard_events": [
+     "report written before required steps; sent back (1 gaps)"
+    ],
+    "finished": true,
+    "latency_s": 93.52,
+    "input_tokens": 14639,
+    "output_tokens": 1124,
+    "llm_calls": 6
+   },
+   "baseline": {
+    "report": "## Answer\nThe late-delivery rate increased significantly from 2018-01 to 2018-02, likely due to a combination of factors including a drop in total orders and a rise in overdue undelivered orders. The increase in average delivery time and the decrease in average promised delivery window suggest potential issues with delivery performance and expectations.\n\n## Findings\n- Late-delivery rate increased from 5.7% to 14.13% (+8.4 pp).\n- Orders decreased by 541 (-8.6%).\n- Overdue undelivered orders decreased from 118 to 70 (-39.8%).\n- Average delivery time increased from 14.0 to 16.9 days (+2.9 days).\n- Average promised delivery window decreased from 26.9 to 25.2 days (-1.8 days).\n- Cancellation rate increased from 1.13% to 1.53% (+0.4 pp).\n- Low-review rate increased from 15.51% to 20.89% (+5.38 pp).\n- Average order value decreased from R$153.37 to R$147.43 (-3.9%).\n\n## Investigate first\n- Check if the decrease in orders is due to specific product categories or regions that may have experienced delivery issues.\n- Analyze the performance of sellers with the highest late-delivery rates in February 2018.\n- Investigate the reasons behind the drop in average promised delivery window and its impact on customer expectations.\n\n## Limitations\n- The data does not provide granular details on specific sellers, regions, or product categories.\n- There is no information on the reasons for cancellations or low reviews.\n- The data does not include customer feedback or specific delivery issues reported by customers.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "5.70%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "14.13%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+8.43 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": false,
+      "expected": "delivery +5.68 pp, promise +2.75 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": false,
+      "expected": "delivery"
+     },
+     {
+      "fact": "top customer state",
+      "ok": false,
+      "expected": "RJ"
+     },
+     {
+      "fact": "top seller state",
+      "ok": false,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 23,
+    "traceable": 19,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 21.59,
+    "input_tokens": 518,
+    "output_tokens": 397,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2018-01",
+    "current": "2018-02",
+    "base_complete": true,
+    "current_complete": true,
+    "base_orders": 7269,
+    "current_orders": 6728,
+    "expect_insufficient": false,
+    "base_rate_pct": 5.7,
+    "current_rate_pct": 14.13,
+    "change_pp": 8.43,
+    "z": 16.56,
+    "direction": "up",
+    "beyond_noise": true,
+    "delivery_effect_pp": 5.68,
+    "promise_effect_pp": 2.75,
+    "dominant_effect": "delivery",
+    "top_customer_state": {
+     "segment": "RJ",
+     "contribution_pp": 2.99
+    },
+    "top_seller_state": {
+     "segment": "SP",
+     "contribution_pp": 7.01
+    }
+   }
+  },
+  {
+   "id": "q04",
+   "kind": "rise",
+   "base": "2017-03",
+   "current": "2017-04",
+   "note": "",
+   "agent": {
+    "report": "## Answer\nThe late-delivery rate increased from 4.6% to 6.6% [E2], a 2.0 percentage point rise beyond noise. This was driven by slower deliveries, not shorter promises. The change appears to be primarily due to performance issues rather than shifts in customer segments.\n\n## Findings\n- The late rate rose from 4.6% to 6.6% (2.0 percentage points) [E2].\n- Delivery effect: +4.43 percentage points, Promise effect: -2.43 percentage points [E2].\n- Seller_state decomposition: 0.02 percentage points mix effect, 2.02 percentage points performance effect [E3].\n- Customer_state decomposition: 0.39 percentage points mix effect, 1.76 percentage points performance effect [E4].\n- Top contributors by seller_state: PR (0.59 percentage points), RJ (0.31 percentage points), SP (0.93 percentage points).\n- Top contributors by customer_state: SP (1.78 percentage points), BA (0.25 percentage points), GO (0.13 percentage points).\n- Flagged segments by seller_state: PR (7.64 percentage points, z=2.87), RJ (7.94 percentage points, z=2.23).\n- Flagged segments by customer_state: SP (4.71 percentage points, z=4.86).\n\n## Investigate first\n1. Focus on customer_state SP, which showed the largest increase in late rates and has a high z-score.\n2. Investigate if there were any changes in delivery practices or logistics for these customer states.\n3. Check if there were any anomalies or specific issues affecting these customer states.\n\n## Limitations\n- The analysis is limited to the provided data and does not include external factors.\n- The findings are based on the available metrics and do not account for potential external influences.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "4.56%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "6.56%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+2.00 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": true,
+      "expected": "delivery +4.43 pp, promise -2.43 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": true,
+      "expected": "delivery"
+     },
+     {
+      "fact": "top customer state",
+      "ok": true,
+      "expected": "SP"
+     },
+     {
+      "fact": "top seller state",
+      "ok": true,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 24,
+    "traceable": 24,
+    "cited_correctly": 24,
+    "tool_calls": 4,
+    "tool_errors": 0,
+    "guard_events": [
+     "report written before required steps; sent back (1 gaps)"
+    ],
+    "finished": true,
+    "latency_s": 73.68,
+    "input_tokens": 13620,
+    "output_tokens": 885,
+    "llm_calls": 6
+   },
+   "baseline": {
+    "report": "## Answer\nThe late-delivery rate increased from 4.56% to 6.56% in 2017-04, which could be due to a combination of factors including longer delivery times and a higher proportion of orders not being delivered on time. The increase in average delivery time and promised window suggests potential issues with logistics or delivery expectations.\n\n## Findings\n- Late-delivery rate increased by 2.0 percentage points.\n- Average delivery time increased by 2.0 days.\n- Average promised delivery window increased by 2.6 days.\n- Orders decreased by 278.\n- Cancellation rate decreased by 1.3 percentage points.\n- Average order value increased by R$8.90.\n- Low-review rate increased by 1.25 percentage points.\n\n## Investigate first\n- Check the distribution of late deliveries by seller, region, and product category to identify any patterns or outliers.\n- Analyze the reasons for the increase in average delivery time and promised window, including logistics performance and any changes in delivery expectations.\n- Investigate the relationship between the increase in average order value and the late-delivery rate to determine if higher-value orders are more prone to delays.\n\n## Limitations\n- The data does not provide granular details on specific sellers, regions, or product categories.\n- There is no information on the reasons for late deliveries or the specific causes of the increased delivery time.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "4.56%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "6.56%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+2.00 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": false,
+      "expected": "delivery +4.43 pp, promise -2.43 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": false,
+      "expected": "delivery"
+     },
+     {
+      "fact": "top customer state",
+      "ok": false,
+      "expected": "SP"
+     },
+     {
+      "fact": "top seller state",
+      "ok": false,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 9,
+    "traceable": 7,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 16.28,
+    "input_tokens": 517,
+    "output_tokens": 296,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2017-03",
+    "current": "2017-04",
+    "base_complete": true,
+    "current_complete": true,
+    "base_orders": 2682,
+    "current_orders": 2404,
+    "expect_insufficient": false,
+    "base_rate_pct": 4.56,
+    "current_rate_pct": 6.56,
+    "change_pp": 2.0,
+    "z": 3.05,
+    "direction": "up",
+    "beyond_noise": true,
+    "delivery_effect_pp": 4.43,
+    "promise_effect_pp": -2.43,
+    "dominant_effect": "delivery",
+    "top_customer_state": {
+     "segment": "SP",
+     "contribution_pp": 1.78
+    },
+    "top_seller_state": {
+     "segment": "SP",
+     "contribution_pp": 0.93
+    }
+   }
+  },
+  {
+   "id": "q05",
+   "kind": "rise",
+   "base": "2017-08",
+   "current": "2017-09",
+   "note": "",
+   "agent": {
+    "report": "## Answer\nThe late-delivery rate increased from 2.9% to 4.4% [E2], with a change of 1.48 percentage points beyond noise. This was primarily due to shorter delivery promises, with a promise effect of 1.03 percentage points, and slower deliveries, with a delivery effect of 0.44 percentage points. The customer_state breakdown shows that the increase was driven by a mix of shifts and performance changes, with BA showing the largest performance contribution.\n\n## Findings\n- The late rate rose from 2.9% to 4.4% [E2], a 1.48 percentage point increase beyond noise.\n- Delivery effect: 0.44 percentage points; Promise effect: 1.03 percentage points [E2].\n- For seller_state breakdown: mix contributed 0.11 percentage points, performance contributed 1.46 percentage points [E3].\n- For customer_state breakdown: mix contributed 0.02 percentage points, performance contributed 1.34 percentage points [E4].\n- Top contributors: BA (performance: 0.49 pp), RS (performance: -0.4 pp), SP (performance: 0.42 pp), RJ (performance: 0.27 pp), Other (performance: 0.25 pp), SC (performance: 0.17 pp).\n- Flagged segments: BA (change: 13.48 pp, z: 3.95), RS (change: -5.6 pp, z: -3.14), PA (change: 12.2 pp, z: 2.71) [E4].\n\n## Investigate first\n1. Focus on customer_state BA, which showed the highest performance contribution to the increase in late rate.\n2. Investigate the cause of the promise effect, as it contributed significantly to the overall increase.\n3. Look into the change in delivery days for SP and other top contributors.\n\n## Limitations\n- The analysis is limited to the seller_state and customer_state dimensions; other dimensions like category or seller_id were not examined.\n- The data does not provide information on the exact reasons for the increase in late rate, such as operational issues or external factors.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "2.91%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "4.39%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+1.48 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": true,
+      "expected": "delivery +0.44 pp, promise +1.03 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": true,
+      "expected": "promise"
+     },
+     {
+      "fact": "top customer state",
+      "ok": true,
+      "expected": "BA"
+     },
+     {
+      "fact": "top seller state",
+      "ok": true,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 26,
+    "traceable": 26,
+    "cited_correctly": 26,
+    "tool_calls": 4,
+    "tool_errors": 0,
+    "guard_events": [
+     "report written before required steps; sent back (1 gaps)"
+    ],
+    "finished": true,
+    "latency_s": 86.82,
+    "input_tokens": 13496,
+    "output_tokens": 996,
+    "llm_calls": 6
+   },
+   "baseline": {
+    "report": "## Answer\nThe late-delivery rate increased from 2.91% to 4.39% in 2017-09, which could be due to a combination of factors including changes in delivery performance, order volume, or seller behavior. The increase in average delivery time and decrease in average promised delivery window suggest potential issues with delivery efficiency or expectations.\n\n## Findings\n- Late-delivery rate increased by 1.48 percentage points (from 2.91% to 4.39%).\n- Average delivery time increased by 0.7 days (from 11.0 to 11.7 days).\n- Average promised delivery window decreased by 1.0 day (from 24.1 to 23.1 days).\n- Orders decreased by 46 (from 4331 to 4285).\n- Average order value increased by 14.14 R$ (from 155.65 to 169.79 R$).\n- Low-review rate increased by 1.07 percentage points (from 11.35% to 12.42%).\n- Cancellation rate remained stable at 1.36% to 1.35%.\n\n## Investigate first\n- Analyze the performance of sellers with the highest late-delivery rates in 2017-09 to identify any patterns or commonalities.\n- Examine the distribution of late deliveries by region to determine if certain areas experienced more delays.\n- Investigate the impact of the increased average order value on delivery performance and whether it correlates with any changes in product categories.\n\n## Limitations\n- The data does not provide granular details on specific sellers, regions, or product categories.\n- There is no information on the reasons for late deliveries or the specific products involved.\n- The data does not include customer feedback or reviews for the late deliveries.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "2.91%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "4.39%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+1.48 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": false,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": false,
+      "expected": "delivery +0.44 pp, promise +1.03 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": false,
+      "expected": "promise"
+     },
+     {
+      "fact": "top customer state",
+      "ok": false,
+      "expected": "BA"
+     },
+     {
+      "fact": "top seller state",
+      "ok": false,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 22,
+    "traceable": 19,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 21.66,
+    "input_tokens": 516,
+    "output_tokens": 407,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2017-08",
+    "current": "2017-09",
+    "base_complete": true,
+    "current_complete": true,
+    "base_orders": 4331,
+    "current_orders": 4285,
+    "expect_insufficient": false,
+    "base_rate_pct": 2.91,
+    "current_rate_pct": 4.39,
+    "change_pp": 1.48,
+    "z": 3.6,
+    "direction": "up",
+    "beyond_noise": true,
+    "delivery_effect_pp": 0.44,
+    "promise_effect_pp": 1.03,
+    "dominant_effect": "promise",
+    "top_customer_state": {
+     "segment": "BA",
+     "contribution_pp": 0.56
+    },
+    "top_seller_state": {
+     "segment": "SP",
+     "contribution_pp": 1.37
+    }
+   }
+  },
+  {
+   "id": "q06",
+   "kind": "rise",
+   "base": "2018-04",
+   "current": "2018-05",
+   "note": "",
+   "agent": {
+    "report": "## Answer\nThe late-delivery rate increased from 4.5% to 6.6% [E2], with significant contributions from specific customer states. \n\n## Findings\n- The late rate rose from 4.5% to 6.6%, a 2.06 percentage point increase [E2].\n- The delivery effect contributed 0.31 percentage points, while the promise effect contributed 1.75 percentage points [E2].\n- In the customer_state breakdown, the performance effect was the main driver, with a 2.16 percentage point increase due to segments getting worse [E4].\n- The segment \"MG\" had a late rate jump from 2.4% to 9.2%, contributing 0.74 percentage points to the overall increase [E4].\n- \"SP\" contributed 1.26 percentage points, with a performance effect of 1.16 percentage points [E4].\n- \"PR\" contributed 0.27 percentage points, with a performance effect of 0.34 percentage points [E4].\n- \"DF\" and \"CE\" also showed significant changes, with \"DF\" increasing from 2.1% to 9.3% and \"CE\" decreasing from 24.0% to 11.1% [E4].\n\n## Investigate first\n1. Investigate the \"MG\" customer state further, as it showed a significant increase in late rates [E4].\n2. Look into the \"SP\" customer state to understand the performance effect contributing to the overall increase [E4].\n3. Check for any anomalies or changes in delivery promises that might have affected the promise effect [E2].\n\n## Limitations\n- The data is historical and does not include real-time information.\n- The analysis does not account for external factors such as market conditions or changes in customer behavior.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "4.50%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "6.56%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+2.06 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": true,
+      "expected": "delivery +0.31 pp, promise +1.75 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": false,
+      "expected": "promise"
+     },
+     {
+      "fact": "top customer state",
+      "ok": true,
+      "expected": "SP"
+     },
+     {
+      "fact": "top seller state",
+      "ok": true,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 19,
+    "traceable": 19,
+    "cited_correctly": 19,
+    "tool_calls": 4,
+    "tool_errors": 0,
+    "guard_events": [
+     "report written before required steps; sent back (1 gaps)"
+    ],
+    "finished": true,
+    "latency_s": 78.24,
+    "input_tokens": 13699,
+    "output_tokens": 883,
+    "llm_calls": 6
+   },
+   "baseline": {
+    "report": "## Answer\nThe late-delivery rate increased from 4.5% to 6.56%, which is a significant rise. This could be due to a combination of factors, including changes in delivery performance across specific sellers, regions, or product categories.\n\n## Findings\n- Late-delivery rate increased by 2.06 percentage points (from 4.5% to 6.56%).\n- Overdue undelivered orders decreased from 121 to 84.\n- Cancellation rate increased by 0.29 percentage points (from 0.29% to 0.58%).\n- Average delivery time slightly decreased from 11.4 to 11.3 days.\n- Average promised delivery window decreased by 0.8 days (from 24.3 to 23.5 days).\n- Average order value increased slightly from R$167.25 to R$167.78.\n- Low-review rate decreased from 12.99% to 11.9%.\n\n## Investigate first\n- Check the performance of sellers with the highest late-delivery rates in May 2018.\n- Analyze delivery performance by region to identify any geographic trends.\n- Review the product categories with the highest late-delivery rates to determine if specific items are more prone to delays.\n\n## Limitations\n- The data does not provide granular details on specific sellers, regions, or product categories.\n- There is no information on the reasons for late deliveries or cancellations.\n- The data is limited to aggregated metrics and does not include customer feedback or order-specific details.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "4.50%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "6.56%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+2.06 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": false,
+      "expected": "delivery +0.31 pp, promise +1.75 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": false,
+      "expected": "promise"
+     },
+     {
+      "fact": "top customer state",
+      "ok": false,
+      "expected": "SP"
+     },
+     {
+      "fact": "top seller state",
+      "ok": false,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 19,
+    "traceable": 18,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 18.94,
+    "input_tokens": 515,
+    "output_tokens": 345,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2018-04",
+    "current": "2018-05",
+    "base_complete": true,
+    "current_complete": true,
+    "base_orders": 6939,
+    "current_orders": 6873,
+    "expect_insufficient": false,
+    "base_rate_pct": 4.5,
+    "current_rate_pct": 6.56,
+    "change_pp": 2.06,
+    "z": 5.25,
+    "direction": "up",
+    "beyond_noise": true,
+    "delivery_effect_pp": 0.31,
+    "promise_effect_pp": 1.75,
+    "dominant_effect": "promise",
+    "top_customer_state": {
+     "segment": "SP",
+     "contribution_pp": 1.26
+    },
+    "top_seller_state": {
+     "segment": "SP",
+     "contribution_pp": 1.43
+    }
+   }
+  },
+  {
+   "id": "q07",
+   "kind": "rise",
+   "base": "2018-06",
+   "current": "2018-07",
+   "note": "",
+   "agent": {
+    "report": "## Answer\nThe late-delivery rate increased from 1.2% to 3.4% [E2], driven by both a mix of orders and performance changes. Sellers in MA saw a dramatic spike, while customer segments like PE and DF also showed significant increases.\n\n## Findings\n- The late rate rose from 1.2% to 3.4%, a 2.21 percentage point increase [E2].\n- The delivery effect contributed 0.12 percentage points, while the promise effect contributed 2.1 percentage points to the change [E2].\n- In MA, the late rate increased from 0.0% to 33.8%, contributing 33.8 percentage points to the overall change [E3].\n- The performance effect for MA was 0.48 percentage points, indicating a significant deterioration in delivery performance for this segment [E3].\n- For customer segments, the mix effect contributed 0.07 percentage points, while the performance effect contributed 2.14 percentage points to the overall change [E4].\n- The segment PE saw a late rate increase from 2.2% to 5.9%, contributing 0.1 percentage points to the overall change [E4].\n- The segment DF saw a late rate increase from 0.7% to 4.2%, contributing 0.1 percentage points to the overall change [E4].\n\n## Investigate first\n1. Investigate the specific reasons behind the spike in late deliveries for sellers in MA, including any operational or logistical issues.\n2. Examine the impact of shorter promised delivery windows on the overall late rate, as indicated by the promise effect [E2].\n3. Look into the delivery performance of customer segments like PE and DF, which showed significant increases in late rates [E4].\n\n## Limitations\n- The analysis is based on delivered orders, so it does not account for undelivered or cancelled orders.\n- The data does not provide information on the reasons for late deliveries or promise changes, only the statistical associations.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "1.16%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "3.38%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+2.21 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": true,
+      "expected": "delivery +0.12 pp, promise +2.10 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": false,
+      "expected": "promise"
+     },
+     {
+      "fact": "top customer state",
+      "ok": false,
+      "expected": "SP"
+     },
+     {
+      "fact": "top seller state",
+      "ok": false,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 19,
+    "traceable": 19,
+    "cited_correctly": 19,
+    "tool_calls": 4,
+    "tool_errors": 0,
+    "guard_events": [
+     "report written before required steps; sent back (1 gaps)"
+    ],
+    "finished": true,
+    "latency_s": 78.37,
+    "input_tokens": 13416,
+    "output_tokens": 915,
+    "llm_calls": 6
+   },
+   "baseline": {
+    "report": "## Answer\nThe late-delivery rate increased significantly from 1.16% to 3.38% in 2018-07, which could be due to a combination of factors including changes in delivery performance, order volume, or external logistics challenges. The increase in overdue undelivered orders and the drop in average promised delivery window suggest potential issues with delivery expectations and fulfillment.\n\n## Findings\n- Late-delivery rate increased by 2.2 percentage points from 1.16% to 3.38%.\n- Overdue undelivered orders rose from 46 to 74.\n- Average delivery time decreased slightly from 9.2 to 8.9 days.\n- Average promised delivery window dropped by 8.1 days from 28.4 to 20.3 days.\n- Cancellation rate increased by 0.6 percentage points from 0.36% to 0.94%.\n\n## Investigate first\n- Analyze the distribution of late deliveries by seller, region, and product category to identify specific contributors.\n- Examine the correlation between the drop in average promised delivery window and the increase in late deliveries.\n- Investigate the reasons behind the rise in cancellation rate, as it may be linked to delivery issues or customer dissatisfaction.\n\n## Limitations\n- The data does not provide granular details on specific sellers, regions, or product categories.\n- There is no information on external factors such as weather, logistics disruptions, or changes in supplier performance.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "1.16%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "3.38%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+2.21 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": false,
+      "expected": "delivery +0.12 pp, promise +2.10 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": false,
+      "expected": "promise"
+     },
+     {
+      "fact": "top customer state",
+      "ok": false,
+      "expected": "SP"
+     },
+     {
+      "fact": "top seller state",
+      "ok": false,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 15,
+    "traceable": 15,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 17.61,
+    "input_tokens": 515,
+    "output_tokens": 316,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2018-06",
+    "current": "2018-07",
+    "base_complete": true,
+    "current_complete": true,
+    "base_orders": 6167,
+    "current_orders": 6292,
+    "expect_insufficient": false,
+    "base_rate_pct": 1.16,
+    "current_rate_pct": 3.38,
+    "change_pp": 2.21,
+    "z": 8.21,
+    "direction": "up",
+    "beyond_noise": true,
+    "delivery_effect_pp": 0.12,
+    "promise_effect_pp": 2.1,
+    "dominant_effect": "promise",
+    "top_customer_state": {
+     "segment": "SP",
+     "contribution_pp": 1.3
+    },
+    "top_seller_state": {
+     "segment": "SP",
+     "contribution_pp": 1.39
+    }
+   }
+  },
+  {
+   "id": "q08",
+   "kind": "rise",
+   "base": "2018-07",
+   "current": "2018-08",
+   "note": "",
+   "agent": {
+    "report": "## Answer\nThe late-delivery rate increased from 3.4% to 6.2% [E2], with the change primarily driven by shorter delivery promises rather than slower deliveries. The promise_effect_pp was 5.67, indicating that promised delivery windows became significantly shorter, contributing to the rise in the late rate.\n\n## Findings\n- The late rate rose from 3.4% to 6.2% [E2], a change of 2.81 percentage points, beyond noise with a z-score of 7.34.\n- The delivery_effect_pp was -2.86, indicating deliveries were slightly faster, while the promise_effect_pp was 5.67, showing promised delivery windows became significantly shorter.\n- For seller_state, the mix_pp was -0.02 [E3], and the performance_pp was 2.74 [E3], indicating a slight shift in order distribution and a performance decline in some seller states.\n- For customer_state, the mix_pp was -0.12 [E4], and the performance_pp was 2.49 [E4], indicating a shift in order distribution and a performance decline in some customer states.\n- The top contributors to the late rate increase included SP (total_pp 2.86 [E4]), RJ (total_pp 0.39 [E4]), and MS (total_pp 0.12 [E4]).\n\n## Investigate first\n1. Investigate the significant increase in the late rate for SP, which had a total_pp of 2.86 [E4], as it is a major contributor.\n2. Examine the flagged segments, particularly MS, which showed a dramatic increase in the late rate, possibly due to a performance issue.\n3. Look into the impact of shorter delivery promises on the overall late rate, as indicated by the promise_effect_pp of 5.67 [E2].\n\n## Limitations\n- The data is historical and does not include real-time information.\n- The analysis does not account for external factors such as market conditions or changes in customer behavior.\n- The findings are based on available data and do not include revenue or cost implications.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "3.38%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "6.19%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+2.81 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": false,
+      "expected": "delivery -2.86 pp, promise +5.67 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": true,
+      "expected": "promise"
+     },
+     {
+      "fact": "top customer state",
+      "ok": true,
+      "expected": "SP"
+     },
+     {
+      "fact": "top seller state",
+      "ok": true,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 18,
+    "traceable": 18,
+    "cited_correctly": 18,
+    "tool_calls": 4,
+    "tool_errors": 0,
+    "guard_events": [
+     "report written before required steps; sent back (1 gaps)",
+     "citation check failed ({'numbers': 18, 'supported': 12, 'miscited': 6, 'uncited': 0, 'unsupported': 0, 'support_rate': 0.667, 'unknown_citations': []}); one repair round"
+    ],
+    "finished": true,
+    "latency_s": 131.16,
+    "input_tokens": 18226,
+    "output_tokens": 1500,
+    "llm_calls": 7
+   },
+   "baseline": {
+    "report": "## Answer\nThe late-delivery rate increased significantly from 3.38% to 6.19% between July and August 2018. This could be due to a combination of factors, including changes in delivery performance, order volume, or external logistics challenges.\n\n## Findings\n- Late-delivery rate increased by 2.8 percentage points.\n- Average delivery time decreased by 1.2 days.\n- Average promised delivery window decreased by 4.5 days.\n- Cancellation rate increased by 0.5 percentage points.\n- Orders increased by 220.\n- Average order value decreased by 13.2 R$.\n\n## Investigate first\n- Analyze the distribution of late deliveries by seller, region, and product category to identify specific contributors.\n- Examine the relationship between the decrease in average promised delivery window and the increase in late-delivery rate.\n- Investigate the reasons behind the increase in cancellation rate and its potential link to delivery performance.\n\n## Limitations\n- The data does not provide granular details on specific sellers, regions, or product categories.\n- There is no information on external factors such as weather, logistics disruptions, or changes in supplier performance.\n- The data does not include customer feedback or reviews that might explain the increase in late deliveries.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "3.38%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "6.19%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+2.81 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": false,
+      "expected": "delivery -2.86 pp, promise +5.67 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": false,
+      "expected": "promise"
+     },
+     {
+      "fact": "top customer state",
+      "ok": false,
+      "expected": "SP"
+     },
+     {
+      "fact": "top seller state",
+      "ok": false,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 8,
+    "traceable": 7,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 15.24,
+    "input_tokens": 513,
+    "output_tokens": 268,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2018-07",
+    "current": "2018-08",
+    "base_complete": true,
+    "current_complete": true,
+    "base_orders": 6292,
+    "current_orders": 6512,
+    "expect_insufficient": false,
+    "base_rate_pct": 3.38,
+    "current_rate_pct": 6.19,
+    "change_pp": 2.81,
+    "z": 7.34,
+    "direction": "up",
+    "beyond_noise": true,
+    "delivery_effect_pp": -2.86,
+    "promise_effect_pp": 5.67,
+    "dominant_effect": "promise",
+    "top_customer_state": {
+     "segment": "SP",
+     "contribution_pp": 2.86
+    },
+    "top_seller_state": {
+     "segment": "SP",
+     "contribution_pp": 2.7
+    }
+   }
+  },
+  {
+   "id": "q09",
+   "kind": "rise",
+   "base": "2017-02",
+   "current": "2017-03",
+   "note": "",
+   "agent": {
+    "report": "## Answer\nThe late-delivery rate increased from 3.0% to 4.6%, a change of 1.59 percentage points [E2]. This increase is driven by both mix effects and performance issues, with customer states like \"Other\" and \"SC\" contributing significantly.\n\n## Findings\n- The late rate rose from 3.0% to 4.6% [E2].\n- The change of 1.59 percentage points is beyond noise, with a z-score of 2.59 [E2].\n- Delivery effect: 0.04 percentage points, promise effect: 1.55 percentage points [E2].\n- In seller_state breakdown, the performance effect contributed 1.56 percentage points, with no mix effect [E3].\n- In customer_state breakdown, the mix effect contributed 0.04 percentage points and the performance effect contributed 1.46 percentage points [E4].\n- Top contributors include \"Other\" (total effect: 1.15), \"SC\" (total effect: 0.56), and \"MG\" (total effect: 0.19).\n- \"SC\" is flagged for a significant performance effect, with the late rate increasing from 5.3% to 18.3% [E4].\n\n## Investigate first\n1. Focus on customer_state \"Other\" and \"SC\" due to their significant contributions to the late rate increase.\n2. Investigate the cause of the performance decline in \"SC\", where the late rate increased from 5.3% to 18.3% [E4].\n3. Check for any anomalies or external factors affecting \"Other\" and \"SC\" during this period.\n\n## Limitations\n- The analysis is limited to the provided data and does not include external factors.\n- The breakdown is based on seller_state and customer_state and does not account for other potential dimensions.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "2.96%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "4.56%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+1.59 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": true,
+      "expected": "delivery +0.04 pp, promise +1.55 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": false,
+      "expected": "promise"
+     },
+     {
+      "fact": "top customer state",
+      "ok": true,
+      "expected": "SC"
+     },
+     {
+      "fact": "top seller state",
+      "ok": false,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 19,
+    "traceable": 19,
+    "cited_correctly": 19,
+    "tool_calls": 4,
+    "tool_errors": 0,
+    "guard_events": [
+     "report written before required steps; sent back (1 gaps)"
+    ],
+    "finished": true,
+    "latency_s": 75.77,
+    "input_tokens": 13317,
+    "output_tokens": 887,
+    "llm_calls": 6
+   },
+   "baseline": {
+    "report": "## Answer\nThe late-delivery rate increased from 2.96% to 4.56% in 2017-03, despite a slight decrease in average delivery time. This suggests a potential issue with delivery reliability or order fulfillment processes during this period.\n\n## Findings\n- Late-delivery rate increased by 1.6 percentage points.\n- Orders increased by 902, which may have impacted delivery performance.\n- Overdue undelivered orders increased slightly from 65 to 71.\n- Average promised delivery window decreased by 7.1 days.\n- Cancellation rate decreased by 1.1 percentage points.\n- Average order value slightly decreased from R$165.19 to R$163.59.\n\n## Investigate first\n- Check if there were any changes in delivery logistics or carrier performance during 2017-03.\n- Analyze the performance of sellers with the highest late-delivery rates in 2017-03.\n- Investigate if specific product categories or regions showed a disproportionate increase in late deliveries.\n\n## Limitations\n- The data does not specify which sellers, regions, or product categories contributed to the increase in late deliveries.\n- There is no information on the reasons behind the change in average promised delivery window.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "2.96%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "4.56%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+1.59 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": false,
+      "expected": "delivery +0.04 pp, promise +1.55 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": false,
+      "expected": "promise"
+     },
+     {
+      "fact": "top customer state",
+      "ok": false,
+      "expected": "SC"
+     },
+     {
+      "fact": "top seller state",
+      "ok": false,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 10,
+    "traceable": 10,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 15.85,
+    "input_tokens": 517,
+    "output_tokens": 274,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2017-02",
+    "current": "2017-03",
+    "base_complete": true,
+    "current_complete": true,
+    "base_orders": 1780,
+    "current_orders": 2682,
+    "expect_insufficient": false,
+    "base_rate_pct": 2.96,
+    "current_rate_pct": 4.56,
+    "change_pp": 1.59,
+    "z": 2.59,
+    "direction": "up",
+    "beyond_noise": true,
+    "delivery_effect_pp": 0.04,
+    "promise_effect_pp": 1.55,
+    "dominant_effect": "promise",
+    "top_customer_state": {
+     "segment": "SC",
+     "contribution_pp": 0.56
+    },
+    "top_seller_state": {
+     "segment": "SP",
+     "contribution_pp": 1.25
+    }
+   }
+  },
+  {
+   "id": "q10",
+   "kind": "fall",
+   "base": "2018-03",
+   "current": "2018-04",
+   "note": "premise is wrong",
+   "agent": {
+    "report": "## Answer\nThe late-delivery rate dropped from 19.0% to 4.5% [E2], a significant decrease beyond noise. The change was primarily due to slower deliveries, with a delivery effect of -15.61 percentage points, and a smaller promise effect of 1.15 percentage points. \n\n## Findings\n- The late rate fell from 19.0% to 4.5% [E2], a decrease of 14.46 percentage points, beyond noise.\n- The delivery effect was -15.61 percentage points, and the promise effect was 1.15 percentage points [E2].\n- For seller_state, the mix contribution was 0.06 percentage points, and the performance contribution was -14.47 percentage points [E3].\n- For customer_state, the mix contribution was -0.27 percentage points, and the performance contribution was -14.38 percentage points [E4].\n- The top contributors were RJ (performance: -3.68), SP (performance: -3.25), MG (performance: -2.22), RS (performance: -0.94), PR (performance: -0.63), SC (performance: -0.61), BA (performance: -12.97), and DF (performance: -16.31) [E4].\n- Flagged segments include RJ, SP, MG, PR, RS, SC, BA, and DF, with significant changes in late rate [E4].\n\n## Investigate first\n1. Investigate the significant drop in late rate for RJ, which had a change of -29.66 percentage points with a z-score of -15.1 [E4].\n2. Look into the flagged segments, especially SP, which had a change of -7.73 percentage points with a z-score of -13.05 [E4].\n3. Check if there were any changes in delivery processes or external factors that could have influenced the late rate.\n\n## Limitations\n- The data is historical and does not include real-time information.\n- The analysis is based on the provided data and does not account for external factors not captured in the dataset.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "18.96%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "4.50%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "-14.46 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "down"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": true,
+      "expected": "delivery -15.61 pp, promise +1.15 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": true,
+      "expected": "delivery"
+     },
+     {
+      "fact": "top customer state",
+      "ok": true,
+      "expected": "RJ"
+     },
+     {
+      "fact": "top seller state",
+      "ok": true,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 25,
+    "traceable": 25,
+    "cited_correctly": 25,
+    "tool_calls": 4,
+    "tool_errors": 0,
+    "guard_events": [
+     "report written before required steps; sent back (1 gaps)"
+    ],
+    "finished": true,
+    "latency_s": 86.16,
+    "input_tokens": 14665,
+    "output_tokens": 1026,
+    "llm_calls": 6
+   },
+   "baseline": {
+    "report": "## Answer\nThe late-delivery rate decreased significantly from 18.96% to 4.5%, contrary to the initial question. This suggests a substantial improvement in delivery performance, but the question may have been based on incorrect data or a misunderstanding of the trend.\n\n## Findings\n- Late-delivery rate dropped by 14.5 percentage points.\n- Average delivery time decreased by 4.8 days.\n- Average promised delivery window increased by 1.6 days.\n- Orders decreased by 272.\n- Cancellation rate decreased by 0.3 percentage points.\n- Average order value increased by 6.55 R$.\n- Low-review rate decreased by 9.81 percentage points.\n\n## Investigate first\n- Review the reasons behind the significant drop in the late-delivery rate and how it correlates with the decrease in orders and average delivery time.\n- Analyze the impact of the increased average promised delivery window on customer expectations and satisfaction.\n- Investigate the factors contributing to the improvement in the low-review rate and its relationship with other metrics.\n\n## Limitations\n- The data provided does not include granular details on specific sellers, regions, or product categories.\n- There is no information on the reasons for the decrease in orders or the factors influencing the change in the average promised delivery window.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "18.96%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "4.50%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "-14.46 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "down"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": false,
+      "expected": "delivery -15.61 pp, promise +1.15 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": false,
+      "expected": "delivery"
+     },
+     {
+      "fact": "top customer state",
+      "ok": false,
+      "expected": "RJ"
+     },
+     {
+      "fact": "top seller state",
+      "ok": false,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 9,
+    "traceable": 7,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 15.76,
+    "input_tokens": 517,
+    "output_tokens": 273,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2018-03",
+    "current": "2018-04",
+    "base_complete": true,
+    "current_complete": true,
+    "base_orders": 7211,
+    "current_orders": 6939,
+    "expect_insufficient": false,
+    "base_rate_pct": 18.96,
+    "current_rate_pct": 4.5,
+    "change_pp": -14.46,
+    "z": -26.29,
+    "direction": "down",
+    "beyond_noise": true,
+    "delivery_effect_pp": -15.61,
+    "promise_effect_pp": 1.15,
+    "dominant_effect": "delivery",
+    "top_customer_state": {
+     "segment": "RJ",
+     "contribution_pp": -3.68
+    },
+    "top_seller_state": {
+     "segment": "SP",
+     "contribution_pp": -11.58
+    }
+   }
+  },
+  {
+   "id": "q11",
+   "kind": "fall",
+   "base": "2017-11",
+   "current": "2017-12",
+   "note": "premise is wrong",
+   "agent": {
+    "report": "## Answer\nThe late-delivery rate decreased from 12.4% to 7.5% [E2]. This change was primarily due to shorter promised delivery windows, which reduced the rate by 6.17 percentage points, while deliveries became slightly slower, increasing the rate by 1.22 percentage points.\n\n## Findings\n- The late rate decreased from 12.4% to 7.5% [E2].\n- The change was driven by a promise effect of -6.17 percentage points and a delivery effect of +1.22 percentage points [E2].\n- For seller_state, the mix effect contributed 0.02 percentage points, and the performance effect contributed -4.93 percentage points [E3].\n- For customer_state, the mix effect contributed -0.14 percentage points, and the performance effect contributed -4.84 percentage points [E4].\n- The top contributors were SP (performance effect: -1.52), SC (performance effect: -0.43), and MA (performance effect: -40.33).\n- Segments flagged for anomalies include SP, SC, MA, and others, with MA showing a significant decrease in late rate [E4].\n\n## Investigate first\n1. Investigate the cause of the significant decrease in late rate for MA, as it shows a large negative performance effect.\n2. Examine the change in promised delivery windows for SC, which had a notable negative performance effect.\n3. Look into the anomaly flagged for SP, where the late rate decreased significantly despite a slight increase in order share.\n\n## Limitations\n- The analysis is based on the provided data and does not account for external factors such as market conditions or operational changes.\n- The findings are descriptive and do not imply causation; further investigation is needed to determine the underlying reasons for the changes.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "12.40%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "7.46%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": false,
+      "expected": "-4.95 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "down"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": true,
+      "expected": "delivery +1.22 pp, promise -6.17 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": true,
+      "expected": "promise"
+     },
+     {
+      "fact": "top customer state",
+      "ok": true,
+      "expected": "SP"
+     },
+     {
+      "fact": "top seller state",
+      "ok": true,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 15,
+    "traceable": 15,
+    "cited_correctly": 15,
+    "tool_calls": 4,
+    "tool_errors": 0,
+    "guard_events": [
+     "report written before required steps; sent back (1 gaps)"
+    ],
+    "finished": true,
+    "latency_s": 83.53,
+    "input_tokens": 14079,
+    "output_tokens": 916,
+    "llm_calls": 6
+   },
+   "baseline": {
+    "report": "## Answer\nThe late-delivery rate decreased from 12.4% to 7.46%, contrary to the initial question. This suggests a general improvement in delivery performance, but the underlying factors for the change in late-delivery rate require further analysis.\n\n## Findings\n- Late-delivery rate decreased by 4.9 percentage points.\n- Orders dropped by 1,871, which is a significant reduction.\n- Average delivery time slightly increased by 0.2 days.\n- Average promised delivery window increased by 5.1 days.\n- Cancellation rate decreased by 0.7 percentage points.\n- Average order value slightly decreased from R$158.25 to R$153.55.\n- Low-review rate decreased from 18.77% to 16.39%.\n\n## Investigate first\n- Analyze the reasons for the significant drop in orders and how it impacted the late-delivery rate.\n- Investigate the increase in the average promised delivery window and its potential impact on late-delivery metrics.\n- Examine the relationship between the drop in cancellation rate and the change in late-delivery rate.\n\n## Limitations\n- The data does not provide granular details on specific sellers, regions, or product categories.\n- There is no information on the reasons for the drop in orders or the change in the average promised delivery window.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "12.40%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "7.46%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "-4.95 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "down"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": false,
+      "expected": "delivery +1.22 pp, promise -6.17 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": false,
+      "expected": "promise"
+     },
+     {
+      "fact": "top customer state",
+      "ok": false,
+      "expected": "SP"
+     },
+     {
+      "fact": "top seller state",
+      "ok": false,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 11,
+    "traceable": 11,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 16.41,
+    "input_tokens": 519,
+    "output_tokens": 288,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2017-11",
+    "current": "2017-12",
+    "base_complete": true,
+    "current_complete": true,
+    "base_orders": 7544,
+    "current_orders": 5673,
+    "expect_insufficient": false,
+    "base_rate_pct": 12.4,
+    "current_rate_pct": 7.46,
+    "change_pp": -4.95,
+    "z": -9.13,
+    "direction": "down",
+    "beyond_noise": true,
+    "delivery_effect_pp": 1.22,
+    "promise_effect_pp": -6.17,
+    "dominant_effect": "promise",
+    "top_customer_state": {
+     "segment": "SP",
+     "contribution_pp": -1.47
+    },
+    "top_seller_state": {
+     "segment": "SP",
+     "contribution_pp": -4.67
+    }
+   }
+  },
+  {
+   "id": "q12",
+   "kind": "fall",
+   "base": "2018-05",
+   "current": "2018-06",
+   "note": "premise is wrong",
+   "agent": {
+    "report": "## Answer\nThe late-delivery rate dropped from 6.6% to 1.2% [E2], a decrease of 5.4 percentage points. This was primarily due to slower deliveries, with a delivery effect of -4.26 percentage points, and a smaller promise effect of -1.14 percentage points. \n\n## Findings\n- The late rate fell from 6.6% to 1.2% [E2], a decrease of 5.4 percentage points.\n- The delivery effect was -4.26 percentage points, and the promise effect was -1.14 percentage points [E2].\n- For seller_state, the mix effect was 0.05 percentage points, and the performance effect was -5.37 percentage points [E3].\n- For customer_state, the mix effect was 0.1 percentage points, and the performance effect was -5.43 percentage points [E4].\n- The top contributors included SP (performance effect: -1.69 percentage points), MG (performance effect: -1.01 percentage points), and RJ (performance effect: -0.68 percentage points).\n- Flagged segments include SP, MG, RJ, PR, SC, BA, DF, and ES, with z-scores exceeding 2.0 [E4].\n\n## Investigate first\n1. Investigate the significant drop in late rate for SP, which had a performance effect of -1.69 percentage points [E4].\n2. Examine the extreme drop in late rate for MG, which had a performance effect of -1.01 percentage points [E4].\n3. Look into the change in late rate for RJ, which had a performance effect of -0.68 percentage points [E4].\n\n## Limitations\n- The data is historical and does not include real-time information.\n- The analysis is based on the provided data and does not account for external factors such as market conditions or operational changes.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "6.56%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "1.16%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "-5.40 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "down"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": true,
+      "expected": "delivery -4.26 pp, promise -1.14 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": true,
+      "expected": "delivery"
+     },
+     {
+      "fact": "top customer state",
+      "ok": true,
+      "expected": "SP"
+     },
+     {
+      "fact": "top seller state",
+      "ok": true,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 21,
+    "traceable": 21,
+    "cited_correctly": 21,
+    "tool_calls": 4,
+    "tool_errors": 0,
+    "guard_events": [
+     "report written before required steps; sent back (1 gaps)"
+    ],
+    "finished": true,
+    "latency_s": 83.78,
+    "input_tokens": 14714,
+    "output_tokens": 969,
+    "llm_calls": 6
+   },
+   "baseline": {
+    "report": "## Answer\nThe late-delivery rate decreased significantly from 6.56% to 1.16%, contrary to the initial question. This suggests a substantial improvement in delivery performance, but the question about an increase may have been based on a misunderstanding or misinterpretation of the data.\n\n## Findings\n- Late-delivery rate %: 6.56% (2018-05) \u2192 1.16% (2018-06)\n- Orders: 6873 (2018-05) \u2192 6167 (2018-06)\n- Cancellation rate %: 0.58% (2018-05) \u2192 0.36% (2018-06)\n- Average delivery time (days): 11.3 (2018-05) \u2192 9.2 (2018-06)\n- Average promised delivery window (days): 23.5 (2018-05) \u2192 28.4 (2018-06)\n\n## Investigate first\n- Analyze the reasons behind the significant drop in the late-delivery rate and how it correlates with the reduction in orders and average delivery time.\n- Investigate the change in the average promised delivery window to understand if it reflects improved delivery performance or a shift in customer expectations.\n\n## Limitations\n- The data does not provide granular details on specific sellers, regions, or product categories.\n- There is no information on the reasons for the decrease in orders or the change in the average promised delivery window.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "6.56%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "1.16%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": false,
+      "expected": "-5.40 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "down"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": false,
+      "expected": "delivery -4.26 pp, promise -1.14 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": false,
+      "expected": "delivery"
+     },
+     {
+      "fact": "top customer state",
+      "ok": false,
+      "expected": "SP"
+     },
+     {
+      "fact": "top seller state",
+      "ok": false,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 12,
+    "traceable": 12,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 19.26,
+    "input_tokens": 515,
+    "output_tokens": 350,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2018-05",
+    "current": "2018-06",
+    "base_complete": true,
+    "current_complete": true,
+    "base_orders": 6873,
+    "current_orders": 6167,
+    "expect_insufficient": false,
+    "base_rate_pct": 6.56,
+    "current_rate_pct": 1.16,
+    "change_pp": -5.4,
+    "z": -15.59,
+    "direction": "down",
+    "beyond_noise": true,
+    "delivery_effect_pp": -4.26,
+    "promise_effect_pp": -1.14,
+    "dominant_effect": "delivery",
+    "top_customer_state": {
+     "segment": "SP",
+     "contribution_pp": -1.69
+    },
+    "top_seller_state": {
+     "segment": "SP",
+     "contribution_pp": -4.03
+    }
+   }
+  },
+  {
+   "id": "q13",
+   "kind": "fall",
+   "base": "2017-04",
+   "current": "2017-05",
+   "note": "premise is wrong",
+   "agent": {
+    "report": "## Answer\nThe late-delivery rate decreased from 6.6% to 3.0% [E2], with the change primarily driven by slower deliveries rather than shorter promises. The customer_state breakdown shows that the decline was largely due to performance effects across several regions, with some segments experiencing significant drops.\n\n## Findings\n- The late rate fell from 6.6% to 3.0%, a decrease of 3.57 percentage points [E2].\n- Delivery effect: -4.55 percentage points, promise effect: +0.98 percentage points [E2].\n- Seller_state decomposition: mix effect of -0.08 percentage points, performance effect of -3.62 percentage points [E3].\n- Customer_state decomposition: mix effect of -0.11 percentage points, performance effect of -3.56 percentage points [E4].\n- Top contributors by seller_state: PR (performance effect -0.73), MG (performance effect -0.42), RJ (performance effect -0.28) [E3].\n- Top contributors by customer_state: BA (performance effect -0.4), CE (performance effect -0.19), RJ (performance effect -0.55) [E4].\n- Flagged segments by seller_state: PR (change -9.36, z-score -3.92), MG (change -4.1, z-score -2.39), RJ (change -7.17, z-score -2.04) [E3].\n- Flagged segments by customer_state: BA (change -10.92, z-score -2.84), CE (change -10.29, z-score -2.21), RJ (change -3.67, z-score -2.51) [E4].\n\n## Investigate first\n1. Investigate the flagged customer states (BA, CE, RJ) to understand the root causes of their significant performance effects.\n2. Examine the delivery days and promised days for these segments to identify any operational or logistical issues.\n3. Check if there were any changes in customer behavior or external factors affecting these regions during the period.\n\n## Limitations\n- The data is historical and does not include real-time information.\n- The analysis does not account for external factors such as market conditions or external disruptions.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "6.56%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "2.99%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "-3.57 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "down"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": true,
+      "expected": "delivery -4.55 pp, promise +0.98 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": true,
+      "expected": "delivery"
+     },
+     {
+      "fact": "top customer state",
+      "ok": false,
+      "expected": "SP"
+     },
+     {
+      "fact": "top seller state",
+      "ok": false,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 29,
+    "traceable": 29,
+    "cited_correctly": 29,
+    "tool_calls": 4,
+    "tool_errors": 0,
+    "guard_events": [
+     "report written before required steps; sent back (1 gaps)"
+    ],
+    "finished": true,
+    "latency_s": 85.73,
+    "input_tokens": 13960,
+    "output_tokens": 1010,
+    "llm_calls": 6
+   },
+   "baseline": {
+    "report": "## Answer\nThe late-delivery rate decreased from 6.56% to 2.99%, contrary to the initial question. This suggests a significant improvement in delivery performance, but the question about an increase may have been based on a misunderstanding or misinterpretation of the data.\n\n## Findings\n- **Late-delivery rate**: Decreased from 6.56% to 2.99% (-3.6 percentage points).\n- **Orders**: Increased by 1296 (from 2404 to 3700).\n- **Average delivery time**: Decreased from 15.0 days to 11.4 days (-3.6 days).\n- **Average promised delivery window**: Decreased from 28.0 days to 24.9 days (-3.1 days).\n- **Cancellation rate**: Increased from 1.12% to 1.62% (+0.5 percentage points).\n- **Overdue undelivered orders**: Increased from 74 to 94 (+20).\n\n## Investigate first\n- **Cancellation rate increase**: Explore reasons for the rise in cancellations, as it may indicate customer dissatisfaction or operational issues.\n- **Overdue undelivered orders**: Investigate why the number of overdue undelivered orders increased despite a lower late-delivery rate, as this may suggest issues with order tracking or delivery processes.\n- **Average delivery time**: Analyze the factors contributing to the reduction in average delivery time, as this could indicate operational improvements.\n\n## Limitations\n- The data does not specify which sellers, regions, or product categories contributed to the changes.\n- There is no information on the reasons behind the increase in overdue undelivered orders.\n- The data does not provide customer feedback or reviews to explain the cancellation rate increase.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "6.56%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "2.99%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "-3.57 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "down"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": false,
+      "expected": "delivery -4.55 pp, promise +0.98 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": false,
+      "expected": "delivery"
+     },
+     {
+      "fact": "top customer state",
+      "ok": false,
+      "expected": "SP"
+     },
+     {
+      "fact": "top seller state",
+      "ok": false,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 20,
+    "traceable": 19,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 20.49,
+    "input_tokens": 518,
+    "output_tokens": 380,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2017-04",
+    "current": "2017-05",
+    "base_complete": true,
+    "current_complete": true,
+    "base_orders": 2404,
+    "current_orders": 3700,
+    "expect_insufficient": false,
+    "base_rate_pct": 6.56,
+    "current_rate_pct": 2.99,
+    "change_pp": -3.57,
+    "z": -6.5,
+    "direction": "down",
+    "beyond_noise": true,
+    "delivery_effect_pp": -4.55,
+    "promise_effect_pp": 0.98,
+    "dominant_effect": "delivery",
+    "top_customer_state": {
+     "segment": "SP",
+     "contribution_pp": -1.01
+    },
+    "top_seller_state": {
+     "segment": "SP",
+     "contribution_pp": -1.74
+    }
+   }
+  },
+  {
+   "id": "q14",
+   "kind": "flat",
+   "base": "2017-05",
+   "current": "2017-06",
+   "note": "no real change",
+   "agent": {
+    "report": "## Answer\nThe late-delivery rate remained stable at 3.0% [E2], with no significant change beyond noise. The decomposition by category shows a mix of shifts and performance changes, with the 'baby' category contributing significantly to the late rate increase, while 'health_beauty' showed a performance improvement.\n\n## Findings\n- The late rate remained stable at 3.0% [E2], with no significant change beyond noise.\n- The delivery_effect_pp was 0.65, and the promise_effect_pp was -0.61 [E2].\n- For seller_state, the mix_pp was 0.01, and the performance_pp was 0.07 [E3].\n- For category, the mix_pp was 0.03, and the performance_pp was 0.03 [E4].\n- The 'baby' category contributed a total_pp of 0.17, driven by a performance_pp of 0.21 [E4].\n- The 'health_beauty' category showed a total_pp of 0.12, driven by a performance_pp of 0.12 [E4].\n- The 'Other' category contributed a total_pp of -0.23, driven by a performance_pp of -0.23 [E4].\n- The 'auto' category contributed a total_pp of 0.17, driven by a performance_pp of 0.14 [E4].\n- The 'housewares' category contributed a total_pp of 0.17, driven by a performance_pp of 0.13 [E4].\n- The 'bed_bath_table' category contributed a total_pp of -0.14, driven by a performance_pp of -0.17 [E4].\n\n## Investigate first\n1. Investigate the 'baby' category further to understand the performance change and why it contributed significantly to the late rate increase.\n2. Look into the delivery days and promised days for the 'baby' category to see if there were any changes in delivery patterns.\n3. Check if there were any anomalies or flagged segments in the category breakdown that might indicate data issues or specific performance problems.\n\n## Limitations\n- The late rate change was not significant beyond noise [E2].\n- The data quality for both months is complete and trustworthy [E1].\n- The break-down by category shows some segments with limited data, which might affect the interpretation of performance changes.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "2.99%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "3.03%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": false,
+      "expected": "+0.04 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "within noise"
+     }
+    ],
+    "numbers": 20,
+    "traceable": 20,
+    "cited_correctly": 20,
+    "tool_calls": 4,
+    "tool_errors": 0,
+    "guard_events": [
+     "report written before required steps; sent back (1 gaps)"
+    ],
+    "finished": true,
+    "latency_s": 81.53,
+    "input_tokens": 13371,
+    "output_tokens": 1013,
+    "llm_calls": 6
+   },
+   "baseline": {
+    "report": "## Answer\nThe late-delivery rate remained almost the same, but the average delivery time increased, suggesting potential issues with logistics or order fulfillment. The decrease in orders and cancellation rate may indicate a shift in customer behavior or operational changes.\n\n## Findings\n- Late-delivery rate: 2.99% (May) vs. 3.03% (June) (+0.04%).\n- Average delivery time: 11.4 days (May) vs. 12.0 days (June) (+0.6 days).\n- Average promised delivery window: 24.9 days (May) vs. 24.7 days (June) (-0.2 days).\n- Orders: 3700 (May) vs. 3245 (June) (-455).\n- Cancellation rate: 1.62% (May) vs. 1.23% (June) (-0.39%).\n\n## Investigate first\n- Check if there was a change in the distribution of orders across regions or product categories that could have affected delivery times.\n- Analyze the performance of sellers with the highest late-delivery rates in June to identify any patterns or common issues.\n- Review the reasons for the decrease in orders and how it might have impacted the overall delivery performance.\n\n## Limitations\n- The dashboard does not provide granular data on specific regions, product categories, or seller performance.\n- There is no information on the reasons for cancellations or the nature of overdue undelivered orders.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "2.99%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "3.03%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+0.04 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": false,
+      "expected": "within noise"
+     }
+    ],
+    "numbers": 15,
+    "traceable": 12,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 18.9,
+    "input_tokens": 517,
+    "output_tokens": 323,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2017-05",
+    "current": "2017-06",
+    "base_complete": true,
+    "current_complete": true,
+    "base_orders": 3700,
+    "current_orders": 3245,
+    "expect_insufficient": false,
+    "base_rate_pct": 2.99,
+    "current_rate_pct": 3.03,
+    "change_pp": 0.04,
+    "z": 0.1,
+    "direction": "up",
+    "beyond_noise": false,
+    "delivery_effect_pp": 0.65,
+    "promise_effect_pp": -0.61,
+    "dominant_effect": "delivery",
+    "top_customer_state": {
+     "segment": "SP",
+     "contribution_pp": -0.3
+    },
+    "top_seller_state": {
+     "segment": "MG",
+     "contribution_pp": 0.14
+    }
+   }
+  },
+  {
+   "id": "q15",
+   "kind": "flat",
+   "base": "2017-01",
+   "current": "2017-02",
+   "note": "no real change",
+   "agent": {
+    "report": "## Answer\nThe late-delivery rate increased slightly from 2.9% to 3.0% [E2], with a minimal change that is within the noise level. The delivery effect was slightly negative, while the promise effect was slightly positive, indicating a mix of slower deliveries and shorter delivery promises.\n\n## Findings\n- The late rate rose from 2.9% to 3.0% [E2], a 0.03% increase, not beyond noise.\n- The delivery effect was -1.29 pp, and the promise effect was +1.32 pp [E2].\n- The breakdown by seller_state showed a mix effect of 0.13 pp and a performance effect of -0.0 pp [E3].\n- The breakdown by customer_state showed a mix effect of 0.01 pp and a performance effect of 0.03 pp [E4].\n- The top contributors by seller_state were SP (mix_pp 0.24, performance_pp 0.09), RJ (mix_pp -0.0, performance_pp 0.33), and PR (mix_pp -0.27, performance_pp -0.16).\n- The top contributors by customer_state were Other (mix_pp 0.06, performance_pp -0.2), MG (mix_pp 0.0, performance_pp 0.11), and RS (mix_pp -0.02, performance_pp 0.07).\n\n## Investigate first\n1. Focus on the seller_state \"RJ\" where the performance effect was significant, indicating a potential issue with delivery times.\n2. Investigate the customer_state \"Other\" where the performance effect was significant, indicating a potential issue with delivery times.\n3. Check for any anomalies or flagged segments in the \"Other\" category to understand the minor contribution to the change.\n\n## Limitations\n- The change in late rate is minimal and within the noise level, so it may not be statistically significant.\n- The data does not provide detailed information on the exact reasons for the slight increase in late rate.\n- The analysis is limited to the provided metrics and dimensions, and further investigation may be needed to understand the root causes.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "2.93%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "2.96%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+0.03 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "within noise"
+     }
+    ],
+    "numbers": 23,
+    "traceable": 23,
+    "cited_correctly": 23,
+    "tool_calls": 4,
+    "tool_errors": 0,
+    "guard_events": [
+     "report written before required steps; sent back (1 gaps)"
+    ],
+    "finished": true,
+    "latency_s": 79.61,
+    "input_tokens": 13381,
+    "output_tokens": 1005,
+    "llm_calls": 6
+   },
+   "baseline": {
+    "report": "## Answer\nThe late-delivery rate remained almost the same, but the increase in cancellation rate and decrease in average promised delivery window suggest potential issues with order fulfillment and customer expectations.\n\n## Findings\n- Late-delivery rate: 2.93% (Jan) to 2.96% (Feb)\n- Orders increased by 980 (from 800 to 1780)\n- Cancellation rate increased by 1.9% (from 1.62% to 3.48%)\n- Average promised delivery window decreased by 7.7 days (from 40.2 to 32.5)\n- Overdue undelivered orders increased from 37 to 65\n\n## Investigate first\n- Examine the correlation between the increase in cancellation rate and the decrease in average promised delivery window.\n- Analyze the performance of sellers with the highest cancellation rates and check if they are associated with specific regions or product categories.\n- Investigate the reasons behind the increase in overdue undelivered orders and whether it is linked to the rise in orders or changes in delivery expectations.\n\n## Limitations\n- The dashboard does not provide granular data on specific sellers, regions, or product categories.\n- There is no information on the reasons for cancellations or the nature of overdue undelivered orders.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "2.93%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "2.96%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": false,
+      "expected": "+0.03 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": false,
+      "expected": "within noise"
+     }
+    ],
+    "numbers": 13,
+    "traceable": 13,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 16.01,
+    "input_tokens": 515,
+    "output_tokens": 281,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2017-01",
+    "current": "2017-02",
+    "base_complete": true,
+    "current_complete": true,
+    "base_orders": 800,
+    "current_orders": 1780,
+    "expect_insufficient": false,
+    "base_rate_pct": 2.93,
+    "current_rate_pct": 2.96,
+    "change_pp": 0.03,
+    "z": 0.04,
+    "direction": "up",
+    "beyond_noise": false,
+    "delivery_effect_pp": -1.29,
+    "promise_effect_pp": 1.32,
+    "dominant_effect": "promise",
+    "top_customer_state": {
+     "segment": "MG",
+     "contribution_pp": 0.12
+    },
+    "top_seller_state": {
+     "segment": "PR",
+     "contribution_pp": -0.35
+    }
+   }
+  },
+  {
+   "id": "q16",
+   "kind": "flat",
+   "base": "2017-07",
+   "current": "2017-08",
+   "note": "no real change",
+   "agent": {
+    "report": "## Answer\nThe late-delivery rate increased from 2.8% to 2.9% [E2], with the change mainly due to slower deliveries. The \"RS\" customer_state segment contributed the most to the increase, showing a significant rise in late rates, while the \"PA\" segment saw a sharp decline [E4].\n\n## Findings\n- The late rate rose from 2.8% to 2.9%, a 0.1 percentage point increase [E2].\n- The delivery_effect_pp was 0.15, while the promise_effect_pp was -0.03, indicating the increase was mainly due to slower deliveries [E2].\n- For the seller_state breakdown, the \"Other\" segment had the highest contribution, with a performance_pp of 0.09 [E3].\n- The \"RS\" segment also contributed, with a performance_pp of 0.07 [E3].\n- The \"RJ\" segment showed a performance_pp of 0.05 [E3].\n- For the customer_state breakdown, the \"RS\" segment had the highest contribution, with a total_pp of 0.37 [E4].\n- The \"PA\" segment showed a significant decline, with a total_pp of -0.08 [E4].\n- The \"MG\" segment showed a moderate increase, with a total_pp of 0.16 [E4].\n- The \"SP\" segment showed a small increase, with a total_pp of 0.09 [E4].\n- The \"SC\" segment showed a small decrease, with a total_pp of -0.09 [E4].\n\n## Investigate first\n1. Focus on the \"RS\" customer_state segment, as it showed the highest contribution to the increase in late rates.\n2. Investigate the \"PA\" customer_state segment, which showed a significant decline in late rates.\n3. Check for any anomalies or patterns in the \"RJ\" seller_state segment, which showed an increase in late rates.\n\n## Limitations\n- The increase in late rate was not beyond the noise level, as indicated by the z-score of 0.32 [E2].\n- The data does not provide information on the reasons behind the increase in late rates, only associations.\n- The \"PA\" segment's late rate dropped to 0.0%, which may be due to a small sample size or data anomalies.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "2.79%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "2.91%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+0.12 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "within noise"
+     }
+    ],
+    "numbers": 17,
+    "traceable": 17,
+    "cited_correctly": 17,
+    "tool_calls": 4,
+    "tool_errors": 0,
+    "guard_events": [
+     "report written before required steps; sent back (1 gaps)"
+    ],
+    "finished": true,
+    "latency_s": 83.72,
+    "input_tokens": 13434,
+    "output_tokens": 1016,
+    "llm_calls": 6
+   },
+   "baseline": {
+    "report": "## Answer\nThe late-delivery rate increased slightly from 2.79% to 2.91%, which could be due to a combination of factors including changes in order volume, delivery performance, or seller behavior. The increase is small, and the data does not clearly indicate which sellers, regions, or product categories are primarily responsible.\n\n## Findings\n- Late-delivery rate increased by 0.12 percentage points (from 2.79% to 2.91%).\n- Orders increased by 305, from 4,026 to 4,331.\n- Average delivery time decreased by 0.5 days (from 11.5 to 11.0 days).\n- Cancellation rate decreased by 0.63 percentage points (from 1.99% to 1.36%).\n- Average order value increased by 5.6% (from R$147.39 to R$155.65).\n\n## Investigate first\n- Analyze the performance of sellers with the highest number of late deliveries in both months to identify any changes in behavior or patterns.\n- Examine delivery performance by region to determine if certain areas experienced a more significant increase in late deliveries.\n- Investigate the impact of the increase in average order value on delivery times and late delivery rates.\n\n## Limitations\n- The data does not provide granular details on specific sellers, regions, or product categories.\n- The increase in late-delivery rate is small, and the data does not clearly indicate the root cause.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "2.79%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "2.91%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+0.12 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": false,
+      "expected": "within noise"
+     }
+    ],
+    "numbers": 17,
+    "traceable": 14,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 18.28,
+    "input_tokens": 517,
+    "output_tokens": 332,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2017-07",
+    "current": "2017-08",
+    "base_complete": true,
+    "current_complete": true,
+    "base_orders": 4026,
+    "current_orders": 4331,
+    "expect_insufficient": false,
+    "base_rate_pct": 2.79,
+    "current_rate_pct": 2.91,
+    "change_pp": 0.12,
+    "z": 0.32,
+    "direction": "up",
+    "beyond_noise": false,
+    "delivery_effect_pp": 0.15,
+    "promise_effect_pp": -0.03,
+    "dominant_effect": "delivery",
+    "top_customer_state": {
+     "segment": "RS",
+     "contribution_pp": 0.37
+    },
+    "top_seller_state": {
+     "segment": "RS",
+     "contribution_pp": 0.07
+    }
+   }
+  },
+  {
+   "id": "q17",
+   "kind": "flat",
+   "base": "2017-09",
+   "current": "2017-10",
+   "note": "no real change",
+   "agent": {
+    "report": "## Answer\nThe late-delivery rate decreased from 4.4% to 4.2% [E2], but the change is not beyond noise. The delivery effect contributed 0.93 percentage points, while the promise effect reduced it by 1.14 percentage points [E2]. The change appears to be driven by performance rather than a mix of orders.\n\n## Findings\n- The late rate decreased from 4.4% to 4.2% [E2].\n- The change is not beyond noise, with a z-score of -0.48 [E2].\n- The delivery effect contributed 0.93 percentage points, while the promise effect reduced it by 1.14 percentage points [E2].\n- For seller_state breakdown: the mix effect was 0.0 percentage points, and the performance effect was -0.23 percentage points [E3].\n- For customer_state breakdown: the mix effect was -0.04 percentage points, and the performance effect was -0.2 percentage points [E4].\n- Top contributors: BA decreased its late rate by 0.32 percentage points [E4], Other decreased by 0.31 percentage points [E4], and RJ increased by 0.28 percentage points [E4].\n- MA had a significant increase in late rate, with a z-score of 2.22 [E4].\n\n## Investigate first\n1. Investigate the performance of customers in BA, as they contributed the most to the decrease in late rate.\n2. Look into the reasons behind the significant increase in late rate for MA, as it could indicate a problem in delivery practices.\n3. Examine the impact of the promise effect on the overall late rate, as it could indicate changes in delivery windows.\n\n## Limitations\n- The change in late rate is not beyond noise, so the findings should be interpreted with caution.\n- The data does not provide information on the reasons behind the changes in late rate.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "4.39%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "4.18%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "-0.21 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "down"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "within noise"
+     }
+    ],
+    "numbers": 17,
+    "traceable": 17,
+    "cited_correctly": 17,
+    "tool_calls": 4,
+    "tool_errors": 0,
+    "guard_events": [
+     "report written before required steps; sent back (1 gaps)"
+    ],
+    "finished": true,
+    "latency_s": 76.42,
+    "input_tokens": 13385,
+    "output_tokens": 924,
+    "llm_calls": 6
+   },
+   "baseline": {
+    "report": "## Answer\nThe late-delivery rate decreased slightly from 4.39% to 4.18%, contrary to the initial question. However, the cancellation rate increased, and there were fewer overdue undelivered orders. These changes suggest a need to investigate the factors behind the cancellation rate increase and the reduction in overdue undelivered orders.\n\n## Findings\n- Late-delivery rate decreased by 0.2 percentage points.\n- Overdue undelivered orders decreased from 77 to 69.\n- Cancellation rate increased by 0.5 percentage points.\n- Average promised delivery window increased by 0.6 days.\n- Average order value slightly decreased from R$169.79 to R$168.41.\n\n## Investigate first\n- Analyze the reasons behind the increase in cancellation rate, as it may indicate underlying issues with order fulfillment or customer satisfaction.\n- Investigate the factors contributing to the decrease in overdue undelivered orders, as this could signal improvements in logistics or seller performance.\n- Examine whether the increase in average promised delivery window is correlated with changes in seller behavior or customer expectations.\n\n## Limitations\n- The data does not provide granular details on specific sellers, regions, or product categories.\n- There is no information on the reasons for cancellations or the nature of late deliveries.\n- The data is aggregated and does not include customer feedback or seller performance metrics.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "4.39%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "4.18%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "-0.21 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "down"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": false,
+      "expected": "within noise"
+     }
+    ],
+    "numbers": 9,
+    "traceable": 9,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 16.77,
+    "input_tokens": 517,
+    "output_tokens": 294,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2017-09",
+    "current": "2017-10",
+    "base_complete": true,
+    "current_complete": true,
+    "base_orders": 4285,
+    "current_orders": 4631,
+    "expect_insufficient": false,
+    "base_rate_pct": 4.39,
+    "current_rate_pct": 4.18,
+    "change_pp": -0.21,
+    "z": -0.48,
+    "direction": "down",
+    "beyond_noise": false,
+    "delivery_effect_pp": 0.93,
+    "promise_effect_pp": -1.14,
+    "dominant_effect": "promise",
+    "top_customer_state": {
+     "segment": "BA",
+     "contribution_pp": -0.32
+    },
+    "top_seller_state": {
+     "segment": "SP",
+     "contribution_pp": 0.15
+    }
+   }
+  },
+  {
+   "id": "q18",
+   "kind": "year_over_year",
+   "base": "2017-03",
+   "current": "2018-03",
+   "note": "",
+   "agent": {
+    "report": "## Answer\nThe late-delivery rate increased from 4.6% to 19.0% [E2], with a significant portion of the change attributed to slower deliveries rather than shorter promises. The customer_state breakdown shows that the increase was driven by multiple regions, with SP, RJ, and MG contributing the most.\n\n## Findings\n- The late rate rose from 4.6% to 19.0%, an increase of 14.4 percentage points [E2].\n- The delivery effect contributed 13.06 percentage points to the increase, while the promise effect contributed 1.34 percentage points [E2].\n- In the seller_state breakdown, the mix effect was -0.05 percentage points, and the performance effect was 13.39 percentage points [E3].\n- In the customer_state breakdown, the mix effect was -0.31 percentage points, and the performance effect was 15.51 percentage points [E4].\n- The top contributors to the increase were SP (3.13 percentage points), RJ (3.63 percentage points), MG (2.18 percentage points), RS (1.04 percentage points), and Other (0.99 percentage points) [E4].\n- Flagged segments include SP, RJ, MG, RS, PR, BA, DF, and GO, with significant changes in late rates and z-scores exceeding 2.0 [E4].\n\n## Investigate first\n1. Focus on SP, as it contributed the most to the increase in late rates and had a significant z-score [E3, E4].\n2. Investigate the reasons behind the performance decline in RJ, which had an exceptionally high increase in late rates [E3, E4].\n3. Examine the impact of delivery days on the overall late rate, particularly in SP and PR [E2].\n\n## Limitations\n- The analysis is based on delivered orders only, so it does not include open orders or undelivered orders.\n- The data does not provide information on the reasons for late deliveries or promise changes.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "4.56%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "18.96%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+14.41 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": true,
+      "expected": "delivery +13.06 pp, promise +1.34 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": true,
+      "expected": "delivery"
+     },
+     {
+      "fact": "top customer state",
+      "ok": true,
+      "expected": "RJ"
+     },
+     {
+      "fact": "top seller state",
+      "ok": true,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 17,
+    "traceable": 17,
+    "cited_correctly": 17,
+    "tool_calls": 4,
+    "tool_errors": 0,
+    "guard_events": [
+     "report written before required steps; sent back (1 gaps)"
+    ],
+    "finished": true,
+    "latency_s": 88.58,
+    "input_tokens": 14484,
+    "output_tokens": 973,
+    "llm_calls": 6
+   },
+   "baseline": {
+    "report": "## Answer\nThe late-delivery rate increased significantly from 2017-03 to 2018-03, likely due to a combination of factors including higher order volume, longer delivery times, and a narrower promised delivery window. The data suggests a need to investigate the impact of these changes on specific sellers, regions, and product categories.\n\n## Findings\n- Late-delivery rate increased from 4.56% to 18.96% (+14.4 pp).\n- Orders increased by 4,529 (from 2,682 to 7,211).\n- Average delivery time increased from 13.0 days to 16.2 days (+3.2 days).\n- Average promised delivery window decreased from 25.4 days to 22.7 days (-2.7 days).\n- Cancellation rate decreased from 2.42% to 0.6% (-1.8 pp).\n- Low-review rate increased from 14.17% to 22.8%.\n\n## Investigate first\n- Analyze the performance of sellers with the highest late-delivery rates in 2018-03 to identify potential issues with their logistics or fulfillment processes.\n- Examine regional performance to determine if certain areas experienced disproportionately higher late deliveries.\n- Investigate product categories with the highest late-delivery rates to assess if specific items are more prone to delivery delays.\n\n## Limitations\n- The data does not specify which sellers, regions, or product categories contributed to the late-delivery rate increase.\n- There is no information on the reasons behind the increase in orders or the decrease in cancellation rate.\n- The data does not provide insight into customer behavior or external factors that may have influenced delivery times.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "4.56%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "18.96%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+14.41 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": false,
+      "expected": "delivery +13.06 pp, promise +1.34 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": false,
+      "expected": "delivery"
+     },
+     {
+      "fact": "top customer state",
+      "ok": false,
+      "expected": "RJ"
+     },
+     {
+      "fact": "top seller state",
+      "ok": false,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 17,
+    "traceable": 17,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 20.69,
+    "input_tokens": 518,
+    "output_tokens": 374,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2017-03",
+    "current": "2018-03",
+    "base_complete": true,
+    "current_complete": true,
+    "base_orders": 2682,
+    "current_orders": 7211,
+    "expect_insufficient": false,
+    "base_rate_pct": 4.56,
+    "current_rate_pct": 18.96,
+    "change_pp": 14.41,
+    "z": 17.38,
+    "direction": "up",
+    "beyond_noise": true,
+    "delivery_effect_pp": 13.06,
+    "promise_effect_pp": 1.34,
+    "dominant_effect": "delivery",
+    "top_customer_state": {
+     "segment": "RJ",
+     "contribution_pp": 3.63
+    },
+    "top_seller_state": {
+     "segment": "SP",
+     "contribution_pp": 12.02
+    }
+   }
+  },
+  {
+   "id": "q19",
+   "kind": "year_over_year",
+   "base": "2017-08",
+   "current": "2018-08",
+   "note": "",
+   "agent": {
+    "report": "## Answer\nThe late-delivery rate increased from 2.9% to 6.2% [E2], primarily driven by performance issues in specific customer_state segments, particularly SP, where the rate rose sharply [E4].\n\n## Findings\n- The late rate rose from 2.9% to 6.2%, a 3.3 percentage point increase [E2].\n- Delivery effect: -2.54 percentage points, promise effect: +5.82 percentage points [E2].\n- Seller_state decomposition: mix contribution 0.09 percentage points, performance contribution 3.28 percentage points [E3].\n- Customer_state decomposition: mix contribution -0.28 percentage points, performance contribution 2.7 percentage points [E4].\n- Top contributors: SP (performance: 2.77 percentage points), PR (performance: 0.16 percentage points), and PE (performance: -0.19 percentage points) [E4].\n- Flagged segments: SP (change: 6.97 percentage points, z: 9.26), PR (change: 3.06 percentage points, z: 2.62), RS (change: -4.36 percentage points, z: -2.37), ES (change: -4.26 percentage points, z: -2.12), and PE (change: -9.64 percentage points, z: -2.1) [E4].\n\n## Investigate first\n1. Focus on customer_state SP, as it shows the largest increase in late rates and a significant z-score [E4].\n2. Examine the reasons behind the performance decline in SP, including operational changes or external factors.\n3. Investigate the impact of shorter promised delivery windows on the overall late rate [E2].\n\n## Limitations\n- The analysis is based on delivered orders only, so it does not include undelivered or open orders.\n- The data does not provide information on the reasons for late deliveries or promised delivery windows.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "2.91%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "6.19%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+3.28 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": true,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": true,
+      "expected": "delivery -2.54 pp, promise +5.82 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": false,
+      "expected": "promise"
+     },
+     {
+      "fact": "top customer state",
+      "ok": true,
+      "expected": "SP"
+     },
+     {
+      "fact": "top seller state",
+      "ok": true,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 24,
+    "traceable": 24,
+    "cited_correctly": 24,
+    "tool_calls": 4,
+    "tool_errors": 0,
+    "guard_events": [
+     "report written before required steps; sent back (1 gaps)"
+    ],
+    "finished": true,
+    "latency_s": 80.23,
+    "input_tokens": 13914,
+    "output_tokens": 953,
+    "llm_calls": 6
+   },
+   "baseline": {
+    "report": "## Answer\nThe late-delivery rate increased significantly from 2017-08 to 2018-08, but the data does not provide enough detail to identify specific sellers, regions, or product categories responsible for the change. The average delivery time decreased, which may suggest improvements in logistics, but this does not explain the rise in late deliveries.\n\n## Findings\n- Late-delivery rate increased from 2.91% to 6.19% (+3.3 pp).\n- Average delivery time decreased from 11.0 days to 7.7 days (-3.4 days).\n- Average promised delivery window decreased from 24.1 days to 15.8 days (-8.3 days).\n- Orders increased by 2181 (from 4331 to 6512).\n- Cancellation rate remained stable at 1.36% to 1.4%.\n- Low-review rate decreased slightly from 11.35% to 10.93%.\n\n## Investigate first\n- Examine the relationship between the decrease in average delivery time and the increase in late-delivery rate to identify potential inconsistencies or data anomalies.\n- Investigate whether the reduction in average promised delivery window influenced customer expectations and contributed to the rise in late deliveries.\n- Analyze the impact of the increase in orders on delivery performance, particularly in high-volume periods or specific product categories.\n\n## Limitations\n- No data on specific sellers, regions, or product categories is provided.\n- No information on the reasons behind the decrease in average delivery time or the reduction in the average promised delivery window.\n- No data on customer feedback or satisfaction related to delivery times.",
+    "facts": [
+     {
+      "fact": "does not wrongly abstain",
+      "ok": true,
+      "expected": "an answer"
+     },
+     {
+      "fact": "base late rate",
+      "ok": true,
+      "expected": "2.91%"
+     },
+     {
+      "fact": "current late rate",
+      "ok": true,
+      "expected": "6.19%"
+     },
+     {
+      "fact": "size of the change",
+      "ok": true,
+      "expected": "+3.28 pp"
+     },
+     {
+      "fact": "direction of the change",
+      "ok": true,
+      "expected": "up"
+     },
+     {
+      "fact": "noise verdict",
+      "ok": false,
+      "expected": "beyond noise"
+     },
+     {
+      "fact": "delivery and promise effects",
+      "ok": false,
+      "expected": "delivery -2.54 pp, promise +5.82 pp"
+     },
+     {
+      "fact": "names the larger effect",
+      "ok": false,
+      "expected": "promise"
+     },
+     {
+      "fact": "top customer state",
+      "ok": false,
+      "expected": "SP"
+     },
+     {
+      "fact": "top seller state",
+      "ok": false,
+      "expected": "SP"
+     }
+    ],
+    "numbers": 16,
+    "traceable": 16,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 19.9,
+    "input_tokens": 515,
+    "output_tokens": 357,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2017-08",
+    "current": "2018-08",
+    "base_complete": true,
+    "current_complete": true,
+    "base_orders": 4331,
+    "current_orders": 6512,
+    "expect_insufficient": false,
+    "base_rate_pct": 2.91,
+    "current_rate_pct": 6.19,
+    "change_pp": 3.28,
+    "z": 7.64,
+    "direction": "up",
+    "beyond_noise": true,
+    "delivery_effect_pp": -2.54,
+    "promise_effect_pp": 5.82,
+    "dominant_effect": "promise",
+    "top_customer_state": {
+     "segment": "SP",
+     "contribution_pp": 3.68
+    },
+    "top_seller_state": {
+     "segment": "SP",
+     "contribution_pp": 2.99
+    }
+   }
+  },
+  {
+   "id": "q20",
+   "kind": "incomplete",
+   "base": "2016-09",
+   "current": "2016-10",
+   "note": "launch months, tiny samples",
+   "agent": {
+    "report": "## Answer\nInsufficient evidence. The data for both months is incomplete or contains anomalies, making it unreliable to draw conclusions about the late-delivery rate change.\n\n## Findings\n- The data quality for 2016-09 and 2016-10 is not sufficient for analysis [E1].\n\n## Investigate first\n- Verify the data completeness and quality for the months in question.\n- Check for any additional data sources or corrections that may improve the reliability of the data.\n\n## Limitations\n- The data for both months is incomplete, which affects the reliability of the findings.\n- There are anomalies such as timestamp issues and orders without items, which could skew the results.",
+    "facts": [
+     {
+      "fact": "says insufficient evidence",
+      "ok": true,
+      "expected": "Insufficient evidence"
+     },
+     {
+      "fact": "reports no late rates",
+      "ok": true,
+      "expected": "no late rates or changes"
+     }
+    ],
+    "numbers": 0,
+    "traceable": 0,
+    "cited_correctly": 0,
+    "tool_calls": 1,
+    "tool_errors": 0,
+    "guard_events": [],
+    "finished": true,
+    "latency_s": 16.8,
+    "input_tokens": 2690,
+    "output_tokens": 181,
+    "llm_calls": 2
+   },
+   "baseline": {
+    "report": "## Answer\nThe late-delivery rate dropped significantly from 100.0% to 0.75%, which is contrary to the question. The data appears to be noisy and unreliable due to the low number of delivered orders in the base month. The dashboard warning indicates that rates are too noisy to act on.\n\n## Findings\n- Base month 2016-09: 4 orders, 1 delivered, 100.0% late-delivery rate, 1 overdue undelivered order, 55.0 average delivery time, 19.0 average promised window, 118.25 average order value, 100.0% low-review rate, 50.0% cancellation rate.\n- Current month 2016-10: 324 orders, 265 delivered, 0.75% late-delivery rate, 28 overdue undelivered orders, 19.6 average delivery time, 56.3 average promised window, 184.44 average order value, 29.15% low-review rate, 9.57% cancellation rate.\n\n## Investigate first\n- Check the reliability of the data due to the low number of delivered orders in the base month.\n- Investigate the cause of the significant drop in the late-delivery rate and whether it is due to a change in data collection or reporting.\n- Examine the reasons for the increase in overdue undelivered orders in the current month.\n\n## Limitations\n- The base month has fewer than 30 delivered orders, making the late-delivery rate unreliable.\n- The dashboard warns that rates are too noisy to act on, indicating the data may not be trustworthy for analysis.\n- The significant change in the late-delivery rate may be due to data anomalies rather than actual performance changes.",
+    "facts": [
+     {
+      "fact": "says insufficient evidence",
+      "ok": false,
+      "expected": "Insufficient evidence"
+     },
+     {
+      "fact": "reports no late rates",
+      "ok": false,
+      "expected": "no late rates or changes"
+     }
+    ],
+    "numbers": 21,
+    "traceable": 21,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 24.26,
+    "input_tokens": 536,
+    "output_tokens": 396,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2016-09",
+    "current": "2016-10",
+    "base_complete": false,
+    "current_complete": false,
+    "base_orders": 4,
+    "current_orders": 324,
+    "expect_insufficient": true
+   }
+  },
+  {
+   "id": "q21",
+   "kind": "incomplete",
+   "base": "2016-12",
+   "current": "2017-01",
+   "note": "2016-12 has one order",
+   "agent": {
+    "report": "## Answer\nInsufficient evidence. The data for 2016-12 is incomplete, which means we cannot reliably compare delivery performance between 2016-12 and 2017-01.\n\n## Findings\n- The data for 2016-12 is incomplete, making it unreliable for comparison [E1].\n- The data for 2017-01 is complete, but without a reliable base month, no findings can be drawn [E1].\n\n## Investigate first\n- Investigate why the data for 2016-12 is incomplete and whether it can be supplemented or corrected.\n- Check if there are any other months with complete data that can serve as a reliable base for comparison.\n\n## Limitations\n- The base month (2016-12) is incomplete, which affects the reliability of any comparison.\n- The data for the current month (2017-01) is complete, but without a reliable base month, no conclusions can be drawn.",
+    "facts": [
+     {
+      "fact": "says insufficient evidence",
+      "ok": true,
+      "expected": "Insufficient evidence"
+     },
+     {
+      "fact": "reports no late rates",
+      "ok": true,
+      "expected": "no late rates or changes"
+     }
+    ],
+    "numbers": 0,
+    "traceable": 0,
+    "cited_correctly": 0,
+    "tool_calls": 1,
+    "tool_errors": 0,
+    "guard_events": [],
+    "finished": true,
+    "latency_s": 14.51,
+    "input_tokens": 2689,
+    "output_tokens": 257,
+    "llm_calls": 2
+   },
+   "baseline": {
+    "report": "## Answer\nThe late-delivery rate increased significantly from 0.0% to 2.93%, likely due to a combination of factors including a surge in orders, longer delivery times, and a higher number of overdue undelivered orders. The data does not provide enough detail to identify specific sellers, regions, or product categories responsible for the increase.\n\n## Findings\n- Late-delivery rate increased by 2.9 percentage points.\n- Average delivery time increased by 7.8 days.\n- Average promised delivery window increased by 13.2 days.\n- Orders increased by 799, from 1 to 800.\n- Cancellation rate increased by 1.6 percentage points.\n- Low-review rate increased to 15.57%.\n- Overdue undelivered orders rose to 37.\n\n## Investigate first\n- Examine the distribution of orders across regions and product categories to identify any patterns in late deliveries.\n- Analyze the performance of sellers with the highest number of overdue undelivered orders.\n- Investigate the reasons behind the significant increase in average delivery time and promised delivery window.\n\n## Limitations\n- The dashboard warning indicates that rates are too noisy to act on due to fewer than 30 delivered orders in one month.\n- The data does not provide granular details on specific sellers, regions, or product categories.\n- The increase in orders may have skewed the metrics, making it difficult to isolate the cause of the late-delivery rate increase.",
+    "facts": [
+     {
+      "fact": "says insufficient evidence",
+      "ok": false,
+      "expected": "Insufficient evidence"
+     },
+     {
+      "fact": "reports no late rates",
+      "ok": false,
+      "expected": "no late rates or changes"
+     }
+    ],
+    "numbers": 12,
+    "traceable": 12,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 41.98,
+    "input_tokens": 526,
+    "output_tokens": 312,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2016-12",
+    "current": "2017-01",
+    "base_complete": false,
+    "current_complete": true,
+    "base_orders": 1,
+    "current_orders": 800,
+    "expect_insufficient": true
+   }
+  },
+  {
+   "id": "q22",
+   "kind": "incomplete",
+   "base": "2018-08",
+   "current": "2018-09",
+   "note": "after the data cutoff",
+   "agent": {
+    "report": "## Answer\nInsufficient evidence. The data for 2018-09 is incomplete, with only 16 orders recorded [E1], and a high percentage of open orders (6.2%) and estimates after the data cutoff (6.2%) [E1].\n\n## Findings\n- The data for 2018-09 is incomplete, with only 16 orders recorded [E1].\n- The percentage of open orders in 2018-09 is 6.2% [E1].\n- The percentage of estimates after the data cutoff in 2018-09 is 6.2% [E1].\n\n## Investigate first\n- Verify the completeness and reliability of the data for 2018-09.\n- Check for any anomalies or issues in the data collection process for 2018-09.\n\n## Limitations\n- The data for 2018-09 is incomplete and unreliable.\n- The small number of orders in 2018-09 may not represent the overall trend.\n- The high percentage of open orders and estimates after the data cutoff in 2018-09 may skew any analysis.",
+    "facts": [
+     {
+      "fact": "says insufficient evidence",
+      "ok": true,
+      "expected": "Insufficient evidence"
+     },
+     {
+      "fact": "reports no late rates",
+      "ok": true,
+      "expected": "no late rates or changes"
+     }
+    ],
+    "numbers": 6,
+    "traceable": 6,
+    "cited_correctly": 6,
+    "tool_calls": 1,
+    "tool_errors": 0,
+    "guard_events": [
+     "citation check failed ({'numbers': 1, 'supported': 0, 'miscited': 0, 'uncited': 1, 'unsupported': 0, 'support_rate': 0.0, 'unknown_citations': []}); one repair round"
+    ],
+    "finished": true,
+    "latency_s": 33.96,
+    "input_tokens": 3782,
+    "output_tokens": 499,
+    "llm_calls": 3
+   },
+   "baseline": {
+    "report": "## Answer\nThe late-delivery rate increase from 2018-08 to 2018-09 cannot be reliably assessed due to the extremely low number of delivered orders in September. The data is too noisy to draw meaningful conclusions.\n\n## Findings\n- **Base month (2018-08):** 6.19% late-delivery rate, 6512 orders, 6351 delivered, 70 overdue undelivered orders.\n- **Current month (2018-09):** 0 delivered orders, 16 total orders, 1 overdue undelivered order, 93.75% cancellation rate, 80% low-review rate.\n- **Change:** Orders decreased by 6496, cancellation rate increased by 92.4 percentage points.\n\n## Investigate first\n- Check if the 16 orders in September were from a specific seller, region, or product category to identify potential patterns.\n- Investigate the cause of the extremely high cancellation rate and low-review rate in September, as these may be linked to the delivery issues.\n\n## Limitations\n- The current month (2018-09) has fewer than 30 delivered orders, making the late-delivery rate unreliable.\n- The dashboard warns that rates are too noisy to act on in months with such low order volumes.\n- No data is available on the specific sellers, regions, or product categories involved in the 16 orders in September.",
+    "facts": [
+     {
+      "fact": "says insufficient evidence",
+      "ok": false,
+      "expected": "Insufficient evidence"
+     },
+     {
+      "fact": "reports no late rates",
+      "ok": false,
+      "expected": "no late rates or changes"
+     }
+    ],
+    "numbers": 14,
+    "traceable": 14,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 43.67,
+    "input_tokens": 490,
+    "output_tokens": 320,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2018-08",
+    "current": "2018-09",
+    "base_complete": true,
+    "current_complete": false,
+    "base_orders": 6512,
+    "current_orders": 16,
+    "expect_insufficient": true
+   }
+  },
+  {
+   "id": "q23",
+   "kind": "incomplete",
+   "base": "2018-09",
+   "current": "2018-10",
+   "note": "after the data cutoff",
+   "agent": {
+    "report": "## Answer\nInsufficient evidence. The data for both months is incomplete, with fewer orders than the required minimum of 500 [E1], and there are high percentages of estimates beyond the data cutoff, which may affect the reliability of the results.\n\n## Findings\n- The data quality for 2018-09 and 2018-10 is insufficient due to incomplete data and high percentages of estimates beyond the data cutoff [E1].\n\n## Investigate first\n- Verify the data completeness and quality for the months in question.\n- Check for any anomalies or inconsistencies in the data that may affect the reliability of the results.\n\n## Limitations\n- The data for both months is incomplete, which may affect the accuracy of the findings.\n- High percentages of estimates beyond the data cutoff may skew the results.",
+    "facts": [
+     {
+      "fact": "says insufficient evidence",
+      "ok": true,
+      "expected": "Insufficient evidence"
+     },
+     {
+      "fact": "reports no late rates",
+      "ok": true,
+      "expected": "no late rates or changes"
+     }
+    ],
+    "numbers": 1,
+    "traceable": 1,
+    "cited_correctly": 1,
+    "tool_calls": 1,
+    "tool_errors": 0,
+    "guard_events": [
+     "citation check failed ({'numbers': 1, 'supported': 0, 'miscited': 0, 'uncited': 1, 'unsupported': 0, 'support_rate': 0.0, 'unknown_citations': []}); one repair round"
+    ],
+    "finished": true,
+    "latency_s": 26.29,
+    "input_tokens": 3723,
+    "output_tokens": 376,
+    "llm_calls": 3
+   },
+   "baseline": {
+    "report": "## Answer\nThe late-delivery rate is not reliably measurable due to insufficient data, as both months have fewer than 30 delivered orders. The increase in cancellation rate and decrease in low-review rate suggest potential issues with order fulfillment or customer satisfaction, but further analysis is needed.\n\n## Findings\n- **Orders**: Decreased by 12 (from 16 to 4).\n- **Cancellation rate**: Increased by 6.2 percentage points (from 93.75% to 100%).\n- **Low-review rate**: Decreased by 5 percentage points (from 80.0% to 75.0%).\n- **Overdue undelivered orders**: Decreased from 1 to 0.\n\n## Investigate first\n- Check if the 4 orders in 2018-10 were canceled due to fulfillment issues or customer dissatisfaction.\n- Review the reasons for the 100% cancellation rate in 2018-10, particularly if any patterns exist in the canceled orders.\n- Investigate if there were any system or process changes in October that may have affected order processing or delivery.\n\n## Limitations\n- The data is too noisy due to fewer than 30 delivered orders in both months, making it unreliable for drawing conclusions about late-delivery rates.\n- Missing values for key metrics like average delivery time and promised delivery window limit the ability to assess delivery performance.\n- The low number of delivered orders makes it difficult to identify specific sellers, regions, or product categories contributing to the changes.",
+    "facts": [
+     {
+      "fact": "says insufficient evidence",
+      "ok": true,
+      "expected": "Insufficient evidence"
+     },
+     {
+      "fact": "reports no late rates",
+      "ok": false,
+      "expected": "no late rates or changes"
+     }
+    ],
+    "numbers": 15,
+    "traceable": 14,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 30.43,
+    "input_tokens": 468,
+    "output_tokens": 324,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2018-09",
+    "current": "2018-10",
+    "base_complete": false,
+    "current_complete": false,
+    "base_orders": 16,
+    "current_orders": 4,
+    "expect_insufficient": true
+   }
+  },
+  {
+   "id": "q24",
+   "kind": "missing",
+   "base": "2016-10",
+   "current": "2016-11",
+   "note": "2016-11 has no orders",
+   "agent": {
+    "report": "## Answer\nInsufficient evidence. The data for 2016-11 is incomplete as it does not contain any orders, and the data coverage ends in 2018-10. This prevents us from analyzing the late-delivery rate for 2016-11.\n\n## Findings\n- The data for 2016-11 is not available, making it impossible to calculate the late-delivery rate for that month.\n\n## Investigate first\n- Verify the data coverage and ensure that the dataset includes orders for 2016-11.\n- Check for any possible data entry or collection errors that might have caused the absence of orders for 2016-11.\n\n## Limitations\n- The data for 2016-11 is incomplete, which limits the ability to analyze the late-delivery rate for that month.\n- Without data for 2016-11, it is not possible to determine the change in the late-delivery rate or identify contributing factors.",
+    "facts": [
+     {
+      "fact": "says insufficient evidence",
+      "ok": true,
+      "expected": "Insufficient evidence"
+     },
+     {
+      "fact": "reports no late rates",
+      "ok": true,
+      "expected": "no late rates or changes"
+     }
+    ],
+    "numbers": 0,
+    "traceable": 0,
+    "cited_correctly": 0,
+    "tool_calls": 2,
+    "tool_errors": 2,
+    "guard_events": [
+     "report written before required steps; sent back (1 gaps)"
+    ],
+    "finished": true,
+    "latency_s": 32.19,
+    "input_tokens": 5742,
+    "output_tokens": 510,
+    "llm_calls": 4
+   },
+   "baseline": {
+    "report": "## Answer\nInsufficient evidence to determine the cause of the increase in late-delivery rate from 2016-10 to 2016-11, as there are no data points for 2016-11 to compare.\n\n## Findings\n- Base month 2016-10 late-delivery rate: 0.75%\n- No data available for 2016-11 to analyze changes or contributions.\n\n## Investigate first\n- Confirm whether the data for 2016-11 is truly missing or if it was not properly recorded.\n- Check for any system errors or data collection issues that may have affected the availability of 2016-11 data.\n\n## Limitations\n- No data for 2016-11 to analyze trends or changes.\n- Unable to identify contributing sellers, regions, or product categories without comparative data.",
+    "facts": [
+     {
+      "fact": "says insufficient evidence",
+      "ok": true,
+      "expected": "Insufficient evidence"
+     },
+     {
+      "fact": "reports no late rates",
+      "ok": false,
+      "expected": "no late rates or changes"
+     }
+    ],
+    "numbers": 1,
+    "traceable": 1,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 19.03,
+    "input_tokens": 351,
+    "output_tokens": 196,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2016-10",
+    "current": "2016-11",
+    "base_complete": false,
+    "current_complete": false,
+    "base_orders": 324,
+    "current_orders": 0,
+    "expect_insufficient": true
+   }
+  },
+  {
+   "id": "q25",
+   "kind": "missing",
+   "base": "2018-12",
+   "current": "2019-01",
+   "note": "outside the data",
+   "agent": {
+    "report": "## Answer\nInsufficient evidence. The data does not cover the base month of 2018-12, making it impossible to analyze the late-delivery rate change or identify contributing factors.\n\n## Findings\n- The data quality check indicates that there are no orders in the base month of 2018-12 [E1].\n\n## Investigate first\n- Verify the data coverage for the base month and ensure that the dataset includes the correct time frame for analysis.\n\n## Limitations\n- The dataset does not include orders from 2018-12, which is the base month for comparison.\n- Without complete data for the base month, it is not possible to calculate or analyze the late-delivery rate change.",
+    "facts": [
+     {
+      "fact": "says insufficient evidence",
+      "ok": true,
+      "expected": "Insufficient evidence"
+     },
+     {
+      "fact": "reports no late rates",
+      "ok": true,
+      "expected": "no late rates or changes"
+     }
+    ],
+    "numbers": 0,
+    "traceable": 0,
+    "cited_correctly": 0,
+    "tool_calls": 2,
+    "tool_errors": 2,
+    "guard_events": [
+     "report written before required steps; sent back (1 gaps)"
+    ],
+    "finished": true,
+    "latency_s": 26.26,
+    "input_tokens": 5612,
+    "output_tokens": 380,
+    "llm_calls": 4
+   },
+   "baseline": {
+    "report": "## Answer\nInsufficient evidence to determine the cause of the increase in late-delivery rate, as there are no orders recorded for either month.\n\n## Findings\n- No orders data available for 2018-12.\n- No orders data available for 2019-01.\n\n## Investigate first\n- Verify the data availability for the specified months to ensure there are no gaps or errors in the dataset.\n- Check if there were any system issues or data collection problems during these months.\n\n## Limitations\n- No order data is available for the months in question, making it impossible to analyze delivery performance.\n- The absence of data limits the ability to identify contributing factors such as sellers, regions, or product categories.",
+    "facts": [
+     {
+      "fact": "says insufficient evidence",
+      "ok": true,
+      "expected": "Insufficient evidence"
+     },
+     {
+      "fact": "reports no late rates",
+      "ok": true,
+      "expected": "no late rates or changes"
+     }
+    ],
+    "numbers": 0,
+    "traceable": 0,
+    "tool_calls": 0,
+    "tool_errors": 0,
+    "finished": true,
+    "latency_s": 12.56,
+    "input_tokens": 244,
+    "output_tokens": 152,
+    "llm_calls": 1
+   },
+   "key": {
+    "base": "2018-12",
+    "current": "2019-01",
+    "base_complete": false,
+    "current_complete": false,
+    "base_orders": 0,
+    "current_orders": 0,
+    "expect_insufficient": true
+   }
+  }
+ ],
+ "summary": {
+  "agent": {
+   "questions": 25,
+   "fact_accuracy": 0.925,
+   "facts_correct": 172,
+   "facts_total": 186,
+   "fully_correct_questions": 15,
+   "by_fact": {
+    "does not wrongly abstain": [
+     19,
+     19
+    ],
+    "base late rate": [
+     19,
+     19
+    ],
+    "current late rate": [
+     19,
+     19
+    ],
+    "size of the change": [
+     17,
+     19
+    ],
+    "direction of the change": [
+     19,
+     19
+    ],
+    "noise verdict": [
+     19,
+     19
+    ],
+    "delivery and promise effects": [
+     14,
+     15
+    ],
+    "names the larger effect": [
+     9,
+     15
+    ],
+    "top customer state": [
+     13,
+     15
+    ],
+    "top seller state": [
+     12,
+     15
+    ],
+    "says insufficient evidence": [
+     6,
+     6
+    ],
+    "reports no late rates": [
+     6,
+     6
+    ]
+   },
+   "by_kind": {
+    "rise": [
+     81,
+     90
+    ],
+    "fall": [
+     37,
+     40
+    ],
+    "flat": [
+     23,
+     24
+    ],
+    "year_over_year": [
+     19,
+     20
+    ],
+    "incomplete": [
+     8,
+     8
+    ],
+    "missing": [
+     4,
+     4
+    ]
+   },
+   "numbers": 427,
+   "traceable": 427,
+   "traceable_rate": 1.0,
+   "tool_calls": 84,
+   "tool_errors": 4,
+   "unfinished_runs": 0,
+   "latency_median_s": 80.2,
+   "latency_max_s": 131.2,
+   "latency_total_min": 29.6,
+   "input_tokens": 292650,
+   "output_tokens": 21518,
+   "llm_calls": 133,
+   "cost_usd": 0.0,
+   "cited_correctly": 427,
+   "cited_correctly_rate": 1.0,
+   "runs_with_guardrail_action": 23
+  },
+  "baseline": {
+   "questions": 25,
+   "fact_accuracy": 0.591,
+   "facts_correct": 110,
+   "facts_total": 186,
+   "fully_correct_questions": 1,
+   "by_fact": {
+    "does not wrongly abstain": [
+     19,
+     19
+    ],
+    "base late rate": [
+     19,
+     19
+    ],
+    "current late rate": [
+     19,
+     19
+    ],
+    "size of the change": [
+     17,
+     19
+    ],
+    "direction of the change": [
+     19,
+     19
+    ],
+    "noise verdict": [
+     13,
+     19
+    ],
+    "delivery and promise effects": [
+     0,
+     15
+    ],
+    "names the larger effect": [
+     0,
+     15
+    ],
+    "top customer state": [
+     0,
+     15
+    ],
+    "top seller state": [
+     0,
+     15
+    ],
+    "says insufficient evidence": [
+     3,
+     6
+    ],
+    "reports no late rates": [
+     1,
+     6
+    ]
+   },
+   "by_kind": {
+    "rise": [
+     53,
+     90
+    ],
+    "fall": [
+     23,
+     40
+    ],
+    "flat": [
+     19,
+     24
+    ],
+    "year_over_year": [
+     11,
+     20
+    ],
+    "incomplete": [
+     1,
+     8
+    ],
+    "missing": [
+     3,
+     4
+    ]
+   },
+   "numbers": 336,
+   "traceable": 315,
+   "traceable_rate": 0.938,
+   "tool_calls": 0,
+   "tool_errors": 0,
+   "unfinished_runs": 0,
+   "latency_median_s": 18.9,
+   "latency_max_s": 43.7,
+   "latency_total_min": 8.6,
+   "input_tokens": 12429,
+   "output_tokens": 7868,
+   "llm_calls": 25,
+   "cost_usd": 0.0
+  }
+ }
+}

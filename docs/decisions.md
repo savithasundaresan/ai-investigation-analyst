@@ -148,3 +148,20 @@ A small local model doesn't always follow a playbook, so the agent loop enforces
    unreliable and then drew conclusions from it anyway.
 - *Why:* each rule was added after a real run showed the failure it prevents.
 - *Trade-off:* guardrails add model calls (about 1–2 per run) and time. The evaluation reports how often each one fires.
+
+## D15. The evaluation checks itself: independent answer key, written rules, a fair baseline
+- **Independent answer key.** `src/answer_key.py` recomputes every expected answer from the *staging* tables, without
+  `fct_orders`, `dim_month` or `src/metrics.py`. A test requires it to agree with the agent's tools on every question.
+  If the shared metric code had a bug, the agent would repeat it and an answer key built on the same code would
+  repeat it too; a second implementation catches that.
+- **Questions that test judgement, not just recall.** All 25 use the business wording "why did it *increase*",
+  including 4 months where it fell and 4 where the change is noise, so the agent has to check the premise. Six
+  questions have incomplete or missing months, where the only right answer is "insufficient evidence".
+- **Deterministic scoring, no LLM judge.** Each fact has a written text rule (e.g. the base rate appears as a
+  percentage at the precision shown). A local model grading another local model would add noise and be hard to
+  defend. The rules are strict, so scores are a lower bound, and every check is listed per question.
+- **A fair baseline.** The baseline is the same model given what the dashboard shows: both months' KPI tiles and
+  whether each month is complete. It can abstain on incomplete months if it reads the flag. It cannot see segments,
+  so it is not expected to name the top state, and the comparison says so.
+- *Trade-off:* text rules miss correct answers phrased in unexpected ways. Runs are saved, so rules can be improved
+  and re-scored without re-running the model.
