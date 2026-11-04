@@ -84,7 +84,7 @@ uv run streamlit run app/Dashboard.py
 
 The app opens at http://localhost:8501 with three pages:
 
-- **Dashboard:** KPIs, trends, both decompositions and flagged segments, each with a "Show SQL" expander.
+- **Dashboard:** KPIs, trends, both decompositions and flagged segments.
 - **Investigate:** replay a saved agent run (no model needed) or run one live.
 - **Evaluation:** agent vs baseline, question by question.
 

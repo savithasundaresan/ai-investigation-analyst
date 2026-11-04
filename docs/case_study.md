@@ -16,7 +16,7 @@ slicing, and a dashboard alone shows *that* it went up, not *why*.
    Months are only analyzed when complete, because recent months look on time while their late orders are still in
    transit.
 2. **A dashboard with rules anyone can read.** A segment is flagged only with ≥30 orders in both months, |z| ≥ 2 and
-   a change of ≥3 pp. Every number has a "Show SQL" button.
+   a change of ≥3 pp.
 3. **Two decompositions that separate the explanations people usually mix up.**
    - *Mix vs performance:* did orders move to regions that were already slow, or did regions get slower?
    - *Slower deliveries vs shorter promises:* "late" means past the promised date, so the rate rises if deliveries

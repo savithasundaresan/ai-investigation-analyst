@@ -3,7 +3,7 @@
     uv run streamlit run app/Dashboard.py
 
 Every number on this page comes from src/metrics.py, the same functions the
-agent's tools call. Each section has a "Show SQL" expander with the exact query.
+agent's tools call.
 """
 
 import sys
@@ -68,11 +68,6 @@ def dq(month_list):
 @st.cache_data
 def options(column, table):
     return [r[0] for r in con.execute(f"SELECT DISTINCT {column} FROM {table} WHERE {column} IS NOT NULL ORDER BY 1").fetchall()]
-
-
-def show_sql(result, label="Show SQL"):
-    with st.expander(label):
-        st.code(result.sql_with_params(), language="sql")
 
 
 def style(fig, height=320, y_title=None, y_fmt=None):
@@ -150,7 +145,6 @@ tile(r2[0], "Orders", int(c.orders), int(b.orders), lambda v: f"{v:,}", bad_up=F
 tile(r2[1], "Order value (R$)", c.aov, b.aov, lambda v: f"{v:,.2f}", bad_up=False)
 tile(r2[2], "Low reviews (1–2★)", c.low_review_rate, b.low_review_rate, lambda v: f"{v:.1%}", pp=True)
 tile(r2[3], "Canceled", c.cancellation_rate, b.cancellation_rate, lambda v: f"{v:.1%}", pp=True)
-show_sql(k, "Show SQL for these tiles")
 
 # --- Trends -------------------------------------------------------------------
 
@@ -182,7 +176,6 @@ with tc2:
     st.plotly_chart(fig, width="stretch")
 st.caption("An order is late when actual days exceed promised days. The gap between the lines is the slack; "
            "when it narrows, lateness rises even if deliveries don't slow down.")
-show_sql(t, "Show SQL for the trend")
 
 # --- Why did it change? ----------------------------------------------------------
 
@@ -218,7 +211,6 @@ with w1:
                               fmt_month(current), n["current_rate"], [BLUE, ORANGE]), width="stretch")
     st.caption(f"Both months re-scored against {fmt_month(base)}'s median promise per destination state. "
                "What changes against that fixed yardstick is the delivery effect; the rest comes from promises moving.")
-    show_sql(p)
 with w2:
     dim = st.selectbox("**2 · Order mix or segment performance?** Split by", list(M.DIMENSIONS),
                        format_func=M.DIMENSIONS.get, index=1, key="dim")
@@ -230,7 +222,6 @@ with w2:
     st.caption(f"Mix: orders shifted toward segments that were already slower. Performance: segments themselves got worse. "
                f"{n['n_pooled_into_other']} of {n['n_segments']} segments have fewer than {MIN_N} delivered orders in a month "
                "and are pooled into “Other”.")
-    show_sql(d)
 
 st.markdown(f"**Top contributors by {M.DIMENSIONS[dim].lower()}**")
 top = d.data.head(10).copy()
@@ -277,7 +268,6 @@ st.dataframe(
 )
 st.caption(f"Flagged = at least {MIN_N} delivered orders in both months, |z| ≥ {MIN_ABS_Z:g} and a change of at least "
            f"{MIN_DELTA_PP:g} percentage points. Counts are distinct orders; an order with two sellers counts for each.")
-show_sql(bd)
 
 # --- Data quality --------------------------------------------------------------------
 
@@ -285,4 +275,3 @@ with st.expander("Data quality for these two months"):
     q = dq((base, current))
     st.dataframe(q.data.assign(purchase_month=q.data.purchase_month.dt.date), hide_index=True, width="stretch")
     st.caption("Rows with problems are flagged, not deleted (decision D12). None of these flags changes the late flag.")
-    show_sql(q)
